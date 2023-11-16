@@ -1,13 +1,49 @@
-<nav class="flex justify-content-around align-items-center">
-    <p class="nav-title text-5xl" id="nav-title">Kozmaph</p>
+<nav class="">
+    <div class="navbar-manuel container flex justify-content-around align-items-center">
+        <p class="text-5xl">Kozmaph</p>
 
-    <span class="flex justify-content-between align-items-center">
-        <a [routerLink]="['/']" class="mr-4">HOME</a>
-        <br>
-        <br>
-        <a [routerLink]="['/auth']" class="mr-4">AUTH</a>
-        <br>
-        <br>
-        <a [routerLink]="['/cart']">CART</a>
-    </span>
+        <div class="p-inputgroup mx-5">
+            <span class="p-inputgroup-addon border-2 border-right-none border-round-left-md surface-50">
+                <i class="pi pi-search"></i>
+            </span>
+            <input 
+                type="text" 
+                pInputText 
+                placeholder=" Type the product, category or brand you are looking for...."
+                class="w-full border-1 border-left-none outline-none border-round-right-md border-400" 
+            />
+        </div>
+
+        <span class="flex justify-content-between align-items-center">
+            <span>
+                <a [routerLink]="['/']" class="flex flex-row no-underline mr-5">
+                    Home
+                    <i class="pi pi-home ml-1"></i>
+                </a>
+            </span>
+            <span>
+                <a [routerLink]="['/auth']" class="flex flex-row no-underline mr-5">
+                    Account
+                    <i class="pi pi-user ml-1"></i>
+                </a>
+            </span>
+            <!-- <span>
+            <a [routerLink]="['/favorites']" class="flex flex-row no-underline mr-5">
+                Favorites
+                <i class="pi pi-bookmark ml-1"></i>
+            </a>
+        </span> -->
+            <span>
+                <a [routerLink]="['/cart']" class="flex flex-row no-underline">
+                    Cart
+                    <i class="pi pi-shopping-cart ml-1"></i>
+                </a>
+            </span>
+            <p-badge value="0" severity="danger" styleClass="mb-1 ml-1"></p-badge>
+        </span>
+    </div>
+
+    <app-categories></app-categories>
+
+    <hr class="container">
 </nav>

@@ -1,0 +1,14 @@
+.categories{
+    margin-top: -20px;
+}
+
+.category-item{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.subcategories{
+    top: 150px;
+    left: 10%;
+    right: 10%; 
+    height: auto;
+}

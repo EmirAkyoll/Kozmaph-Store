@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+/* Ubuntu font - Regular 400 */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+/* Ubuntu font - Light 300, Regular 400 */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+html {
+    overflow-y: scroll;
+}
+
+.container{
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 80%;
+    background-color: #fff;
+    /* border: 1px solid #ddd; */
+}
+
+input::placeholder {
+    font-family: 'Ubuntu', sans-serif;
+}

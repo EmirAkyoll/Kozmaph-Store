@@ -1,0 +1,12 @@
+.products{
+    /* background-color: rgb(251, 255, 124); */
+    text-align: center;
+    padding: 20px 10px;
+    color: #222;
+    /* margin-top: 40px; */
+}
+
+.card-image{
+    width: 230px;
+    height: 350px;
+}
