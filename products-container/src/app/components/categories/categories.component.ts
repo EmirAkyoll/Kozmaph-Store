@@ -1,7 +1,9 @@
 import { Component, HostListener } from '@angular/core';
+import { categoryTree } from './category-tree';
 
 export interface Category{
-  category_name: string;
+  category_name?: string;
+  subcategory_name?: string;
 }
 
 @Component({
@@ -11,15 +13,19 @@ export interface Category{
 })
 
 export class CategoriesComponent {
-  constructor(){}
+  constructor(){
+    console.log(categoryTree);
+  }
   
   // Define the classes of elements to be treated as exceptions as an array.
   exceptionClasses: string[] = ['category-item',];
   shouldSubcategoriesBeShown: boolean = false;
+  subcategories: Category[] = [];
   categories: Category[] = [
     {category_name: 'Clothes'}, 
     {category_name: 'Accessory'}, 
     {category_name: 'House'}, 
+    {category_name: 'Electronic'}, 
     {category_name: 'Cosmetic'}, 
     {category_name: 'Spor'}, 
     {category_name: 'Outdoor'}, 
@@ -33,6 +39,18 @@ export class CategoriesComponent {
 
   hideSubs(): void {
     this.shouldSubcategoriesBeShown = false;
+  }
+
+  bringSubcategories(event: any): void {
+    const foundCategory = categoryTree.find(category => category.category_name === event.target.innerText);
+    
+    if (foundCategory) {
+      const subcategoriesOfFoundCategory = foundCategory.subcategories;
+      this.subcategories = subcategoriesOfFoundCategory;
+      // console.log("categories: ",subcategoriesOfFoundCategory);
+    } else {
+      console.log('The specified category was not found.');
+    }
   }
 
   @HostListener('document:click', ['$event'])

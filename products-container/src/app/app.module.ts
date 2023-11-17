@@ -15,6 +15,8 @@ import { ImageModule } from 'primeng/image';
 import { BadgeModule } from 'primeng/badge';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { MenuModule } from 'primeng/menu';
+import { GalleriaModule } from 'primeng/galleria';
+import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { MenuModule } from 'primeng/menu';
     BadgeModule,
     MegaMenuModule,
     MenuModule,
+    GalleriaModule,
+    CarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
