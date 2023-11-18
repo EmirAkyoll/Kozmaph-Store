@@ -3,7 +3,8 @@
         <button 
             *ngFor="let category of categories; let i = index"
             class="category-item border-none text-md bg-white p-2 cursor-pointer font-bold"
-            (mouseover)="showSubs(); bringSubcategories($event)"
+            (mouseenter)="showSubs($event);"
+            (mouseleave)="hideSubs();"
         >
           {{category.category_name}}
         </button>
@@ -11,6 +12,8 @@
     
     <div 
         *ngIf="shouldSubcategoriesBeShown"
+        (mouseenter)="cancelHideSubsTimer();"
+        (mouseleave)="hideSubs();"
         class="subcategories grid column-gap-4s row-gap-1s container absolute border-1 border-round-lg flex justify-content-around align-items-center"
     >
         <button 

@@ -17,6 +17,8 @@ import { MegaMenuModule } from 'primeng/megamenu';
 import { MenuModule } from 'primeng/menu';
 import { GalleriaModule } from 'primeng/galleria';
 import { CarouselModule } from 'primeng/carousel';
+import { OverlayModule } from 'primeng/overlay';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { CarouselModule } from 'primeng/carousel';
     MenuModule,
     GalleriaModule,
     CarouselModule,
+    OverlayModule,
+    ButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
