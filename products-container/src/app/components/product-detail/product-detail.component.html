@@ -1,0 +1,59 @@
+<section class="container flex flex-column mt-3 lg:flex-row">
+    <p-galleria 
+        [value]="images" 
+        [showItemNavigators]="true" 
+        [showThumbnails]="false" 
+        [showIndicators]="true"
+        [showIndicatorsOnItem]="true" 
+        [responsiveOptions]="responsiveOptions"
+        [containerStyle]="{ 'max-width': '550px', 'margin-top': '0px' }"
+    >
+        <ng-template pTemplate="item" let-item>
+            <img [src]="item.itemImageSrc" class="w-full border-1 border-bluegray-300 border-round-md"/>
+        </ng-template>
+        <ng-template pTemplate="thumbnail" let-item>
+            <div class="grid grid-nogutter justify-content-center border-round-md">
+                <img [src]="item.thumbnailImageSrc" style="display: block;" />
+            </div>
+        </ng-template>
+    </p-galleria>
+
+    <div class=" font-Ubuntu font-bolds ml-2 w-full h-auto p-5 pr-0 border-bluegray-300 border-round-md text-justify">
+        <div class="text-4xl mb-4 mt-4s">Kitchen Life 12-Piece Spice Rack Set with Label and Lockable Lid and Spoon - Lockable Spice Rack MCH009743</div>
+
+        <p-divider></p-divider>
+
+        <div class="flex justify-content-start align-items-center mb-4 mt-4">
+            <i class="pi pi-calendar text-3xl mr-3"></i>
+            <span class="flex flex-column">
+                <p class="p-0 m-0"><b>Estimated Delivery Date</b>: 21 November - 23 November</p>
+                <p class="p-0 m-0"><b>Click</b> if you want it to be delivered on the same day.</p>
+            </span>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="relative mb-3 mt-3 flex align-items-center">
+            <span 
+                *ngIf="shouldScoreInformationBeShown"
+                class="absolute border-1 border-bluegray-200 text-xs w-12rem surface-100 p-2 font-Ubuntu" 
+                style="top: 70%; left: 29%;"
+            >
+                The seller score is calculated taking into account the seller's service quality and customer statements.
+            </span>
+
+            <p><b>Seller:</b> Lorem Ipsum LLC - <p-tag value="8.7" severity="success"></p-tag></p>
+            <i 
+                (mouseover)="showScoreInformation()" 
+                (mouseleave)="hideScoreInformation()"
+                class="pi pi-question-circle ml-3 text-500"
+            ></i>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="mb-4 mt-4">features</div>
+        <p-divider></p-divider>
+        <div class="mt-4">operations</div>
+    </div>
+</section>

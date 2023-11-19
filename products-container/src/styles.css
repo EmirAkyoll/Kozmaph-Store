@@ -19,3 +19,7 @@ html {
 input::placeholder {
     font-family: 'Ubuntu', sans-serif;
 }
+
+.font-Ubuntu{
+    font-family: 'Ubuntu', sans-serif;
+}

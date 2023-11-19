@@ -14,7 +14,7 @@
         *ngIf="shouldSubcategoriesBeShown"
         (mouseenter)="cancelHideSubsTimer();"
         (mouseleave)="hideSubs();"
-        class="subcategories grid column-gap-4s row-gap-1s container absolute border-1 border-round-lg flex justify-content-around align-items-center"
+        class="subcategories grid z-5 container absolute border-1 border-round-lg flex justify-content-around align-items-center"
     >
         <button 
             *ngFor="let subcategory of subcategories; let i = index"

@@ -9,6 +9,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { ProductsComponent } from './components/products/products.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 import { CardModule } from 'primeng/card';
 import { ImageModule } from 'primeng/image';
@@ -19,6 +20,9 @@ import { GalleriaModule } from 'primeng/galleria';
 import { CarouselModule } from 'primeng/carousel';
 import { OverlayModule } from 'primeng/overlay';
 import { ButtonModule } from 'primeng/button';
+import { DividerModule } from 'primeng/divider';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { TagModule } from 'primeng/tag';
 
 @NgModule({
   declarations: [
@@ -28,19 +32,14 @@ import { ButtonModule } from 'primeng/button';
     FavoritesComponent,
     ProductsComponent,
     CategoriesComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
-    CardModule, 
-    ImageModule,
-    BadgeModule,
-    MegaMenuModule,
-    MenuModule,
-    GalleriaModule,
-    CarouselModule,
-    OverlayModule,
-    ButtonModule,
+    CardModule, ImageModule, BadgeModule, MegaMenuModule,
+    MenuModule, GalleriaModule, CarouselModule, OverlayModule,
+    ButtonModule, DividerModule, OverlayPanelModule, TagModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

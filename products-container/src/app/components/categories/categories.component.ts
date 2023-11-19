@@ -11,10 +11,12 @@ export interface Category {
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css'],
 })
+
 export class CategoriesComponent {
   constructor() {
     console.log(categoryTree);
   }
+  
   // Define the classes of elements to be treated as exceptions as an array.
   exceptionClasses: string[] = ['category-item'];
   hideSubsTimer: any;

@@ -30,7 +30,6 @@ export const categoryTree = [
             { subcategory_name: 'Laptop' },
             { subcategory_name: 'Tablet' },
             { subcategory_name: 'Powerbank' },
-            { subcategory_name: 'Charger' },
             { subcategory_name: 'Earphones' },
             { subcategory_name: 'Smart Watch' },
             { subcategory_name: 'Air Conditioning' },
