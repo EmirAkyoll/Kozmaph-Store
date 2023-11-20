@@ -23,6 +23,9 @@ import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { TagModule } from 'primeng/tag';
+import { AccordionModule } from 'primeng/accordion';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,7 @@ import { TagModule } from 'primeng/tag';
     CardModule, ImageModule, BadgeModule, MegaMenuModule,
     MenuModule, GalleriaModule, CarouselModule, OverlayModule,
     ButtonModule, DividerModule, OverlayPanelModule, TagModule,
+    AccordionModule, DialogModule, InputTextareaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
