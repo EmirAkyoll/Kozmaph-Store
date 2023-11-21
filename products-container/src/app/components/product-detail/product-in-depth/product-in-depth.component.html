@@ -1,0 +1,34 @@
+<div class="mt-7 font-Ubuntu">
+    <div class="container w-full my-3">
+      <div class="accordion-item">
+        <div class="accordion-header p-4 cursor-pointer border-1 border-gray-300 border-round-top-md"
+          (click)="toggleItem(1)">
+          Header 1
+        </div>
+        <div *ngIf="activeIndex === 1" class="accordion-content p-4 border-1 border-gray-300 border-round-bottom-md">
+          Content 1
+        </div>
+      </div>
+  
+      <div class="accordion-item">
+        <div class="accordion-header p-4 cursor-pointer border-1 border-gray-300 border-round-top-md"
+          (click)="toggleItem(2)">
+          Header 2
+        </div>
+        <div *ngIf="activeIndex === 2" class="accordion-content p-4 border-1 border-gray-300 border-round-bottom-md">
+          Content 2
+        </div>
+      </div>
+  
+      <div class="accordion-item">
+        <div class="accordion-header p-4 cursor-pointer border-1 border-gray-300 border-round-top-md"
+          (click)="toggleItem(3)">
+          Header 3
+        </div>
+        <div *ngIf="activeIndex === 3" class="accordion-content p-4 border-1 border-gray-300 border-round-bottom-md">
+          Content 3
+        </div>
+      </div>
+    </div>
+  </div>
+  

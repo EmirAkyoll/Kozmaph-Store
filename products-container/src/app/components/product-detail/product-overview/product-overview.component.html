@@ -1,0 +1,123 @@
+<section class="container flex flex-column justify-content-center align-items-center mt-3 lg:flex-row">
+    <p-galleria 
+        [value]="images" 
+        [showItemNavigators]="true" 
+        [showThumbnails]="false" 
+        [showIndicators]="true"
+        [showIndicatorsOnItem]="true" 
+        [responsiveOptions]="responsiveOptions"
+        [containerStyle]="{ 'max-width': '550px', 'margin-top': '0px' }"
+    >
+        <ng-template pTemplate="item" let-item>
+            <img [src]="item.itemImageSrc" class="w-full border-1 border-bluegray-300 border-round-md"/>
+        </ng-template>
+        <ng-template pTemplate="thumbnail" let-item>
+            <div class="grid grid-nogutter justify-content-center border-round-md">
+                <img [src]="item.thumbnailImageSrc" style="display: block;" />
+            </div>
+        </ng-template>
+    </p-galleria>
+
+    <div class="font-Ubuntu ml-0 w-full h-auto p-0 pr-0 border-bluegray-300 border-round-md text-justify lg:p-5 lg:ml-2">
+        <div class="text-2xl mb-4 mt-4 lg:mt-0 md:text-3xl lg:text-4xl">Kitchen Life 12-Piece Spice Rack Set with Label and Lockable Lid and Spoon - Lockable Spice Rack MCH009743</div>
+
+        <p-divider></p-divider>
+
+        <div class="flex justify-content-start align-items-center mb-4 mt-4">
+            <i class="pi pi-calendar text-3xl mr-3"></i>
+            <span class="flex flex-column">
+                <p class="p-0 m-0 text-sm md:text-md"><b>Estimated Delivery Date</b>: 21 November - 23 November</p>
+                <p class="p-0 m-0 mt-1 text-sm md:text-md"><b>Click</b> if you want it to be delivered on the same day.</p>
+            </span>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="relative mb-3 mt-3 flex align-items-center">
+            <p class="text-sm md:text-md"><b>Seller:</b> Lorem Ipsum LLC - <p-tag value="8.7" severity="success"></p-tag></p>
+
+            <i 
+                pInputText 
+                pTooltip="The seller score is calculated taking into account the seller's service quality and customer statements." 
+                tooltipPosition="left"
+                (mouseover)="showScoreInformation()" 
+                (mouseleave)="hideScoreInformation()" 
+                class="pi pi-question-circle ml-3 text-500"
+            ></i>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="flex mb-4 mt-4 text-sm">
+            <span class="flex align-items-center mr-5 text-xs md:text-md">
+                <i class="pi pi-wallet mr-1"></i>
+                12 Installments
+            </span>
+            <span class="flex align-items-center mr-5 text-xs md:text-md">
+                <i class="pi pi-truck mr-1"></i>
+                Free Shipping
+            </span>
+            <span class="flex align-items-center mr-5 text-xs md:text-md">
+                <i class="pi pi-lock mr-1"></i>
+                Secure Payment
+            </span>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="flex flex-column justify-content-between mt-4 lg:flex-row">
+            <div class="flex flex-column lg:flex-row">
+                <p-button 
+                    label="Add to Cart" 
+                    icon="pi pi-shopping-cart" 
+                    iconPos="right" 
+                    styleClass="p-button-success w-14rems h-4rem border-round-md text-lg w-full"
+                    [style]="{'width': '100%'}"
+                    [loading]="loading" 
+                    (onClick)="load()"
+                ></p-button>
+
+                <p-button 
+                    styleClass="p-button-secondary p-button-outlined w-full h-4rem justify-content-center border-round-md ml-0 mt-3 lg:ml-4 lg:mt-0"
+                    (click)="toggleProductMarking()"                
+                >
+                    <i *ngIf="!isProductMarked" class="pi pi-bookmark text-3xl"></i>
+                    <i *ngIf="isProductMarked" class="pi pi-bookmark-fill text-3xl"></i>
+                </p-button>
+            </div>
+            
+            <p-button 
+                label="Ask to Seller" 
+                (click)="showDialog()"
+                icon="pi pi-question" 
+                iconPos="right" 
+                styleClass="p-button-help p-button-outlsined h-4rem border-round-md text-lg w-full mt-3 ml-0 lg:ml-4s lg:mt-0"
+            ></p-button>
+            
+            <div 
+                *ngIf="visible" 
+                style="width: 15vw; margin-left: 40%;"
+                class="fixed top-0 left-0 h-full flex justify-content-center align-items-center z-5 text-Ubuntu" 
+            >
+                <div class="bg-white p-5 z-5 border-round-md">
+                  <p>You are asking to SELLER_NAME</p>
+                  <p class="mb-3">About PRODUCT_NAME</p>
+
+                  <p-divider></p-divider>
+
+                  <span class="p-float-label">
+                    <textarea id="float-input" rows="5" cols="30" pInputTextarea></textarea>
+                    <label for="float-input">Question</label>
+                  </span>
+
+                  <p-button label="Send" styleClass="mt-3 w-full p-button-help"></p-button>
+                </div>
+                <div 
+                    class="fixed top-0 left-0 w-full h-full z-4" 
+                    style="background-color: #00000080;" 
+                    (click)="closeModal()"
+                ></div>
+            </div>
+        </div>
+    </div>
+</section>

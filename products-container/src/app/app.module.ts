@@ -10,6 +10,10 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
 import { ProductsComponent } from './components/products/products.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductOverviewComponent } from './components/product-detail/product-overview/product-overview.component';
+import { ProductInDepthComponent } from './components/product-detail/product-in-depth/product-in-depth.component';
+import { ProductCommentsComponent } from './components/product-detail/product-comments/product-comments.component';
+import { ProductQuestionsComponent } from './components/product-detail/product-questions/product-questions.component';
 
 import { CardModule } from 'primeng/card';
 import { ImageModule } from 'primeng/image';
@@ -26,6 +30,7 @@ import { TagModule } from 'primeng/tag';
 import { AccordionModule } from 'primeng/accordion';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -36,6 +41,10 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     ProductsComponent,
     CategoriesComponent,
     ProductDetailComponent,
+    ProductOverviewComponent,
+    ProductInDepthComponent,
+    ProductCommentsComponent,
+    ProductQuestionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +52,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     CardModule, ImageModule, BadgeModule, MegaMenuModule,
     MenuModule, GalleriaModule, CarouselModule, OverlayModule,
     ButtonModule, DividerModule, OverlayPanelModule, TagModule,
-    AccordionModule, DialogModule, InputTextareaModule
+    AccordionModule, DialogModule, InputTextareaModule, TooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
