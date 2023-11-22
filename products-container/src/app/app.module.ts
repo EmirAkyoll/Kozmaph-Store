@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -31,6 +32,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TooltipModule } from 'primeng/tooltip';
+import { RatingModule } from 'primeng/rating';
 
 @NgModule({
   declarations: [
@@ -47,12 +49,14 @@ import { TooltipModule } from 'primeng/tooltip';
     ProductQuestionsComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule, 
     CardModule, ImageModule, BadgeModule, MegaMenuModule,
     MenuModule, GalleriaModule, CarouselModule, OverlayModule,
     ButtonModule, DividerModule, OverlayPanelModule, TagModule,
     AccordionModule, DialogModule, InputTextareaModule, TooltipModule,
+    RatingModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

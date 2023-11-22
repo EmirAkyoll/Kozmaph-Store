@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-overview.component.css']
 })
 export class ProductOverviewComponent implements OnInit {
-constructor() {}
+  constructor() {}
 
-isProductMarked: boolean = false;
+  isProductMarked: boolean = false;
+  value: number = 4;
   loading: boolean = false;
   shouldScoreInformationBeShown: boolean = false;
   visible: boolean = false;
