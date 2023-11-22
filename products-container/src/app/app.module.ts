@@ -33,6 +33,7 @@ import { DialogModule } from 'primeng/dialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TooltipModule } from 'primeng/tooltip';
 import { RatingModule } from 'primeng/rating';
+import { DataViewModule } from 'primeng/dataview';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { RatingModule } from 'primeng/rating';
     MenuModule, GalleriaModule, CarouselModule, OverlayModule,
     ButtonModule, DividerModule, OverlayPanelModule, TagModule,
     AccordionModule, DialogModule, InputTextareaModule, TooltipModule,
-    RatingModule, 
+    RatingModule, DataViewModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

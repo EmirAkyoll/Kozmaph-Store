@@ -7,13 +7,6 @@ import { Component } from '@angular/core';
 })
 
 export class ProductInDepthComponent {
-  // items = [
-  //   { header: 'Payment Options', content: 'Content for item 1' },
-  //   { header: 'Summary', content: 'Content for item 2' },
-  //   { header: 'Description', content: 'Content for item 3' },
-  //   { header: 'Features', content: 'Content for item 3' },
-  // ];
-
   payment_options = [
     { image_url_endpoint: 'whdsbzztawpcazddizmo.webp'},
     { image_url_endpoint: 'e1r7dpkl951sgsjgguq5.webp'},
