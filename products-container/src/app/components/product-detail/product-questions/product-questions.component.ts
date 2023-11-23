@@ -8,6 +8,16 @@ import { Component } from '@angular/core';
 export class ProductQuestionsComponent {
   constructor() {}
 
+  isQuestionModalVisible: boolean = false;
+
+  showModal() {
+    this.isQuestionModalVisible = true;
+  }
+
+  closeModal(){
+    this.isQuestionModalVisible = false;
+  }
+
   questions = [
     {
       question_content: "186 male, 75 kilos, what size should we have?",

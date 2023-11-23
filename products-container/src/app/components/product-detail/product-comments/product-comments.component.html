@@ -1,1 +1,43 @@
-<p>product-comments works!</p>
+<div class="container font-Ubuntu border-round-top-2xl mt-7">
+    <p class="text-lg sm:text-xl md:text-3xl">Comments and Ratings</p>
+    
+    <div class="flex border-1 border-gray-400 border-round-top-md justify-content-center align-items-center p-4 sm:justify-content-start">
+        <div class="flex flex-column align-items-center sm:flex-row sm:justify-content-start">
+            <span class="text-sm mx-4 sm:text-base md:text-lg">(74) Comments</span>
+            <span class="text-sm mx-3 mt-2 sm:mt-0 sm:text-base md:text-lg">Average Rating: 4.6</span>
+        </div>
+    </div>
+
+    <div class="card border-1 border-top-none border-gray-400 border-round-bottom-md">
+        <div class="flex flex-column p-3 mb-3 border-bottom-1 border-gray-300 md:flex-row">
+            <span class="p-float-label w-full mt-2 mb-2 md:mb-0">
+                <textarea id="float-input" class="w-full" rows="3" pInputTextarea></textarea>
+                <label for="float-input">Enter your comment..</label>
+            </span>
+            <span class="flex flex-column justify-content-around align-items-center ml-0 md:ml-4 sm:flex-row md:flex-column">
+                <p-rating [cancel]="false"></p-rating>
+                <p-button 
+                    styleClass="border-none mt-2 sm:mt-0"
+                    [style]="{'width': '120px', 'background-color': '#f0b932'}" 
+                    label="Send" 
+                    icon="pi pi-angle-right" 
+                    iconPos="right"
+                ></p-button>
+            </span>
+        </div>
+        
+        <p-dataView #dv [value]="comments" [rows]="4" [paginator]="true">
+            <ng-template let-comment pTemplate="listItem">
+                <div class="col-12">
+                    <div class="p-4 pt-2">
+                        <div class="mb-2 flex flex-column align-items-center sm:flex-row">
+                            <p-rating class="mr-4 mb-2 sm:mb-0" [readonly]="true" [cancel]="false"></p-rating> 
+                            {{comment?.comment_content}}
+                        </div>
+                        <div class="opacity-50 text-sm">customer_name | asking_date | bought from dealer seller_name.</div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-dataView>
+    </div>
+</div>

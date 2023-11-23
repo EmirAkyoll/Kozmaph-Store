@@ -1,6 +1,9 @@
 <div class="container font-Ubuntu border-round-top-2xl mt-7">
-    <div class="flex border-1 border-gray-400 border-round-top-md justify-content-between align-items-center p-3"
-        style="background-color: #f2f2f2;">
+    <p class="text-lg sm:text-xl md:text-3xl">Questions and Answers</p>
+    <div 
+        class="flex flex-column border-1 border-gray-400 border-round-top-md justify-content-between align-items-center p-3 md:flex-row"
+        style="background-color: #f7f7f7;"
+    >
         <div class="flex align-items-center">
             <img src="https://cdn.dsmcdn.com/ty1058/product/media/images/prod/SPM/PIM/20231122/18/e047f55f-b26e-35c8-a155-400b0f292317/1_org_zoom.jpg"
                 alt="" style="width: 30px; height: 50px;">
@@ -8,12 +11,42 @@
             <span>product_name</span>
         </div>
         <div>
-            <p>Seller: seller_name - 9.7</p>
+              <p-button 
+                label="Ask to Seller" 
+                (click)="showModal()"
+                icon="pi pi-question" 
+                iconPos="right" 
+                styleClass="p-button-info p-button-outlined h-3rem border-round-md text-lg w-full mt-3s ml-0 lg:ml-4s lg:mt-0s"
+            ></p-button>
+            <div 
+                *ngIf="isQuestionModalVisible" 
+                style="width: 15vw; margin-left: 40%;"
+                class="fixed top-0 left-0 h-full flex justify-content-center align-items-center z-5 text-Ubuntu" 
+            >
+                <div class="bg-white p-5 z-5 border-round-md">
+                  <p>You are asking to SELLER_NAME</p>
+                  <p class="mb-3">About PRODUCT_NAME</p>
+
+                  <p-divider></p-divider>
+
+                  <span class="p-float-label">
+                    <textarea id="float-input" rows="5" cols="30" pInputTextarea></textarea>
+                    <label for="float-input">Question</label>
+                  </span>
+
+                  <p-button label="Send" styleClass="mt-3 w-full p-button-info"></p-button>
+                </div>
+            <div 
+                class="fixed top-0 left-0 w-full h-full z-4" 
+                style="background-color: #00000080;" 
+                (click)="closeModal()"
+            ></div>
+        </div>
         </div>
     </div>
 
-    <div class="card border-1 border-gray-400 border-round-bottom-md">
-        <p-dataView #dv [value]="questions" [rows]="3" [paginator]="true">
+    <div class="card border-1 border-top-none border-gray-400 border-round-bottom-md">
+        <p-dataView #dv [value]="questions" [rows]="2" [paginator]="true">
             <ng-template let-question pTemplate="listItem">
                 <div class="col-12">
                     <div class="p-4">
