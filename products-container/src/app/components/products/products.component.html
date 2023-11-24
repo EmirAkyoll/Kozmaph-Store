@@ -6,7 +6,7 @@
         class="w-full border-round-lg"
     >
     <div class="grid gap-3 mt-5">
-        <div class="col flex justify-content-center" *ngFor="let _ of [].constructor(11); let i = index">
+        <div class="col flex justify-content-center" *ngFor="let _ of [].constructor(11); let i = index" [routerLink]="['/product-detail']">
             <div 
                 class="bg-white border-round-lg border-1 border-400 cursor-pointer hover:shadow-3 transition-all transition-duration-150 transition-linear" 
                 style="width: 230px;"

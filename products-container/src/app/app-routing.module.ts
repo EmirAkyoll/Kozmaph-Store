@@ -4,6 +4,7 @@ import { CartComponent } from './cart-micro-app/cart-micro.component';
 import { VueAppComponent } from './auth-micro-app/auth-micro.component';
 import { ProductsComponent } from './components/products/products.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'favorites',
     component: FavoritesComponent
+  },
+  {
+    path: 'product-detail',
+    component: ProductDetailComponent
   }
 ];
 

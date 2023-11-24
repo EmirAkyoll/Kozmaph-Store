@@ -16,22 +16,12 @@ import { ProductInDepthComponent } from './components/product-detail/product-in-
 import { ProductCommentsComponent } from './components/product-detail/product-comments/product-comments.component';
 import { ProductQuestionsComponent } from './components/product-detail/product-questions/product-questions.component';
 
-import { CardModule } from 'primeng/card';
-import { ImageModule } from 'primeng/image';
 import { BadgeModule } from 'primeng/badge';
-import { MegaMenuModule } from 'primeng/megamenu';
-import { MenuModule } from 'primeng/menu';
 import { GalleriaModule } from 'primeng/galleria';
-import { CarouselModule } from 'primeng/carousel';
-import { OverlayModule } from 'primeng/overlay';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { TagModule } from 'primeng/tag';
 import { AccordionModule } from 'primeng/accordion';
-import { DialogModule } from 'primeng/dialog';
-import { InputTextareaModule } from 'primeng/inputtextarea';
-import { TooltipModule } from 'primeng/tooltip';
 import { RatingModule } from 'primeng/rating';
 import { DataViewModule } from 'primeng/dataview';
 
@@ -53,11 +43,9 @@ import { DataViewModule } from 'primeng/dataview';
     FormsModule,
     BrowserModule,
     AppRoutingModule, 
-    CardModule, ImageModule, BadgeModule, MegaMenuModule,
-    MenuModule, GalleriaModule, CarouselModule, OverlayModule,
-    ButtonModule, DividerModule, OverlayPanelModule, TagModule,
-    AccordionModule, DialogModule, InputTextareaModule, TooltipModule,
-    RatingModule, DataViewModule,
+    BadgeModule, GalleriaModule, 
+    ButtonModule, DividerModule, TagModule,
+    AccordionModule, RatingModule, DataViewModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

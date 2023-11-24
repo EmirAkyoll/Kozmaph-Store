@@ -10,7 +10,7 @@
             <span class="mx-4">seller_name</span>
             <span>product_name</span>
         </div>
-        <div>
+        <div class="">
               <p-button 
                 label="Ask to Seller" 
                 (click)="showModal()"
@@ -20,21 +20,23 @@
             ></p-button>
             <div 
                 *ngIf="isQuestionModalVisible" 
-                style="width: 15vw; margin-left: 40%;"
+                style="width: 15vw; margin-left: 42%;"
                 class="fixed top-0 left-0 h-full flex justify-content-center align-items-center z-5 text-Ubuntu" 
             >
-                <div class="bg-white p-5 z-5 border-round-md">
-                  <p>You are asking to SELLER_NAME</p>
-                  <p class="mb-3">About PRODUCT_NAME</p>
-
+                <div class="bg-white p-2 px-4 z-5 border-round-sm">
+                  <p class="font-bold text-lg">Ask to Seller</p>
                   <p-divider></p-divider>
-
-                  <span class="p-float-label">
-                    <textarea id="float-input" rows="5" cols="30" pInputTextarea></textarea>
-                    <label for="float-input">Question</label>
+                  <p>seller_name</p>
+                  <p-divider></p-divider>
+                  <p>You can ask the seller about malfunctions related to product features here.</p>
+                  <span class="p-float-label mt-4">
+                      <textarea id="float-input" rows="5" cols="30" pInputTextarea></textarea>
+                      <label for="float-input">Question</label>
                   </span>
+                  <p-divider></p-divider>
+                  <p>Let my name and surname appear in my questions.</p>
 
-                  <p-button label="Send" styleClass="mt-3 w-full p-button-info"></p-button>
+                  <p-button label="Send" styleClass="my-3 w-full p-button-info"></p-button>
                 </div>
             <div 
                 class="fixed top-0 left-0 w-full h-full z-4" 
