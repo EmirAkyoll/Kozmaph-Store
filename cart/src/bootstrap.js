@@ -1,16 +1,15 @@
 import React from "react";
 import ReactDom from "react-dom";
-import App from './App';
+import App from './App.tsx';
 
-const fetch_el = document.getElementById("dev-react");
+const fetch_el = document.getElementById("cart");
 
-
-const mount = (el) => {
-    ReactDom.render(<App/>, el);
+const mount = (el) => {   
+    ReactDom.render(<App />, el);
 }
 
 if(fetch_el){
     mount(fetch_el);
 }
 
-export { mount } 
+export { mount }

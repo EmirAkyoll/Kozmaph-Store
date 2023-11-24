@@ -14,6 +14,10 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"]
+            },
+            {
                 test: /\.m?js$/,
                 exclude: /node_modules/,
                 use: {
@@ -25,10 +29,25 @@ module.exports = {
                         ]
                     }
                 }
-            }
+            },
+            {
+                test: /\.(t|j)sx?$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        'presets': [
+                            '@babel/preset-env',
+                            '@babel/preset-react'
+                        ]
+                    }
+                }
+            },
         ]
     },
-
+    resolve: {
+        extensions: ['.tsx', '.ts', '.jsx', '.js'],
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: './public/index.html'
