@@ -1,13 +1,21 @@
-import { Component } from '@angular/core';
-import { CardModule } from 'primeng/card';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   value:any = ""
+  isMobileScreen: boolean = true;
+
+  ngOnInit() {
+    if (window.innerWidth < 750) {
+        this.isMobileScreen = true
+    } else {
+        this.isMobileScreen = false
+    }
+  }
 
   items = [
     {

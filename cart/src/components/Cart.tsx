@@ -23,7 +23,7 @@ const Cart = () => {
         <div className="flex justify-content-evenly fixed bottom-0 left-0 border-1 border-gray-400 h-5rem bg-white" style={{ width: '100vw' }}>
             <span>
                 <p className="mb-0">All Total</p>
-                <p className="mt-1">75.40 $</p>
+                <p className="mt-1">32 $</p>
             </span>
             <button className="my-3 w-12rem border-none p-3 border-round-sm bg-orange-300 font-Ubuntu cursor-pointer">
                 Confirm Order
