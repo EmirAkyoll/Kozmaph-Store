@@ -3,7 +3,12 @@ import CartItem from './CartItem.tsx';
 
 function CartTable(){
   return (
-    <div>
+    <div className='mt-5'>
+      <CartItem />
+      <CartItem />
+      <CartItem />  
+      <CartItem />
+      <CartItem />
       <CartItem />
       <CartItem />
     </div>
