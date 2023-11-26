@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { categoryTree } from './category-tree';
 
 export interface Category {
@@ -12,11 +12,13 @@ export interface Category {
   styleUrls: ['./categories.component.css'],
 })
 
-export class CategoriesComponent {
+export class CategoriesComponent implements OnInit {
   constructor() {
     console.log(categoryTree);
   }
-  
+
+  isMobileScreen: boolean = true;
+
   // Define the classes of elements to be treated as exceptions as an array.
   exceptionClasses: string[] = ['category-item'];
   hideSubsTimer: any;
@@ -33,6 +35,15 @@ export class CategoriesComponent {
     { category_name: 'Market' },
     { category_name: 'Stationary' },
   ];
+
+
+  ngOnInit() {
+    if (window.innerWidth < 750) {
+      this.isMobileScreen = true;
+    } else {
+      this.isMobileScreen = false;
+    }
+  }
 
   showSubs(event: any): void {
     // If the user is not on the same category, cancel showing subcategories.

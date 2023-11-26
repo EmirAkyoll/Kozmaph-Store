@@ -1,5 +1,5 @@
 <div class="z-5">
-    <div style="max-width: 250px; overflow: hidden;" class="categories container flex justify-content-between align-items-center relative">
+    <div *ngIf="isMobileScreen" style="max-width: 250px; overflow: hidden;" class="categories container overflow-x-auto flex justify-content-between align-items-center relative">
         <button 
             *ngFor="let category of categories; let i = index"
             class="category-item border-none text-md bg-white p-2 cursor-pointer font-bold"
@@ -10,6 +10,17 @@
         </button>
     </div>
     
+    <div *ngIf="!isMobileScreen" class="categories container  flex justify-content-between align-items-center relative">
+        <button 
+            *ngFor="let category of categories; let i = index"
+            class="category-item border-none text-md bg-white p-2 cursor-pointer font-bold"
+            (mouseenter)="showSubs($event);"
+            (mouseleave)="hideSubs();"
+        >
+          {{category.category_name}}
+        </button>
+    </div>
+
     <div 
         *ngIf="shouldSubcategoriesBeShown"
         (mouseenter)="cancelHideSubsTimer();"

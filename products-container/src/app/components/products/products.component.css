@@ -8,5 +8,31 @@
 
 .card-image{
     width: 230px;
-    height: 350px;
+    height: 320px;
+}
+
+.card-content{
+    width: 210px;
+}
+
+@media (max-width: 645px) {
+    .card-image{
+        width: 125px;
+        height: 225px;
+    }
+
+    .card-content{
+        width: 110px;
+    }
+}
+
+@media (min-width: 645px) and (max-width: 914px) {
+    .card-image{
+        width: 175px;
+        height: 275px;
+    }
+
+    .card-content{
+        width: 160px;
+    }
 }

@@ -1,6 +1,6 @@
 <nav class="">
     <div class="navbar-manuel container flex justify-content-around align-items-center">
-        <p *ngIf="!isMobileScreen" class="text-5xl">Kozmaph</p>
+        <p *ngIf="!isMobileScreen" class="text-5xl mr-5 md:text-4xls lg:text-5xls xl:text-7xls">Kozmaph</p>
 
         <div class="p-inputgroup my-5 mr-5 mx-0">
             <span class="p-inputgroup-addon border-2 border-right-none border-round-left-md surface-50">
@@ -10,7 +10,7 @@
                 type="text" 
                 pInputText 
                 placeholder=" Type the product, category or brand you are looking for...."
-                class="w-full border-1 border-left-none outline-none border-round-right-md border-400" 
+                class="w-full mr-5 border-1 border-left-none outline-none border-round-right-md border-400" 
             />
         </div>
 
@@ -55,14 +55,8 @@
                     <i class="pi pi-user ml-1"></i>
                 </a>
             </span>
-            <!-- <span>
-            <a [routerLink]="['/favorites']" class="flex flex-row no-underline mr-5">
-                Favorites
-                <i class="pi pi-bookmark ml-1"></i>
-            </a>
-        </span> -->
             <span>
-                <a [routerLink]="['/cart']" class="flex flex-row no-underline ml-3 text-sm text-blue-800 md:text-base xl:text-lg">
+                <a [routerLink]="['/cart']" class="flex flex-row no-underline ml-3 text-sm text-blue-800 md:ml-0 md:text-base xl:text-lg">
                     Cart
                     <i class="pi pi-shopping-cart ml-1"></i>
                 </a>
