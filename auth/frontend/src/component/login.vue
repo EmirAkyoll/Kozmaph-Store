@@ -1,6 +1,9 @@
 <script setup>
+import environment_variable from "../env";
 import { ref } from "vue";
 const value = ref(null);
+
+// console.log("HABBAQ: ", environment_variable.API_KEY);
 </script>
 
 <template>

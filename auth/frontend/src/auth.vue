@@ -9,8 +9,8 @@ const showLogin = ref(true);
 <template>
     <div class="flex justify-content-center">
         <!-- <router-view /> -->
-    <Login v-if="showLogin" />
-    <Register v-if="!showLogin" />
+    <Login v-if="!showLogin" />
+    <Register v-if="showLogin" />
     </div>
 </template>
 

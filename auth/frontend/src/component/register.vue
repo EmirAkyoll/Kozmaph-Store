@@ -1,6 +1,37 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import { addDoc, collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
+
+const all_names = ref([]);
 const value = ref(null);
+
+const username = ref("");
+const email = ref("");
+const password = ref("");
+
+const createUser = () => {
+  addDoc(collection(db, 'users'), {
+    username: username.value,
+    email: email.value,
+    password: password.value
+  })
+}
+
+onMounted(async () => { 
+    const querySnapshot = await getDocs(collection(db, 'users'));
+    let names = []
+    querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+        const name = {
+            username: doc.data().username,
+            email: doc.data().email,
+            password: doc.data().password
+        }
+        names.push(name)
+    })
+    all_names.value = names
+})
 </script>
 
 <template>
@@ -12,19 +43,19 @@ const value = ref(null);
           <label for="username" class="font-Ubuntu mb-2">Username</label>
           <InputText
             id="username"
-            v-model="value"
+            v-model="username"
             aria-describedby="username-help"
           />
-          
+          <!-- {{ all_names }} -->
           <label for="email" class="font-Ubuntu mt-4 mb-2">E-mail</label>
           <InputText
             id="email"
-            v-model="value"
+            v-model="email"
             aria-describedby="email-help"
           />
 
           <label for="password" class="mt-4 mb-2">Password</label>
-          <Password v-model="value" id="password">
+          <Password v-model="password" id="password">
             <template #header>
               <h6>Pick a password</h6>
             </template>
@@ -41,7 +72,7 @@ const value = ref(null);
           </Password>
         </div>
         <p class="ml-4 font-Ubuntu">Already registered? <a href="" class="no-underline text-primary">log in.</a></p>
-        <Button label="Sign Up" severity="info" class="ml-4 mt-3 border-round-md" style="width:200px" />
+        <Button @click="createUser" label="Sign Up" severity="info" class="ml-4 mt-3 border-round-md" style="width:200px" />
       </template>
     </Card>
   </div>
