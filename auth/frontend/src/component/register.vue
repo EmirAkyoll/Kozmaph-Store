@@ -1,37 +1,25 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
+import { v4 as generate_random_id } from "uuid";
 
-const all_names = ref([]);
-const value = ref(null);
-
+const fullname = ref("");
 const username = ref("");
 const email = ref("");
 const password = ref("");
 
 const createUser = () => {
   addDoc(collection(db, 'users'), {
+    id: generate_random_id(),
+    fullname : fullname.value,
     username: username.value,
+    password: password.value,
     email: email.value,
-    password: password.value
+    favorites: [],
+    cart: []
   })
 }
-
-onMounted(async () => { 
-    const querySnapshot = await getDocs(collection(db, 'users'));
-    let names = []
-    querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
-        const name = {
-            username: doc.data().username,
-            email: doc.data().email,
-            password: doc.data().password
-        }
-        names.push(name)
-    })
-    all_names.value = names
-})
 </script>
 
 <template>
@@ -40,13 +28,20 @@ onMounted(async () => {
       <template #title> Sign Up </template>
       <template #content>
         <div class="flex flex-column p-4">
-          <label for="username" class="font-Ubuntu mb-2">Username</label>
+          <label for="fullname" class="font-Ubuntu mb-2">Full Name</label>
+          <InputText
+            id="fullname"
+            v-model="fullname"
+            aria-describedby="fullname-help"
+          />
+          
+          <label for="username" class="font-Ubuntu mt-4 mb-2">User Name</label>
           <InputText
             id="username"
             v-model="username"
             aria-describedby="username-help"
           />
-          <!-- {{ all_names }} -->
+
           <label for="email" class="font-Ubuntu mt-4 mb-2">E-mail</label>
           <InputText
             id="email"
