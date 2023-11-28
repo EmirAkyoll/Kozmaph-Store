@@ -7,8 +7,8 @@
         class="w-full border-round-lg"
     >
     <div class="grid gap-3 mt-5">
-        <div class="col flex justify-content-center" *ngFor="let _ of [].constructor(11); let i = index" [routerLink]="['/product-detail']">
-            <div class="product-image flex flex-column justify-content-center align-items-center bg-white border-round-lg border-1 border-400 cursor-pointer hover:shadow-3 transition-all transition-duration-150 transition-linear" >
+        <div class="col flex justify-content-center" *ngFor="let _ of [].constructor(11); let i = index">
+            <div [routerLink]="['/product-detail']" class="product-image flex flex-column justify-content-center align-items-center bg-white border-round-lg border-1 border-400 cursor-pointer hover:shadow-3 transition-all transition-duration-150 transition-linear" >
                 <img 
                     src="https://cdn.dsmcdn.com/ty986/product/media/images/20230815/0/403261825/480842529/2/2_org_zoom.jpg" 
                     class="card-image border-round-lg border-noround-bottom"
