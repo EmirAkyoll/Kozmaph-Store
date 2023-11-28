@@ -8,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
   value:any = ""
   isMobileScreen: boolean = true;
+  showUserOptions: boolean = false;
+  
+  toggleUserOptions(){
+    this.showUserOptions = !this.showUserOptions;
+  }
 
   ngOnInit() {
     if (window.innerWidth < 750) {

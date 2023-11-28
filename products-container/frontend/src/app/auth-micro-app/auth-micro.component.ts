@@ -6,7 +6,7 @@ import { mount } from 'authMicro/authApp';
   templateUrl: './auth-micro.component.html',
   styleUrls: ['./auth-micro.component.css']
 })
-export class VueAppComponent implements AfterContentInit {
+export class AuthComponent implements AfterContentInit {
   ngAfterContentInit(): void {
     const fetch_el = document.getElementById('auth')
     mount(fetch_el);

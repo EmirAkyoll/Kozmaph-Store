@@ -50,10 +50,15 @@
                 </a>
             </span>
             <span *ngIf="!isMobileScreen">
-                <a [routerLink]="['/auth']" class="flex flex-row no-underline mr-5 md:text-base xl:text-lg text-blue-800">
+                <a (click)="toggleUserOptions()" class="flex flex-row no-underline cursor-pointer relative mr-5 md:text-base xl:text-lg text-blue-800">
                     Account
                     <i class="pi pi-user ml-1"></i>
                 </a>
+                <div *ngIf="showUserOptions" class="absolute z-5 bg-white p-2 border-1 mt-2 border-round-md border-gray-600 w-7rem text-start" style="top: 75px;">
+                    <a class="cursor-pointer"><i class="pi pi-inbox ml-1 mr-1"></i> Orders</a>
+                    <p-divider [style]="{'margin-top': '10px', 'margin-bottom': '10px'}"></p-divider>
+                    <a class="cursor-pointer"><i class="pi pi-bookmark ml-1 mr-1"></i> Favorites</a>
+                </div>
             </span>
             <span>
                 <a [routerLink]="['/cart']" class="flex flex-row no-underline ml-3 text-sm text-blue-800 md:ml-0 md:text-base xl:text-lg">
@@ -65,7 +70,7 @@
         </span>
     </div>
 
-    <app-categories></app-categories>
+    <!-- <app-categories></app-categories> -->
 
-    <hr class="container">
+    <!-- <hr class="container"> -->
 </nav>
