@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
 const CategorySchema = mongoose.Schema(
-{ 
-  category_name: { type: String, require: true },
-  sub_categories: [{ type: String, require: true }],
+{ categories: [{
+    category_name: { type: String, require: true },
+    subcategories: [{ type: String, require: true }],
+  }]
 },
 
 { timestamps: true }

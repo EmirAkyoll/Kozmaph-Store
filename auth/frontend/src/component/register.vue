@@ -4,30 +4,26 @@ import { addDoc, collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { v4 as generate_random_id } from "uuid";
 
-const fullName = ref("");
-const userName = ref("");
+const fullname = ref("");
+const username = ref("");
 const email = ref("");
 const password = ref("");
-const userTitle = ref("Customer");
-
-const userTitleOptions = ref(['Customer', 'Seller']);
 
 const createUser = () => {
   addDoc(collection(db, 'users'), {
     id: generate_random_id(),
-    title: userTitle.value,
-    fullname : fullName.value,
-    username: userName.value,
+    fullname : fullname.value,
+    username: username.value,
     password: password.value,
     email: email.value,
     favorites: [],
-    cart: [],
+    cart: []
   })
 }
 </script>
 
 <template>
-  <div class="border-1 border-round-3xl border-gray-300 mt-1 font-Ubuntu">
+  <div class="border-1 border-round-3xl border-gray-300 mt-5 font-Ubuntu">
     <Card>
       <template #title> Sign Up </template>
       <template #content>
@@ -35,14 +31,14 @@ const createUser = () => {
           <label for="fullname" class="font-Ubuntu mb-2">Full Name</label>
           <InputText
             id="fullname"
-            v-model="fullName"
+            v-model="fullname"
             aria-describedby="fullname-help"
           />
           
           <label for="username" class="font-Ubuntu mt-4 mb-2">User Name</label>
           <InputText
             id="username"
-            v-model="userName"
+            v-model="username"
             aria-describedby="username-help"
           />
 
@@ -69,9 +65,6 @@ const createUser = () => {
               </ul>
             </template>
           </Password>
-          <div class="flex justify-content-center">
-            <SelectButton v-model="userTitle" :options="userTitleOptions" aria-labelledby="basic" class="mt-4" />
-          </div>
         </div>
         <p class="ml-4 font-Ubuntu">Already registered? <a href="" class="no-underline text-primary">log in.</a></p>
         <Button @click="createUser" label="Sign Up" severity="info" class="ml-4 mt-3 border-round-md" style="width:200px" />

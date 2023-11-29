@@ -9,7 +9,6 @@ import Button from 'primevue/button';
 import TabMenu from 'primevue/tabmenu';
 import Password from 'primevue/password';
 import InputText from 'primevue/inputtext';
-import SelectButton from 'primevue/selectbutton';
 
 const fetch_el = document.getElementById('auth-micro-app');
 
@@ -22,7 +21,6 @@ const mount= (el) => {
     app.component('TabMenu', TabMenu);
     app.component('Password', Password);
     app.component('InputText', InputText);
-    app.component('SelectButton', SelectButton);
     app.mount(el);
 }
 
