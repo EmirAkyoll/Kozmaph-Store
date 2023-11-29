@@ -2,7 +2,7 @@ import { AfterContentInit, Component } from '@angular/core';
 import { mount } from 'cartMicro/cartApp';
   
 @Component({
-  selector: 'app-react-app',
+  selector: 'cart-app',
   templateUrl: './cart-micro.component.html',
   styleUrls: ['./cart-micro.component.css']
 })

@@ -55,7 +55,7 @@
                     <i class="pi pi-user ml-1"></i>
                 </a>
                 <div *ngIf="showUserOptions" class="absolute z-5 bg-white p-2 border-1 mt-2 border-round-md border-gray-600 w-7rem text-start" style="top: 75px;">
-                    <a class="cursor-pointer"><i class="pi pi-inbox ml-1 mr-1"></i> Orders</a>
+                    <a [routerLink]="['/auth']" class="cursor-pointer"><i class="pi pi-inbox ml-1 mr-1"></i> Orders</a>
                     <p-divider [style]="{'margin-top': '10px', 'margin-bottom': '10px'}"></p-divider>
                     <a class="cursor-pointer"><i class="pi pi-bookmark ml-1 mr-1"></i> Favorites</a>
                 </div>

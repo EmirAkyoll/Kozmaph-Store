@@ -24,6 +24,7 @@ import { DividerModule } from 'primeng/divider';
 import { GalleriaModule } from 'primeng/galleria';
 import { DataViewModule } from 'primeng/dataview';
 import { AccordionModule } from 'primeng/accordion';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AccordionModule } from 'primeng/accordion';
   imports: [
     FormsModule,
     BrowserModule,
-    AppRoutingModule, 
+    HttpClientModule, 
+    AppRoutingModule,
     BadgeModule, GalleriaModule, 
     ButtonModule, DividerModule, TagModule,
     AccordionModule, RatingModule, DataViewModule,
