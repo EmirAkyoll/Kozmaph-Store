@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  value:any = ""
+  value: any = ""
   isMobileScreen: boolean = true;
   showUserOptions: boolean = false;
-  
+  isAddingProductModalVisible: boolean = false;
+
+  showModal() {
+    this.isAddingProductModalVisible = true;
+  }
+
+  closeModal(){
+    this.isAddingProductModalVisible = false;
+  }
+
   toggleUserOptions(){
     this.showUserOptions = !this.showUserOptions;
   }

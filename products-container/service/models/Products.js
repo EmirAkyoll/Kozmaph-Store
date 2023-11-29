@@ -9,11 +9,11 @@ const ProductSchema = mongoose.Schema(
   seller: { type: String, require: true },
   summary: { type: [String], require: true },
   description: { type: [String], require: true },
-  features: { type: [String] },
+  features: { type: [String], require: true },
   advantages: { type: [String] },
   questions: [{
     question_text: { type: String },
-    answers: [{ type: String }],
+    answers: { type: String },
   }],
   comments: [{
     comment_text: { type: String },
