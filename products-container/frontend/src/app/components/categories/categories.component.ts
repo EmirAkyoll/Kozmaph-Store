@@ -1,10 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { categoryTree } from './category-tree';
-
-export interface Category {
-  category_name?: string;
-  subcategory_name?: string;
-}
+import { Category } from 'src/interfaces/category.interface';
+import { CategoryService } from './categories.service';
 
 @Component({
   selector: 'app-categories',
@@ -13,29 +10,14 @@ export interface Category {
 })
 
 export class CategoriesComponent implements OnInit {
-  constructor() {
-    console.log(categoryTree);
-  }
+  constructor(private categoryService: CategoryService) {}
 
   isMobileScreen: boolean = true;
-
-  // Define the classes of elements to be treated as exceptions as an array.
   exceptionClasses: string[] = ['category-item'];
   hideSubsTimer: any;
   shouldSubcategoriesBeShown: boolean = false;
-  subcategories: Category[] = [];
-  categories: Category[] = [
-    { category_name: 'Clothes' },
-    { category_name: 'Accessory' },
-    { category_name: 'House' },
-    { category_name: 'Electronic' },
-    { category_name: 'Cosmetic' },
-    { category_name: 'Spor' },
-    { category_name: 'Outdoor' },
-    { category_name: 'Market' },
-    { category_name: 'Stationary' },
-  ];
-
+  sub_categories: any = [];
+  categories: Category[] = [];
 
   ngOnInit() {
     if (window.innerWidth < 750) {
@@ -43,6 +25,10 @@ export class CategoriesComponent implements OnInit {
     } else {
       this.isMobileScreen = false;
     }
+
+    this.categoryService.getAll().subscribe(allCategories => {      
+      this.categories = allCategories;
+    })
   }
 
   showSubs(event: any): void {
@@ -62,14 +48,14 @@ export class CategoriesComponent implements OnInit {
   }
 
   bringSubcategories(event: any): void {
-    const foundCategory = categoryTree.find(
+    const foundCategory = this.categories.find(
       (category) => category.category_name === event.target.innerText
     );
 
     if (foundCategory) {
-      const subcategoriesOfFoundCategory = foundCategory.subcategories;
-      this.subcategories = subcategoriesOfFoundCategory;
-      // console.log("categories: ",subcategoriesOfFoundCategory);
+      const subcategoriesOfFoundCategory = foundCategory.sub_categories;
+      this.sub_categories = subcategoriesOfFoundCategory;
+      console.log("categories: ",subcategoriesOfFoundCategory);
     } else {
       console.log('The specified category was not found.');
     }

@@ -2,7 +2,7 @@ import { AfterContentInit, Component } from '@angular/core';
 import { mount } from 'authMicro/authApp';
 
 @Component({
-  selector: 'app-vue-app',
+  selector: 'auth-app',
   templateUrl: './auth-micro.component.html',
   styleUrls: ['./auth-micro.component.css']
 })
