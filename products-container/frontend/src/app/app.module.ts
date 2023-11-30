@@ -15,11 +15,13 @@ import { ProductOverviewComponent } from './components/product-detail/product-ov
 import { ProductInDepthComponent } from './components/product-detail/product-in-depth/product-in-depth.component';
 import { ProductCommentsComponent } from './components/product-detail/product-comments/product-comments.component';
 import { ProductQuestionsComponent } from './components/product-detail/product-questions/product-questions.component';
+import { ProductTransactionComponent } from './components/product-transaction/product-transaction.component';
 
 import { TagModule } from 'primeng/tag';
 import { BadgeModule } from 'primeng/badge';
 import { RatingModule } from 'primeng/rating';
 import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
 import { DividerModule } from 'primeng/divider';
 import { GalleriaModule } from 'primeng/galleria';
 import { DataViewModule } from 'primeng/dataview';
@@ -39,13 +41,14 @@ import { HttpClientModule } from '@angular/common/http';
     ProductOverviewComponent,
     ProductCommentsComponent,
     ProductQuestionsComponent,
+    ProductTransactionComponent,
   ],
   imports: [
     FormsModule,
     BrowserModule,
     HttpClientModule, 
     AppRoutingModule,
-    BadgeModule, GalleriaModule, 
+    BadgeModule, GalleriaModule, DialogModule,
     ButtonModule, DividerModule, TagModule,
     AccordionModule, RatingModule, DataViewModule,
   ],
