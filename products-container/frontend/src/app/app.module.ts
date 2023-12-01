@@ -27,6 +27,7 @@ import { GalleriaModule } from 'primeng/galleria';
 import { DataViewModule } from 'primeng/dataview';
 import { AccordionModule } from 'primeng/accordion';
 import { HttpClientModule } from '@angular/common/http';
+import { AddProductComponent } from './components/product-transaction/add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
     ProductCommentsComponent,
     ProductQuestionsComponent,
     ProductTransactionComponent,
+    AddProductComponent,
   ],
   imports: [
     FormsModule,

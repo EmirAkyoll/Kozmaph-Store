@@ -1,0 +1,139 @@
+<p-button 
+    icon="pi pi-plus" 
+    (click)="showModal()" 
+    label="Add Product" 
+    styleClass="p-button-info border-round-sm"
+    style="position: sticky; top: 70px;"
+></p-button>
+
+<div *ngIf="isAddProductModalVisible" style="top: -110px; margin-left: 5%;" class="fixed h-full flex justify-content-center align-items-center z-5 text-Ubuntu">
+    <div class="bg-white p-2 px-4 z-5 border-round-sm" style="width: 60vw;">
+        <div class="flex justify-content-between">
+            <p class="font-bold text-xl">Product Data</p>
+            <p-button label="+ Add" styleClass="my-3 w-full p-button-info"></p-button>
+        </div>
+        <p-divider></p-divider>
+        <div class="flex flex-column gap-2">
+            <label htmlFor="product_name" class="text-sm">Product Name</label>
+            <input class="p-2" pInputText id="product_name" aria-describedby="product_name-help" />
+        </div>
+        <p-divider></p-divider>
+        <div class="flex flex-column gap-2 mt-3">
+            <label htmlFor="price" class="text-sm">Price</label>
+            <input class="p-2" t pInputText id="price" aria-describedby="price-help" />
+        </div>
+        <p-divider></p-divider>
+        <br>
+        <div class="flex justify-content-between">
+            <div class="flex flex-column">
+            <label htmlFor="summary" class="text-sm mb-2">Summaries</label>
+            <span class="">
+                <input 
+                    class="p-2" 
+                    #summaryInput 
+                    pInputText 
+                    id="summary" 
+                    aria-describedby="summary-help"
+                    (keyup.enter)="addContent('summaries', summaryInput.value); summaryInput.value = ''" 
+                />
+                <button 
+                    (click)="addContent('summaries', summaryInput.value); summaryInput.value = ''" 
+                    pButton 
+                    pRipple
+                    icon="pi pi-check" 
+                    class="p-button-success ml-2" 
+                    style="height: 35px;"
+                ></button>
+            </span>
+            <ul>
+                <li *ngFor="let summary of summaries; let summary_index = index" class="mb-2">
+                    <div class=" flex justify-content-center align-items-center">
+                        <p class="overflow-hidden text-overflow-ellipsis max-w-7rem">{{ summary }}</p>
+                        <button 
+                            (click)="removeContent('summaries', summary_index)" 
+                            pButton 
+                            pRipple 
+                            icon="pi pi-times"
+                            class="p-button-danger text-sm" 
+                            style="width: 15px; height: 15px;"
+                        ></button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="flex flex-column">
+            <label htmlFor="description" class="text-sm mb-2">Descriptions</label>
+            <span class="">
+                <input 
+                    class="p-2" 
+                    #descriptionInput 
+                    pInputText 
+                    id="description" 
+                    aria-describedby="description-help"
+                    (keyup.enter)="addContent('descriptions', descriptionInput.value); descriptionInput.value = ''" 
+                />
+                <button 
+                    (click)="addContent('descriptions', descriptionInput.value); descriptionInput.value = ''" 
+                    pButton 
+                    pRipple
+                    icon="pi pi-check" 
+                    class="p-button-success ml-2" 
+                    style="height: 35px;"
+                ></button>
+            </span>
+            <ul>
+                <li *ngFor="let description of descriptions; let description_index = index" class="mb-2">
+                    <div class=" flex justify-content-center align-items-center">
+                        <p class="overflow-hidden text-overflow-ellipsis max-w-7rem">{{ description }}</p>
+                        <button 
+                            (click)="removeContent('descriptions', description_index)" 
+                            pButton 
+                            pRipple 
+                            icon="pi pi-times"
+                            class="p-button-danger text-sm" 
+                            style="width: 15px; height: 15px;"
+                        ></button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="flex flex-column">
+            <label htmlFor="feature" class="text-sm mb-2">Features</label>
+            <span class="">
+                <input 
+                    class="p-2" 
+                    #featureInput 
+                    pInputText id="feature" 
+                    aria-describedby="feature-help"
+                    (keyup.enter)="addContent('features', featureInput.value); featureInput.value = ''" 
+                />
+                <button 
+                    (click)="addContent('features', featureInput.value); featureInput.value = ''" 
+                    pButton 
+                    pRipple
+                    icon="pi pi-check" 
+                    class="p-button-success ml-2" 
+                    style="height: 35px;"   
+                ></button>
+            </span>
+            <ul>
+                <li *ngFor="let feature of features; let feature_index = index" class="">
+                    <div class=" flex justify-content-center align-items-center">
+                        <p class="overflow-hidden text-overflow-ellipsis max-w-7rem">{{ feature }}</p>
+                        <button 
+                            (click)="removeContent('features', feature_index)" 
+                            pButton 
+                            pRipple 
+                            icon="pi pi-times"
+                            class="p-button-danger text-sm ml-2" 
+                            style="width: 15px; height: 15px;"
+                        ></button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+       </div>
+    </div>
+    <div class="fixed top-0 left-0 w-full h-full z-4" style="background-color: #00000080;" (click)="closeModal()">
+    </div>
+</div>
