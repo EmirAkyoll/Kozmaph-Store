@@ -6,22 +6,50 @@
     style="position: sticky; top: 70px;"
 ></p-button>
 
-<div *ngIf="isAddProductModalVisible" style="top: -110px; margin-left: 5%;" class="fixed h-full flex justify-content-center align-items-center z-5 text-Ubuntu">
-    <div class="bg-white p-2 px-4 z-5 border-round-sm" style="width: 60vw;">
+<div *ngIf="isAddProductModalVisible" style="top: -15px; margin-left: 12%;" class="fixed h-full flex justify-content-center align-items-center z-5 text-Ubuntu">
+    <div class="bg-white p-2 px-4 z-5 border-round-sm" style="width: 55vw; height: 600px;">
         <div class="flex justify-content-between">
             <p class="font-bold text-xl">Product Data</p>
             <p-button label="+ Add" styleClass="my-3 w-full p-button-info"></p-button>
         </div>
         <p-divider></p-divider>
-        <div class="flex flex-column gap-2">
-            <label htmlFor="product_name" class="text-sm">Product Name</label>
-            <input class="p-2" pInputText id="product_name" aria-describedby="product_name-help" />
+        <div class="flex justify-content-center">
+            <p-galleria 
+            [value]="images" 
+            [showItemNavigators]="true" 
+            [showThumbnails]="false" 
+            [showIndicators]="true"
+            [showIndicatorsOnItem]="true" 
+            [responsiveOptions]="responsiveOptions"
+            [containerStyle]="{ 'max-width': '180px', 'margin-top': '0px' }"
+        >
+            <ng-template pTemplate="item" let-item>
+                <img [src]="item.itemImageSrc" class="w-full border-1 border-bluegray-300 border-round-md"/>
+            </ng-template>
+            <ng-template pTemplate="thumbnail" let-item>
+                <div class="grid grid-nogutter justify-content-center border-round-md">
+                    <img [src]="item.thumbnailImageSrc" style="display: block;" />
+                </div>
+            </ng-template>
+        </p-galleria>
+        <div class="ml-7 mt-5">
+            <div class="flex flex-column gap-2">
+                <label htmlFor="product_name" class="text-sm">Product Name</label>
+                <input class="p-2" pInputText id="product_name" aria-describedby="product_name-help" />
+            </div>
+            <p-divider class="my-4"></p-divider>
+            <div class="flex flex-column gap-2 mt-3s">
+                <label htmlFor="price" class="text-sm">Price</label>
+                <input class="p-2" t pInputText id="price" aria-describedby="price-help" />
+            </div>
+            <p-divider class="my-4"></p-divider>
+            <div class="card flex justify-content-center my-3 text-sm">
+                <p-checkbox name="advantages" value="Free Shipping" label="Free Shipping" [(ngModel)]="selectedAdvantages"></p-checkbox>
+                <p-checkbox name="advantages" value="Installments" label="Installments" [(ngModel)]="selectedAdvantages" class="mx-4"></p-checkbox>
+                <p-checkbox name="advantages" value="Secure Payment" label="Secure Payment" [(ngModel)]="selectedAdvantages"></p-checkbox>
+            </div>  
         </div>
-        <p-divider></p-divider>
-        <div class="flex flex-column gap-2 mt-3">
-            <label htmlFor="price" class="text-sm">Price</label>
-            <input class="p-2" t pInputText id="price" aria-describedby="price-help" />
-        </div>
+    </div>
         <p-divider></p-divider>
         <br>
         <div class="flex justify-content-between">
@@ -45,17 +73,17 @@
                     style="height: 35px;"
                 ></button>
             </span>
-            <ul>
-                <li *ngFor="let summary of summaries; let summary_index = index" class="mb-2">
-                    <div class=" flex justify-content-center align-items-center">
-                        <p class="overflow-hidden text-overflow-ellipsis max-w-7rem">{{ summary }}</p>
+            <ul class="max-h-4rem overflow-x-hidden overflow-scroll" style="margin-left: -20px;">
+                <li *ngFor="let summary of summaries; let summary_index = index" class="mb-0">
+                    <div class="flex justify-content-center align-items-center">
+                        <p class="overflow-hidden text-overflow-ellipsis max-w-7rem mt-0">{{ summary }}</p>
                         <button 
                             (click)="removeContent('summaries', summary_index)" 
                             pButton 
                             pRipple 
                             icon="pi pi-times"
                             class="p-button-danger text-sm" 
-                            style="width: 15px; height: 15px;"
+                            style="width: 15px; height: 15px; margin-bottom: 15px;"
                         ></button>
                     </div>
                 </li>
@@ -81,17 +109,17 @@
                     style="height: 35px;"
                 ></button>
             </span>
-            <ul>
-                <li *ngFor="let description of descriptions; let description_index = index" class="mb-2">
+            <ul class="max-h-4rem overflow-x-hidden overflow-scroll" style="margin-left: -20px;">
+                <li *ngFor="let description of descriptions; let description_index = index" class="">
                     <div class=" flex justify-content-center align-items-center">
-                        <p class="overflow-hidden text-overflow-ellipsis max-w-7rem">{{ description }}</p>
+                        <p class="overflow-hidden text-overflow-ellipsis max-w-7rem mt-0">{{ description }}</p>
                         <button 
                             (click)="removeContent('descriptions', description_index)" 
                             pButton 
                             pRipple 
                             icon="pi pi-times"
                             class="p-button-danger text-sm" 
-                            style="width: 15px; height: 15px;"
+                            style="width: 15px; height: 15px;  margin-bottom: 15px;"
                         ></button>
                     </div>
                 </li>
@@ -99,16 +127,34 @@
         </div>
         <div class="flex flex-column">
             <label htmlFor="feature" class="text-sm mb-2">Features</label>
-            <span class="">
-                <input 
+            <span class="flex">
+               <span class="flex flex-column">
+                 <input 
                     class="p-2" 
-                    #featureInput 
-                    pInputText id="feature" 
-                    aria-describedby="feature-help"
-                    (keyup.enter)="addContent('features', featureInput.value); featureInput.value = ''" 
+                    #featureNameInput 
+                    pInputText 
+                    id="feature-name" 
+                    aria-describedby="feature-name-help"
+                    placeholder="Feature Name"
+                    (mouseover)="showFeatureValueInput()"
+                    (blur)="hideFeatureValueInput()"
+                    (keyup)="enterFeatureField($event, 'feature_name')"
                 />
+                <input 
+                    *ngIf="isFeatureValueInputShouldBeVisible"
+                    (hover)="showFeatureValueInput()"
+                    (mouseover)="showFeatureValueInput()"
+                    class="p-2" 
+                    #featureValueInput 
+                    pInputText 
+                    id="feature-value" 
+                    aria-describedby="feature-value-help"
+                    placeholder="Feature Value"
+                    (keyup)="enterFeatureField($event, 'feature_value')"
+                />
+               </span>
                 <button 
-                    (click)="addContent('features', featureInput.value); featureInput.value = ''" 
+                    (click)="addContent('features', feature); featureNameInput.value = ''" 
                     pButton 
                     pRipple
                     icon="pi pi-check" 
@@ -116,17 +162,17 @@
                     style="height: 35px;"   
                 ></button>
             </span>
-            <ul>
+            <ul class="max-h-4rem overflow-x-hidden overflow-scroll" style="margin-left: -20px;">
                 <li *ngFor="let feature of features; let feature_index = index" class="">
                     <div class=" flex justify-content-center align-items-center">
-                        <p class="overflow-hidden text-overflow-ellipsis max-w-7rem">{{ feature }}</p>
+                        <p class="overflow-hidden text-overflow-ellipsis max-w-7rem mt-0">{{ feature.feature_name }}: {{ feature.feature_value }}</p>
                         <button 
                             (click)="removeContent('features', feature_index)" 
                             pButton 
                             pRipple 
                             icon="pi pi-times"
                             class="p-button-danger text-sm ml-2" 
-                            style="width: 15px; height: 15px;"
+                            style="width: 15px; height: 15px;  margin-bottom: 15px;"
                         ></button>
                     </div>
                 </li>

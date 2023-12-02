@@ -23,6 +23,7 @@ import { RatingModule } from 'primeng/rating';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { DividerModule } from 'primeng/divider';
+import { CheckboxModule } from 'primeng/checkbox';
 import { GalleriaModule } from 'primeng/galleria';
 import { DataViewModule } from 'primeng/dataview';
 import { AccordionModule } from 'primeng/accordion';
@@ -53,6 +54,7 @@ import { AddProductComponent } from './components/product-transaction/add-produc
     BadgeModule, GalleriaModule, DialogModule,
     ButtonModule, DividerModule, TagModule,
     AccordionModule, RatingModule, DataViewModule,
+    CheckboxModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]
