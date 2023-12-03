@@ -32,15 +32,21 @@
                 </div>
             </ng-template>
         </p-galleria>
-        <div class="ml-7 mt-5">
+        <div>
+            <!-- <div>Images</div>
+            <input type="file" (change)="onFileSelected($event)" multiple> -->
+            <!-- <button (click)="uploadImages()">Resimleri Yükle</button> -->
+            <!-- <p-fileUpload name="files" (onUpload)="onUpload($event)" [multiple]="true" styleClass="w-24rem"></p-fileUpload> -->
+        </div>
+        <div class="ml-6 mt-5s">
             <div class="flex flex-column gap-2">
                 <label htmlFor="product_name" class="text-sm">Product Name</label>
-                <input class="p-2" pInputText id="product_name" aria-describedby="product_name-help" />
+                <input #productNameInput class="p-2" pInputText id="product_name" placeholder=".." aria-describedby="product_name-help" />
             </div>
             <p-divider class="my-4"></p-divider>
             <div class="flex flex-column gap-2 mt-3s">
                 <label htmlFor="price" class="text-sm">Price</label>
-                <input class="p-2" t pInputText id="price" aria-describedby="price-help" />
+                <input #priceInput class="p-2" pInputText id="price" placeholder="$" aria-describedby="price-help" styleClass="inline"/>
             </div>
             <p-divider class="my-4"></p-divider>
             <div class="card flex justify-content-center my-3 text-sm">
@@ -48,6 +54,13 @@
                 <p-checkbox name="advantages" value="Installments" label="Installments" [(ngModel)]="selectedAdvantages" class="mx-4"></p-checkbox>
                 <p-checkbox name="advantages" value="Secure Payment" label="Secure Payment" [(ngModel)]="selectedAdvantages"></p-checkbox>
             </div>  
+            <p-divider class="my-4"></p-divider>
+            <label for="file-upload" class="custom-file-upload p-2 w-full text-center border-round-sm">
+                <i class="pi pi-upload"></i> 
+                <span class="ml-3">Upload Product Images</span>
+            </label>
+            <input id="file-upload" (change)="onFileSelected($event)" type="file" class="p-2 border-round-md w-full" multiple/>
+            <!-- <p-button label="Upload Product Image(s)" type="file" (click)="uploadImages()" icon="pi pi-upload" styleClass="p-button-secondary w-full border-round-sm"></p-button> -->
         </div>
     </div>
         <p-divider></p-divider>
@@ -61,6 +74,7 @@
                     #summaryInput 
                     pInputText 
                     id="summary" 
+                    placeholder="Enter a summary.."
                     aria-describedby="summary-help"
                     (keyup.enter)="addContent('summaries', summaryInput.value); summaryInput.value = ''" 
                 />
@@ -97,6 +111,7 @@
                     #descriptionInput 
                     pInputText 
                     id="description" 
+                    placeholder="Enter a description.."
                     aria-describedby="description-help"
                     (keyup.enter)="addContent('descriptions', descriptionInput.value); descriptionInput.value = ''" 
                 />
