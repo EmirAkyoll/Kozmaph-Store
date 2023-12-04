@@ -30,6 +30,7 @@ import { GalleriaModule } from 'primeng/galleria';
 import { DataViewModule } from 'primeng/dataview';
 import { AccordionModule } from 'primeng/accordion';
 import { FileUploadModule } from 'primeng/fileupload';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     BadgeModule, GalleriaModule, DialogModule,
     ButtonModule, DividerModule, TagModule,
     AccordionModule, RatingModule, DataViewModule,
-    CheckboxModule, FileUploadModule, 
+    CheckboxModule, FileUploadModule, InputNumberModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,7 +15,7 @@ export class ProductService {
     return this.http.get<Product[]>('http://localhost:5000/api/products/get-all')
   }
   
-  addNew(product_data: Product): Observable<Product[]>{
-    return this.http.post<Product[]>('http://localhost:5000/api/products/add-product', product_data)
+  addNew(product_data: Product): Observable<Product>{
+    return this.http.post<Product>('http://localhost:5000/api/products/add-product', product_data)
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Comment, Feature, Question } from 'src/interfaces/product.interface';
+import { Comment, Feature, Product, Question } from 'src/interfaces/product.interface';
 import { ProductService } from 'src/app/services/products.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ProductService } from 'src/app/services/products.service';
 export class AddProductComponent {
   constructor(private productService: ProductService) {}
   
-  selectedFiles: File[] = [];
+  selectedImages: any = [];
   isFeatureValueInputShouldBeVisible: boolean = false;
   selectedAdvantages: any = [];
   productName: string = '';
@@ -23,60 +23,34 @@ export class AddProductComponent {
   feature_value: string = '';
   feature: Feature = { feature_name: this.feature_name, feature_value: this.feature_value };
   responsiveOptions: any;
-  images: any;
 
-  showFeatureValueInput(){
+  showFeatureValueInput(): void{
     this.isFeatureValueInputShouldBeVisible = true;
   }
 
-  hideFeatureValueInput(){
+  hideFeatureValueInput(): void{
     this.isFeatureValueInputShouldBeVisible = false;
   }
 
   onFileSelected(event: any): void {
-    this.selectedFiles = Array.from(event.target.files);
-    console.log(this.selectedFiles);
-    this.images = this.selectedFiles
-    console.log("images: ", this.images);
-    
+    this.selectedImages = Array.from(event.target.files);
+    console.log("selectedImages: ",this.selectedImages);
   }
 
   uploadImages(): void {
-    if (this.selectedFiles.length > 0) {
-      console.log(this.selectedFiles.length);
+    if (this.selectedImages.length > 0) {
+      console.log(this.selectedImages.length);
       
-      this.selectedFiles.forEach(file => {
+      this.selectedImages.forEach((file:any) => {
         console.log("file: ", file);
-        
       });
+
     } else {
       console.log('Lütfen dosya seçin.');
     }
   }
 
   ngOnInit() {
-    this.images = [
-      {
-        itemImageSrc: 'https://res.cloudinary.com/dcuexe6p4/image/upload/v1701551258/lu9x7fyudqcdyaosa4me.jpg',
-      },
-      // {
-      //   itemImageSrc:
-      //     'https://cdn.dsmcdn.com/ty986/product/media/images/20230815/0/403261825/480842529/2/2_org_zoom.jpg',
-      //   thumbnailImageSrc:
-      //     'https://cdn.dsmcdn.com/ty986/product/media/images/20230815/0/403261825/480842529/2/2_org_zoom.jpg',
-      //   alt: 'Description for Image 1',
-      //   title: 'Title 1',
-      // },
-      // {
-      //   itemImageSrc:
-      //     'https://cdn.dsmcdn.com/ty1012/product/media/images/prod/PIM/20231011/07/9e63857f-350f-433e-99bc-65c1e7870665/1_org_zoom.jpg',
-      //   thumbnailImageSrc:
-      //     'https://cdn.dsmcdn.com/ty1012/product/media/images/prod/PIM/20231011/07/9e63857f-350f-433e-99bc-65c1e7870665/1_org_zoom.jpg',
-      //   alt: 'Description for Image 1',
-      //   title: 'Title 1',
-      // },
-    ];
-      
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -93,21 +67,21 @@ export class AddProductComponent {
     ];
   }
 
-
+  // (click)="addNewProduct(productNameInput.value, priceInput.value, selectedImages, seller_name, selectedAdvantages, summaries, descriptions, features, [], [])"
   addNewProduct(product_name: string, 
-                images: string[], 
                 price: number, 
+                images: string[], 
                 sellerName: string, 
                 advantages: string[], 
                 allSummaries: string[], 
                 allDescriptions: string[], 
                 allFeatures: Feature[], 
                 allQuestions: Question[], 
-                allComments: Comment[]){
-    const product_data = {
+                allComments: Comment[]): void{
+    const product_data: Product  = {
       name: product_name,
-      image_urls: images,
       price: price,
+      image_urls: images,
       seller: sellerName,
       advantages: advantages,
       summary: allSummaries,
@@ -116,6 +90,7 @@ export class AddProductComponent {
       questions: allQuestions,
       comments: allComments,
     }
+console.log("product_data: ",product_data);
 
     this.productService.addNew(product_data)
   }
@@ -133,7 +108,7 @@ export class AddProductComponent {
         default:
           break;
       }
-    console.log(this.feature_name, this.feature_value, this.features);
+    // console.log(this.feature_name, this.feature_value, this.features);
 
   }
 
@@ -179,11 +154,11 @@ export class AddProductComponent {
 
   isAddProductModalVisible: boolean = true;
 
-  showModal() {
+  showModal(): void {
     this.isAddProductModalVisible = true;
   }
 
-  closeModal() {
+  closeModal(): void {
     this.isAddProductModalVisible = false;
   }
   

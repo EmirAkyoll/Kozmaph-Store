@@ -1,6 +1,6 @@
 <p-button 
-    icon="pi pi-plus" 
     (click)="showModal()" 
+    icon="pi pi-plus" 
     label="Add Product" 
     styleClass="p-button-info border-round-sm"
     style="position: sticky; top: 70px;"
@@ -10,43 +10,23 @@
     <div class="bg-white p-2 px-4 z-5 border-round-sm" style="width: 55vw; height: 600px;">
         <div class="flex justify-content-between">
             <p class="font-bold text-xl">Product Data</p>
-            <p-button label="+ Add" styleClass="my-3 w-full p-button-info"></p-button>
+            <p-button 
+                label="+ Add" 
+                styleClass="my-3 w-full p-button-info"
+                (click)="addNewProduct(productName, price, ['https://res.cloudinary.com/dcuexe6p4/image/upload/v1701688044/wxilg3egrkgjz6eeupi6.webp', 'https://res.cloudinary.com/dcuexe6p4/image/upload/v1701688044/gx6spzfnod6fbh6zuftz.webp', 'https://res.cloudinary.com/dcuexe6p4/image/upload/v1701688044/hlngnv7cfuuin1eiau0j.webp'], 'SELLER NICOLE', selectedAdvantages, summaries, descriptions, features, [], [])"
+            ></p-button>
         </div>
         <p-divider></p-divider>
         <div class="flex justify-content-center">
-            <p-galleria 
-            [value]="images" 
-            [showItemNavigators]="true" 
-            [showThumbnails]="false" 
-            [showIndicators]="true"
-            [showIndicatorsOnItem]="true" 
-            [responsiveOptions]="responsiveOptions"
-            [containerStyle]="{ 'max-width': '180px', 'margin-top': '0px' }"
-        >
-            <ng-template pTemplate="item" let-item>
-                <img [src]="item.itemImageSrc" class="w-full border-1 border-bluegray-300 border-round-md"/>
-            </ng-template>
-            <ng-template pTemplate="thumbnail" let-item>
-                <div class="grid grid-nogutter justify-content-center border-round-md">
-                    <img [src]="item.thumbnailImageSrc" style="display: block;" />
-                </div>
-            </ng-template>
-        </p-galleria>
-        <div>
-            <!-- <div>Images</div>
-            <input type="file" (change)="onFileSelected($event)" multiple> -->
-            <!-- <button (click)="uploadImages()">Resimleri Yükle</button> -->
-            <!-- <p-fileUpload name="files" (onUpload)="onUpload($event)" [multiple]="true" styleClass="w-24rem"></p-fileUpload> -->
-        </div>
-        <div class="ml-6 mt-5s">
+        <div class="ml-6s mt-5s">
             <div class="flex flex-column gap-2">
                 <label htmlFor="product_name" class="text-sm">Product Name</label>
-                <input #productNameInput class="p-2" pInputText id="product_name" placeholder=".." aria-describedby="product_name-help" />
+                <input class="p-2" [(ngModel)]="productName" pInputText id="product_name" placeholder=".." aria-describedby="product_name-help" />
             </div>
             <p-divider class="my-4"></p-divider>
             <div class="flex flex-column gap-2 mt-3s">
                 <label htmlFor="price" class="text-sm">Price</label>
-                <input #priceInput class="p-2" pInputText id="price" placeholder="$" aria-describedby="price-help" styleClass="inline"/>
+                <p-inputNumber inputId="integeronly" styleClass="w-full" [(ngModel)]="price"> </p-inputNumber>
             </div>
             <p-divider class="my-4"></p-divider>
             <div class="card flex justify-content-center my-3 text-sm">
@@ -60,9 +40,8 @@
                 <span class="ml-3">Upload Product Images</span>
             </label>
             <input id="file-upload" (change)="onFileSelected($event)" type="file" class="p-2 border-round-md w-full" multiple/>
-            <!-- <p-button label="Upload Product Image(s)" type="file" (click)="uploadImages()" icon="pi pi-upload" styleClass="p-button-secondary w-full border-round-sm"></p-button> -->
         </div>
-    </div>
+        </div>
         <p-divider></p-divider>
         <br>
         <div class="flex justify-content-between">
