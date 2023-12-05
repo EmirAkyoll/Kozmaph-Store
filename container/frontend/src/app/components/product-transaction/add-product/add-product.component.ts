@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Comment, Feature, Product, Question } from 'src/interfaces/product.interface';
 import { ProductService } from 'src/app/services/products.service';
+import { MediaService } from 'src/app/services/media.service';
 
 @Component({
   selector: 'app-add-product',
@@ -8,9 +9,11 @@ import { ProductService } from 'src/app/services/products.service';
   styleUrls: ['./add-product.component.css'],
 })
 export class AddProductComponent {
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private mediaService: MediaService) {}
   
-  selectedImages: any = [];
+  isAddProductModalVisible: boolean = true;
+  mediaFiles: any[] = [];
+  selectedImages: any[] = [];
   isFeatureValueInputShouldBeVisible: boolean = false;
   selectedAdvantages: any = [];
   productName: string = '';
@@ -24,6 +27,11 @@ export class AddProductComponent {
   feature: Feature = { feature_name: this.feature_name, feature_value: this.feature_value };
   responsiveOptions: any;
 
+  onFileSelected(event: any): void {
+    this.selectedImages = Array.from(event.target.files);
+    console.log("selectedImages: ",this.selectedImages);
+  }
+  
   showFeatureValueInput(): void{
     this.isFeatureValueInputShouldBeVisible = true;
   }
@@ -32,21 +40,32 @@ export class AddProductComponent {
     this.isFeatureValueInputShouldBeVisible = false;
   }
 
-  onFileSelected(event: any): void {
-    this.selectedImages = Array.from(event.target.files);
-    console.log("selectedImages: ",this.selectedImages);
+  showModal(): void {
+    this.isAddProductModalVisible = true;
   }
 
-  uploadImages(): void {
-    if (this.selectedImages.length > 0) {
-      console.log(this.selectedImages.length);
-      
-      this.selectedImages.forEach((file:any) => {
-        console.log("file: ", file);
-      });
+  closeModal(): void {
+    this.isAddProductModalVisible = false;
+  }
 
-    } else {
-      console.log('Lütfen dosya seçin.');
+  uploadMedia(): void {
+    if (this.selectedImages.length > 0) {
+      const mediaData = new FormData();
+
+      for (const file of this.selectedImages) {
+        mediaData.append('images', file);
+      }
+
+      this.mediaService.upload(mediaData).subscribe(
+        (response) => {
+          console.log('Upload successful:', response);
+          // Handle success
+        },
+        (error) => {
+          console.error('Upload error:', error);
+          // Handle error
+        }
+      );
     }
   }
 
@@ -67,7 +86,6 @@ export class AddProductComponent {
     ];
   }
 
-  // (click)="addNewProduct(productNameInput.value, priceInput.value, selectedImages, seller_name, selectedAdvantages, summaries, descriptions, features, [], [])"
   addNewProduct(product_name: string, 
                 price: number, 
                 images: string[], 
@@ -78,7 +96,7 @@ export class AddProductComponent {
                 allFeatures: Feature[], 
                 allQuestions: Question[], 
                 allComments: Comment[]): void{
-    const product_data: Product  = {
+    const product_data: Product = {
       name: product_name,
       price: price,
       image_urls: images,
@@ -92,7 +110,8 @@ export class AddProductComponent {
     }
 console.log("product_data: ",product_data);
 
-    this.productService.addNew(product_data)
+    this.uploadMedia();
+    this.productService.addNew(product_data);
   }
 
   enterFeatureField(event: any, field: string): void {
@@ -108,8 +127,6 @@ console.log("product_data: ",product_data);
         default:
           break;
       }
-    // console.log(this.feature_name, this.feature_value, this.features);
-
   }
 
   addContent(array_name: string, content: any): void {
@@ -130,7 +147,6 @@ console.log("product_data: ",product_data);
       default:
         break;
     }
-    // console.log(this.feature,this.features);
   }
 
   removeContent(array_name: string, index: number): void {
@@ -151,15 +167,4 @@ console.log("product_data: ",product_data);
         break;
     }
   }
-
-  isAddProductModalVisible: boolean = true;
-
-  showModal(): void {
-    this.isAddProductModalVisible = true;
-  }
-
-  closeModal(): void {
-    this.isAddProductModalVisible = false;
-  }
-  
 }
