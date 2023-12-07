@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Comment, Feature, Product, Question } from 'src/interfaces/product.interface';
 import { ProductService } from 'src/app/services/products.service';
 import { MediaService } from 'src/app/services/media.service';
+import { v4 as generate_random_id } from "uuid";
 
 @Component({
   selector: 'app-add-product',
@@ -11,10 +12,10 @@ import { MediaService } from 'src/app/services/media.service';
 export class AddProductComponent {
   constructor(private productService: ProductService, private mediaService: MediaService) {}
   
-  image_urls: string[] = [];
   isAddProductModalVisible: boolean = true;
   mediaFiles: any[] = [];
   selectedImages: any[] = [];
+  image_urls: string[] = [];
   isFeatureValueInputShouldBeVisible: boolean = false;
   selectedAdvantages: any = [];
   productName: string = '';
@@ -111,6 +112,7 @@ export class AddProductComponent {
 
     console.log("image_urls: ",this.image_urls);
     const product_data: Product = {
+      _id: generate_random_id(),
       name: product_name,
       price: price,
       image_urls: this.image_urls,

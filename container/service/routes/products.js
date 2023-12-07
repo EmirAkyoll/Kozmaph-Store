@@ -22,7 +22,7 @@ router.post('/add-product', async (req, res) => {
         res.status(400).json(error);
     }
 })
-
+    
 router.put('/update-product', async (req, res) => {
     try {
         await Product.findOneAndUpdate({ _id: req.body.productId }, req.body)
@@ -32,9 +32,10 @@ router.put('/update-product', async (req, res) => {
     }
 })
 
-router.delete('/delete-product', async (req, res) => {
+router.delete('/delete-product/:id', async (req, res) => {
+    console.log("delete req body: ", req.params);
     try {
-        await Product.findOneAndDelete({ _id: req.body.productId })
+        await Product.findOneAndDelete({ _id: req.params.id })
         res.status(200).send('Item deleted successfully!')
     } catch (error) {
         res.status(400).json(error);

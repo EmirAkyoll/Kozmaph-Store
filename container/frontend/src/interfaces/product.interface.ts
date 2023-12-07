@@ -14,6 +14,7 @@ export interface Comment{
 }
 
 export interface Product {
+  _id: string;
   name: string;
   image_urls: string[];
   price: number;

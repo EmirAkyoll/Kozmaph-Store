@@ -19,7 +19,7 @@ export class ProductService {
     return this.http.post<Product>('http://localhost:5000/api/products/add-product', product_data)
   }
   
-  uploadMediaFiles(media_files: any): Observable<any>{
-    return this.http.post<any>('http://localhost:3000/api/media/upload', media_files)
+  deleteById(product_id: string): Observable<any>{
+    return this.http.delete(`http://localhost:5000/api/products/delete-product/${product_id}`)
   }
 }

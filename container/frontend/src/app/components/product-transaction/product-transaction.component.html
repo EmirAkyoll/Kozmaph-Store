@@ -7,7 +7,7 @@
             <div class="col flex justify-content-center relative" *ngFor="let _ of [].constructor(11); let i = index">
                 <span class="absolute" style="top: -2px;">
                     <p-button title="Update Product" icon="pi pi-refresh" styleClass="p-button-success mr-2 border-1 border-white-alpha-90"></p-button>
-                    <p-button title="Delete Product" icon="pi pi-times" styleClass="p-button-danger border-1 border-white-alpha-90"></p-button>
+                    <p-button title="Delete Product" (click)="deleteProduct('6571df53732c269b37f31f65')" icon="pi pi-times" styleClass="p-button-danger border-1 border-white-alpha-90"></p-button>
                 </span>
                 <div [routerLink]="['/product-detail']"
                     class="product-image flex flex-column justify-content-center align-items-center bg-white border-round-lg border-1 border-400 cursor-pointer hover:shadow-3 transition-all transition-duration-150 transition-linear">
