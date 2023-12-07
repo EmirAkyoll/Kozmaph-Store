@@ -10,12 +10,13 @@ router.get('/get-all', async (req, res) => {
         res.status(400).json(error);
     }
 })
-    
+
 router.post('/add-product', async (req, res) => {
     try {
+        console.log("REQQQQ: ", req.body);
         const newProduct = new Product(req.body);
+        console.log("NEW PRODUCT DATAAAAAA: ",newProduct);
         await newProduct.save();
-        console.log("new product data: ",newProduct);
         res.status(200).json('Item added successfully!')
     } catch (error) {
         res.status(400).json(error);

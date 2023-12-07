@@ -11,6 +11,7 @@ import { MediaService } from 'src/app/services/media.service';
 export class AddProductComponent {
   constructor(private productService: ProductService, private mediaService: MediaService) {}
   
+  image_urls: string[] = [];
   isAddProductModalVisible: boolean = true;
   mediaFiles: any[] = [];
   selectedImages: any[] = [];
@@ -48,25 +49,36 @@ export class AddProductComponent {
     this.isAddProductModalVisible = false;
   }
 
-  uploadMedia(): void {
-    if (this.selectedImages.length > 0) {
+  async uploadMedia(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
       const mediaData = new FormData();
-
+  
       for (const file of this.selectedImages) {
         mediaData.append('images', file);
       }
-
+  
       this.mediaService.upload(mediaData).subscribe(
         (response) => {
-          console.log('Upload successful:', response);
-          // Handle success
+          console.log('Upload successful:', response.data);
+          const uploaded_media_data = response.data;
+  
+          for (let index = 0; index < uploaded_media_data.length; index++) {
+            this.image_urls.push(uploaded_media_data[index].secure_url);
+          }
+          
+          console.log("image urls: ", this.image_urls);
+  
+          // Promise'i tamamla
+          resolve();
         },
         (error) => {
           console.error('Upload error:', error);
-          // Handle error
+  
+          // Promise'i hata durumuyla tamamla
+          reject(error);
         }
       );
-    }
+    });
   }
 
   ngOnInit() {
@@ -86,20 +98,22 @@ export class AddProductComponent {
     ];
   }
 
-  addNewProduct(product_name: string, 
+  async addNewProduct(product_name: string, 
                 price: number, 
-                images: string[], 
                 sellerName: string, 
                 advantages: string[], 
                 allSummaries: string[], 
                 allDescriptions: string[], 
                 allFeatures: Feature[], 
                 allQuestions: Question[], 
-                allComments: Comment[]): void{
+                allComments: Comment[]): Promise<void>{
+    await this.uploadMedia();
+
+    console.log("image_urls: ",this.image_urls);
     const product_data: Product = {
       name: product_name,
       price: price,
-      image_urls: images,
+      image_urls: this.image_urls,
       seller: sellerName,
       advantages: advantages,
       summary: allSummaries,
@@ -108,10 +122,9 @@ export class AddProductComponent {
       questions: allQuestions,
       comments: allComments,
     }
-console.log("product_data: ",product_data);
+    console.log("product_data: ",product_data);
 
-    this.uploadMedia();
-    this.productService.addNew(product_data);
+    this.productService.addNew(product_data).subscribe(data => {console.log("DATTOO: ",data)});
   }
 
   enterFeatureField(event: any, field: string): void {
