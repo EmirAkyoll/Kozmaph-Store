@@ -26,3 +26,530 @@ export interface Product {
   questions?: Question[];
   comments?: Comment[];
 }
+
+
+
+
+
+
+
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}
+export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  questions?: Question[];
+  comments?: Comment[];
+}

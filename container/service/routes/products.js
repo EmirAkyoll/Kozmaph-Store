@@ -23,9 +23,10 @@ router.post('/add-product', async (req, res) => {
     }
 })
     
-router.put('/update-product', async (req, res) => {
+router.put('/update-product/:id', async (req, res) => {
+    console.log("update req body: ", req.body);
     try {
-        await Product.findOneAndUpdate({ _id: req.body.productId }, req.body)
+        await Product.findOneAndUpdate({ _id: req.params.id }, req.body)
         res.status(200).send('Item updated successfully!')
     } catch (error) {
         res.status(400).json(error);
@@ -33,7 +34,6 @@ router.put('/update-product', async (req, res) => {
 })
 
 router.delete('/delete-product/:id', async (req, res) => {
-    console.log("delete req body: ", req.params);
     try {
         await Product.findOneAndDelete({ _id: req.params.id })
         res.status(200).send('Item deleted successfully!')

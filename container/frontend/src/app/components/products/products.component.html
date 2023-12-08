@@ -1,16 +1,21 @@
 <app-categories></app-categories>
-<app-product-transaction></app-product-transaction>
+
+<app-update-product 
+    *ngIf="isUpdateProductModalOpen" 
+    [product_data]="dataOfTheProductToBeUpdated"
+></app-update-product>
+
 <div class="container products font-Ubuntu">
     <!-- 1185px - 675px -->
-    <img 
+    <!-- <img 
         src="https://res.cloudinary.com/dcuexe6p4/image/upload/v1700250021/kpinsegwfofnzmv1sok6.jpg" 
         alt="banner"
         class="w-full border-round-lg"
-    >
+    /> -->
     <div class="grid gap-3 mt-5">
         <div class="col flex justify-content-center relative" *ngFor="let product of products; let i = index">
             <span class="absolute" style="top: -2px;">
-                <p-button title="Update Product" icon="pi pi-refresh" styleClass="p-button-success mr-2 border-1 border-white-alpha-90"></p-button>
+                <p-button title="Update Product" (click)="openUpdateModal(product)" icon="pi pi-refresh" styleClass="p-button-success mr-2 border-1 border-white-alpha-90"></p-button>
                 <p-button title="Delete Product" (click)="deleteProduct(product._id)" icon="pi pi-times" styleClass="p-button-danger border-1 border-white-alpha-90"></p-button>
             </span>
             <div [routerLink]="['/product-detail']" class="pt-0 flex flex-column justify-content-center align-items-center bg-white border-round-lg border-1 border-400 cursor-pointer hover:shadow-3 transition-all transition-duration-150 transition-linear" >
@@ -20,7 +25,6 @@
                     alt={{product.name}}
                 />
                     
-                <!-- {{product | json}} -->
                 <div class="card-content text-sm md:text-base text-justify pl-3s pb-3">
                     <p class="text-xs opacity-50 mb-0">7 comments / 10 questions</p>
                     

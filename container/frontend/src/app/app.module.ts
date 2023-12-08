@@ -15,6 +15,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { AddProductComponent } from './components/product-transaction/add-product/add-product.component';
 import { ProductTransactionComponent } from './components/product-transaction/product-transaction.component';
 import { ProductInDepthComponent } from './components/product-detail/product-in-depth/product-in-depth.component';
+import { UpdateProductComponent } from './components/product-transaction/update-product/update-product.component';
 import { ProductOverviewComponent } from './components/product-detail/product-overview/product-overview.component';
 import { ProductCommentsComponent } from './components/product-detail/product-comments/product-comments.component';
 import { ProductQuestionsComponent } from './components/product-detail/product-questions/product-questions.component';
@@ -39,14 +40,15 @@ import { InputNumberModule } from 'primeng/inputnumber';
     ProductsComponent,
     FavoritesComponent,
     CategoriesComponent,
+    AddProductComponent,
     ProductCardComponent,
+    UpdateProductComponent,
     ProductDetailComponent,
     ProductInDepthComponent,
     ProductOverviewComponent,
     ProductCommentsComponent,
     ProductQuestionsComponent,
     ProductTransactionComponent,
-    AddProductComponent,
   ],
   imports: [
     FormsModule,

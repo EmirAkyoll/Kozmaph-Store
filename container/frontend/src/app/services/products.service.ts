@@ -18,6 +18,11 @@ export class ProductService {
     console.log("product_data: ", product_data);
     return this.http.post<Product>('http://localhost:5000/api/products/add-product', product_data)
   }
+
+  update(product_data: Product): any{
+    // const stringifiedProductData = JSON.stringify(product_data);
+    this.http.put(`http://localhost:5000/api/products/update-product/${product_data._id}`, product_data)
+  }
   
   deleteById(product_id: string): Observable<any>{
     return this.http.delete(`http://localhost:5000/api/products/delete-product/${product_id}`)

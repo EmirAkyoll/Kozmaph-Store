@@ -11,6 +11,15 @@ export class ProductsComponent implements OnInit {
   constructor(private productService: ProductService) {}
   isMobileScreen: boolean = true;
   products: Product[] = [];
+  isUpdateProductModalOpen: boolean = false;
+  dataOfTheProductToBeUpdated: any = {};
+  
+  openUpdateModal(product_data: Product) {
+    this.dataOfTheProductToBeUpdated = product_data;
+    console.log("this.dataOfTheProductToBeUpdated: ",this.dataOfTheProductToBeUpdated);
+    
+    this.isUpdateProductModalOpen = true
+  }
 
   deleteProduct(product_id: string): void {
     console.log(product_id, " id'li product is deleted");
