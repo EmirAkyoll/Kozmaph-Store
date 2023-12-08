@@ -10,7 +10,7 @@ import { MediaService } from 'src/app/services/media.service';
 })
 export class UpdateProductComponent {
   constructor(private productService: ProductService, private mediaService: MediaService) {}
-  
+
   @Input() product_data: any = {};
   
   isAddProductModalVisible: boolean = true;
@@ -94,8 +94,21 @@ export class UpdateProductComponent {
     this.image_urls = this.product_data.image_urls;
   }
   
-  updateProduct(product_data: Product){
-    this.productService.update(product_data);
+  updateProduct(){
+    const updated_product_data: Product = {
+      _id: this.product_data._id,
+      name: this.productName,
+      price: this.price,
+      seller: this.product_data.seller,
+      description: this.descriptions,
+      image_urls: this.image_urls,
+      advantages: this.advantages,
+      features: this.features,
+      summary: this.summaries,
+      comments: this.product_data.comments,
+      questions: this.product_data.questions,
+    }
+    this.productService.update(updated_product_data).subscribe();
   }
 
   enterFeatureField(event: any, field: string): void {

@@ -19,9 +19,11 @@ export class ProductService {
     return this.http.post<Product>('http://localhost:5000/api/products/add-product', product_data)
   }
 
-  update(product_data: Product): any{
+  update(product_data: Product): Observable<any>{
+    console.log("GÜNCELLENMİŞ PRODUCT DATA: ", product_data);
+    
     // const stringifiedProductData = JSON.stringify(product_data);
-    this.http.put(`http://localhost:5000/api/products/update-product/${product_data._id}`, product_data)
+    return this.http.put(`http://localhost:5000/api/products/update-product/${product_data._id}`, product_data)
   }
   
   deleteById(product_id: string): Observable<any>{
