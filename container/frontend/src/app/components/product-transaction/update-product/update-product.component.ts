@@ -69,14 +69,10 @@ export class UpdateProductComponent {
           }
           
           console.log("image urls: ", this.image_urls);
-  
-          // Promise'i tamamla
           resolve();
         },
         (error) => {
           console.error('Upload error:', error);
-  
-          // Promise'i hata durumuyla tamamla
           reject(error);
         }
       );

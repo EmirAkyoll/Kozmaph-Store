@@ -31,7 +31,10 @@ export class ProductsComponent implements OnInit {
       (error: any) => {
         console.error('Error deleting product:', error);
       }
-    );
+      );
+
+    this.products = this.products.filter(product => product._id !== product_id);
+    
   }
 
   ngOnInit() {
