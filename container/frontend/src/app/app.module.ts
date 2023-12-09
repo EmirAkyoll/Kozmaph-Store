@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,8 +21,11 @@ import { ProductOverviewComponent } from './components/product-detail/product-ov
 import { ProductCommentsComponent } from './components/product-detail/product-comments/product-comments.component';
 import { ProductQuestionsComponent } from './components/product-detail/product-questions/product-questions.component';
 
+import { ConfirmationService, MessageService } from 'primeng/api';
+
 import { TagModule } from 'primeng/tag';
 import { BadgeModule } from 'primeng/badge';
+import { ToastModule } from 'primeng/toast';
 import { RatingModule } from 'primeng/rating';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
@@ -29,9 +33,11 @@ import { DividerModule } from 'primeng/divider';
 import { CheckboxModule } from 'primeng/checkbox';
 import { GalleriaModule } from 'primeng/galleria';
 import { DataViewModule } from 'primeng/dataview';
+import { MessagesModule } from 'primeng/messages';
 import { AccordionModule } from 'primeng/accordion';
 import { FileUploadModule } from 'primeng/fileupload';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -55,12 +61,14 @@ import { InputNumberModule } from 'primeng/inputnumber';
     BrowserModule,
     HttpClientModule, 
     AppRoutingModule,
-    BadgeModule, GalleriaModule, DialogModule,
-    ButtonModule, DividerModule, TagModule,
+    BrowserAnimationsModule,
+    BadgeModule, GalleriaModule, DialogModule, MessagesModule,
+    ButtonModule, DividerModule, TagModule, ToastModule,
     AccordionModule, RatingModule, DataViewModule,
     CheckboxModule, FileUploadModule, InputNumberModule,
+    ConfirmDialogModule,
   ],
-  providers: [],
+  providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent]
 })
 

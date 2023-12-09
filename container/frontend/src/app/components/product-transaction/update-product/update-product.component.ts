@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Comment, Feature, Product, Question } from 'src/interfaces/product.interface';
 import { ProductService } from 'src/app/services/products.service';
 import { MediaService } from 'src/app/services/media.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-update-product',
@@ -9,11 +10,13 @@ import { MediaService } from 'src/app/services/media.service';
   styleUrls: ['./update-product.component.css']
 })
 export class UpdateProductComponent {
-  constructor(private productService: ProductService, private mediaService: MediaService) {}
+  constructor(private productService: ProductService, 
+    private mediaService: MediaService,
+    private messageService: MessageService) {}
 
   @Input() product_data: any = {};
   
-  isAddProductModalVisible: boolean = true;
+  isUpdateProductModalVisible: boolean = false;
   mediaFiles: any[] = [];
   selectedImages: any[] = [];
   image_urls: string[] = [];
@@ -30,6 +33,13 @@ export class UpdateProductComponent {
   feature: Feature = { feature_name: this.feature_name, feature_value: this.feature_value };
   responsiveOptions: any;
 
+  showToast(message: string) {
+    this.messageService.add({
+    severity: 'success',
+    detail: message
+  });
+  }
+
   onFileSelected(event: any): void {
     this.selectedImages = Array.from(event.target.files);
     console.log("selectedImages: ",this.selectedImages);
@@ -44,11 +54,11 @@ export class UpdateProductComponent {
   }
 
   showModal(): void {
-    this.isAddProductModalVisible = true;
+    this.isUpdateProductModalVisible = true;
   }
 
   closeModal(): void {
-    this.isAddProductModalVisible = false;
+    this.isUpdateProductModalVisible = false;
   }
 
   async uploadMedia(): Promise<void> {
@@ -104,7 +114,16 @@ export class UpdateProductComponent {
       comments: this.product_data.comments,
       questions: this.product_data.questions,
     }
-    this.productService.update(updated_product_data).subscribe();
+    this.productService.update(updated_product_data).subscribe(
+      (response: any) => {
+        console.log("Response data:", response);
+        this.showToast('Product is updated!'); 
+        this.closeModal();
+      },
+      (error: any) => {
+        console.error("Error:", error);
+      }
+    );
   }
 
   enterFeatureField(event: any, field: string): void {

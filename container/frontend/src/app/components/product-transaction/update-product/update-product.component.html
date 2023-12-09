@@ -7,10 +7,11 @@
 ></p-button> -->
 
 <div 
-    *ngIf="isAddProductModalVisible" 
+    *ngIf="isUpdateProductModalVisible" 
     style="top: -5px; margin-left: 20%;" 
     class="fixed h-full flex justify-content-center align-items-center z-5 font-Ubuntu"
 >
+    <!-- <p-toast></p-toast> -->
     <div class="bg-white p-2 px-4 z-5 border-round-sm" style="width: 55vw; height: 600px;">
         <div class="flex justify-content-between">
             <p class="font-bold text-xl">Update Product</p>
@@ -18,7 +19,7 @@
                 label="Update" 
                 icon="pi pi-refresh"
                 styleClass="my-3 w-full p-button-success"
-                (click)="updateProduct()"
+                (click)="updateProduct(); showToast('Product is updated')"
             ></p-button>
         </div>
         <p-divider></p-divider>

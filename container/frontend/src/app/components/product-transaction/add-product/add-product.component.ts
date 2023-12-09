@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Comment, Feature, Product, Question } from 'src/interfaces/product.interface';
 import { ProductService } from 'src/app/services/products.service';
 import { MediaService } from 'src/app/services/media.service';
+import { MessageService } from 'primeng/api';
 import { v4 as generate_random_id } from "uuid";
 
 @Component({
@@ -10,9 +11,11 @@ import { v4 as generate_random_id } from "uuid";
   styleUrls: ['./add-product.component.css'],
 })
 export class AddProductComponent {
-  constructor(private productService: ProductService, private mediaService: MediaService) {}
+  constructor(private productService: ProductService, 
+              private mediaService: MediaService,
+              private messageService: MessageService) {}
   
-  isAddProductModalVisible: boolean = true;
+  isAddProductModalVisible: boolean = false;
   mediaFiles: any[] = [];
   selectedImages: any[] = [];
   image_urls: string[] = [];
@@ -28,6 +31,13 @@ export class AddProductComponent {
   feature_value: string = '';
   feature: Feature = { feature_name: this.feature_name, feature_value: this.feature_value };
   responsiveOptions: any;
+
+  showToast(message: string) {
+    this.messageService.add({
+    severity: 'success',
+    detail: message
+  });
+  }
 
   onFileSelected(event: any): void {
     this.selectedImages = Array.from(event.target.files);
@@ -109,7 +119,6 @@ export class AddProductComponent {
                 allQuestions: Question[], 
                 allComments: Comment[]): Promise<void>{
     await this.uploadMedia();
-
     console.log("image_urls: ",this.image_urls);
     const product_data: Product = {
       _id: generate_random_id(),
@@ -126,7 +135,16 @@ export class AddProductComponent {
     }
     console.log("product_data: ",product_data);
 
-    this.productService.addNew(product_data).subscribe(data => {console.log("DATTOO: ",data)});
+    this.productService.addNew(product_data).subscribe(
+      (response: any) => {
+        console.log("Response data:", response);
+        this.closeModal();
+        this.showToast('Product is added!'); 
+      },
+      (error: any) => {
+        console.error("Error:", error);
+      }
+    );
   }
 
   enterFeatureField(event: any, field: string): void {
