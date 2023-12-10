@@ -9,7 +9,7 @@ import { Toast } from 'src/classes/toast.class';
 export class ProductOverviewComponent implements OnInit {
   constructor(private toast: Toast) {}
 
-  estimatedDeliveryDay: string = '';
+  estimatedDeliveryDate: string = '';
   isProductMarked: boolean = false;
   value: number = 4;
   loading: boolean = false;
@@ -57,15 +57,14 @@ export class ProductOverviewComponent implements OnInit {
 
     const month = monthNames[futureDate.getMonth()];
     const day = futureDate.getDate();
-// console.log(`${month} ${day}`);
 
     return `${month} ${day}`;
   }
 
-  getEstimatedDeliveryDay(first_date: number, second_day: number) {
-    const firstDeliveryDate = this.createEstimatedDeliveryDay(first_date)
-    const secondDeliveryDate = this.createEstimatedDeliveryDay(second_day)
-    this.estimatedDeliveryDay = `${firstDeliveryDate} - ${secondDeliveryDate}`;
+  getEstimatedDeliveryDay() {
+    const firstDeliveryDate = this.createEstimatedDeliveryDay(3)
+    const secondDeliveryDate = this.createEstimatedDeliveryDay(5)
+    this.estimatedDeliveryDate = `${firstDeliveryDate} - ${secondDeliveryDate}`;
   }
 
   showScoreInformation() {
@@ -74,8 +73,9 @@ export class ProductOverviewComponent implements OnInit {
   hideScoreInformation() {
     this.shouldScoreInformationBeShown = false;
   }
+
   ngOnInit() {
-    this.getEstimatedDeliveryDay(3, 4);
+    this.getEstimatedDeliveryDay();
 
     this.images = [
       {

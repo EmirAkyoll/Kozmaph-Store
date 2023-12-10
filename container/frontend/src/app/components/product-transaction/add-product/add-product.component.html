@@ -1,9 +1,9 @@
 <p-button 
+    label="Add Product" 
     (click)="showModal()" 
     icon="pi pi-plus" 
-    label="Add Product" 
     styleClass="p-button-info border-round-sm"
-    style="position: sticky; top: 70px;"
+    style="position: sticky; top: 70px; z-index: 5;"
 ></p-button>
 
 <div *ngIf="isAddProductModalVisible" style="top: -15px; margin-left: 12%;" class="fixed h-full flex justify-content-center align-items-center z-5 font-Ubuntu">

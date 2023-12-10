@@ -1,13 +1,10 @@
 <app-categories></app-categories>
 
-<app-update-product 
-    *ngIf="isUpdateProductModalOpen" 
-    [product_data]="dataOfTheProductToBeUpdated"
-></app-update-product>
-
-<app-add-product></app-add-product>
-
 <div class="container products font-Ubuntu">
+    <app-update-product *ngIf="isUpdateProductModalOpen" [product_data]="dataOfTheProductToBeUpdated"></app-update-product>
+
+    <app-add-product></app-add-product>
+    
     <p-toast></p-toast>
     <!-- 1185px - 675px -->
     <!-- <img 
