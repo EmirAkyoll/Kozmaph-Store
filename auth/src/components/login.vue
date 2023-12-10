@@ -3,11 +3,17 @@ import { db } from "../firebase";
 import { ref } from "vue";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
+const { showLogin } = defineProps({message: String, showLogin: Boolean});
+const emit = defineEmits();
+
+const toggleShowLogin = () => {
+  emit('toggle-show-login', !showLogin);
+};
+
 const username = ref("");
 const password = ref("");
- 
-const getUser = async () => {
 
+const getUser = async () => {
   try {
     const getUserByUsernameAndEmailQuery = query(
       collection(db, 'users'),
@@ -17,7 +23,7 @@ const getUser = async () => {
 
     const userData = await getDocs(getUserByUsernameAndEmailQuery);
     userData.forEach((doc) => {
-      localStorage.setItem('CurrentUserData', JSON.stringify(doc.data()))
+      // localStorage.setItem('CurrentUserData', JSON.stringify(doc.data()))
       console.log('user:', doc.data());
     });
 
@@ -52,8 +58,11 @@ const getUser = async () => {
             class="border-1 border-gray-400 border-round-sm p-2" 
           />
         </div>
-        <p class="ml-4 font-Ubuntu">New user? <a href="" class="no-underline text-primary">sign up.</a></p>
-        <Button @click="getUser" label="Log In" severity="info" class="ml-4 mt-3 border-round-md" style="width:   200px" />
+        <p class="ml-4 font-Ubuntu">
+          New user? 
+          <a @click="toggleShowLogin()" class="no-underline text-primary">sign up.</a>
+        </p>
+        <Button @click="getUser" label="Log In" severity="info" class="ml-4 mt-3 border-round-md" style="width:200px" />
       </template>
     </Card>
   </div>

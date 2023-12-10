@@ -4,6 +4,13 @@ import { addDoc, collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { v4 as generate_random_id } from "uuid";
 
+const { showLogin } = defineProps({message: String, showLogin: Boolean});
+const emit = defineEmits();
+
+const toggleShowLogin = () => {
+  emit('toggle-show-login', !showLogin);
+};
+
 const fullName = ref("");
 const userName = ref("");
 const email = ref("");
@@ -73,7 +80,10 @@ const createUser = () => {
             <SelectButton v-model="userTitle" :options="userTitleOptions" aria-labelledby="basic" class="mt-4" />
           </div>
         </div>
-        <p class="ml-4 font-Ubuntu">Already registered? <a href="" class="no-underline text-primary">log in.</a></p>
+        <p class="ml-4 font-Ubuntu">
+          Already registered? 
+          <a @click="toggleShowLogin()" class="no-underline text-primary">log in.</a>
+        </p>
         <Button @click="createUser" label="Sign Up" severity="info" class="ml-4 mt-3 border-round-md" style="width:200px" />
       </template>
     </Card>
