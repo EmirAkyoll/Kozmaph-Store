@@ -1,4 +1,5 @@
 <section class="container flex flex-column justify-content-center align-items-center mt-3 lg:flex-row">
+    <!-- <p-toast></p-toast> -->
     <p-galleria 
         [value]="images" 
         [showItemNavigators]="true" 
@@ -30,7 +31,7 @@
         <div class="flex justify-content-center align-items-center mb-4 mt-4 sm:justify-content-start">
             <i class="pi pi-calendar text-3xl mr-3"></i>
             <span class="flex flex-column">
-                <p class="p-0 m-0 text-sm md:text-md"><b>Estimated Delivery Date</b>: 21 November - 23 November</p>
+                <p class="p-0 m-0 text-sm md:text-md"><b>Estimated Delivery Date</b>: {{estimatedDeliveryDay}}</p>
                 <p class="p-0 m-0 mt-1 text-sm md:text-md"><b>Click</b> if you want it to be delivered on the same day.</p>
             </span>
         </div>

@@ -36,7 +36,11 @@
                   <p-divider></p-divider>
                   <p>Let my name and surname appear in my questions.</p>
 
-                  <p-button label="Send" styleClass="my-3 w-full p-button-info"></p-button>
+                  <p-button 
+                        (click)="showToast(); closeModal()" 
+                        label="Send" 
+                        styleClass="my-3 w-full p-button-info"
+                  ></p-button>
                 </div>
             <div 
                 class="fixed top-0 left-0 w-full h-full z-4" 

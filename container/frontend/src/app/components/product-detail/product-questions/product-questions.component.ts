@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Toast } from 'src/classes/toast.class';
 
 @Component({
   selector: 'product-questions',
@@ -6,9 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-questions.component.css']
 })
 export class ProductQuestionsComponent {
-  constructor() {}
+  constructor(private toast: Toast) {}
 
   isQuestionModalVisible: boolean = false;
+
+  showToast() {
+    this.toast.show('Question is sended.', 'success')
+  }
 
   showModal() {
     this.isQuestionModalVisible = true;

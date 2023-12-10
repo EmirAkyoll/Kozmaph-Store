@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Toast } from 'src/classes/toast.class';
 
 @Component({
   selector: 'product-overview',
@@ -6,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-overview.component.css']
 })
 export class ProductOverviewComponent implements OnInit {
-  constructor() {}
+  constructor(private toast: Toast) {}
 
+  estimatedDeliveryDay: string = '';
   isProductMarked: boolean = false;
   value: number = 4;
   loading: boolean = false;
@@ -15,6 +17,15 @@ export class ProductOverviewComponent implements OnInit {
   visible: boolean = false;
   responsiveOptions: any;
   images: any;
+
+  toggleProductMarking() {
+    this.isProductMarked = !this.isProductMarked;
+    if (this.isProductMarked === true) {
+      this.toast.show("Product added to favorites.", "info")
+    } else {
+      this.toast.show("Product remove from favorites", "info")
+    }
+  }
 
   showDialog() {
     this.visible = true;
@@ -27,14 +38,34 @@ export class ProductOverviewComponent implements OnInit {
   load() {
     this.loading = true;
 
+    this.toast.show("Product added to cart.", "success")
+
     setTimeout(() => {
         this.loading = false
     }, 2000);
   }
 
-  
-  toggleProductMarking() {
-    this.isProductMarked = !this.isProductMarked;
+  createEstimatedDeliveryDay(daysToAdd: number): string {
+    const today = new Date();
+    const futureDate = new Date(today);
+    futureDate.setDate(today.getDate() + daysToAdd);
+
+    const monthNames = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+
+    const month = monthNames[futureDate.getMonth()];
+    const day = futureDate.getDate();
+// console.log(`${month} ${day}`);
+
+    return `${month} ${day}`;
+  }
+
+  getEstimatedDeliveryDay(first_date: number, second_day: number) {
+    const firstDeliveryDate = this.createEstimatedDeliveryDay(first_date)
+    const secondDeliveryDate = this.createEstimatedDeliveryDay(second_day)
+    this.estimatedDeliveryDay = `${firstDeliveryDate} - ${secondDeliveryDate}`;
   }
 
   showScoreInformation() {
@@ -44,6 +75,8 @@ export class ProductOverviewComponent implements OnInit {
     this.shouldScoreInformationBeShown = false;
   }
   ngOnInit() {
+    this.getEstimatedDeliveryDay(3, 4);
+
     this.images = [
       {
         itemImageSrc:

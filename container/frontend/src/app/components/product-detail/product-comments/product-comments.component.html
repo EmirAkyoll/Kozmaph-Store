@@ -17,6 +17,7 @@
             <span class="flex flex-column justify-content-around align-items-center ml-0 md:ml-4 sm:flex-row md:flex-column">
                 <p-rating [cancel]="false"></p-rating>
                 <p-button 
+                    (click)="addToComments()"
                     styleClass="border-none mt-2 sm:mt-0"
                     [style]="{'width': '120px', 'background-color': '#f0b932'}" 
                     label="Send" 
