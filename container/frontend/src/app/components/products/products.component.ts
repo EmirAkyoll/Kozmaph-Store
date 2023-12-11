@@ -24,6 +24,10 @@ export class ProductsComponent implements OnInit {
   });
   }
   
+  closeModal(): void {
+    this.isUpdateProductModalOpen = false;
+  }
+  
   openUpdateModal(product_data: Product) {
     this.dataOfTheProductToBeUpdated = product_data;
     console.log("this.dataOfTheProductToBeUpdated: ",this.dataOfTheProductToBeUpdated);

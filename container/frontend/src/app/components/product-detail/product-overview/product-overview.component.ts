@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from 'src/app/store';
 import { Toast } from 'src/classes/toast.class';
 
 @Component({
@@ -7,7 +8,7 @@ import { Toast } from 'src/classes/toast.class';
   styleUrls: ['./product-overview.component.css']
 })
 export class ProductOverviewComponent implements OnInit {
-  constructor(private toast: Toast) {}
+  constructor(private store: Store, private toast: Toast) {}
 
   estimatedDeliveryDate: string = '';
   isProductMarked: boolean = false;
@@ -35,14 +36,15 @@ export class ProductOverviewComponent implements OnInit {
     this.visible = false;
   }
 
-  load() {
+  addToCart() {
     this.loading = true;
 
-    this.toast.show("Product added to cart.", "success")
+    this.toast.show("Product added to cart.", "success");
+    this.store.increaseCart();
 
     setTimeout(() => {
         this.loading = false
-    }, 2000);
+    }, 500);
   }
 
   createEstimatedDeliveryDay(daysToAdd: number): string {

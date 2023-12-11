@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Store } from 'src/app/store';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnChanges {
+  constructor(private store: Store) {}
+
   value: any = ""
   isMobileScreen: boolean = true;
   showUserOptions: boolean = false;
   isAddingProductModalVisible: boolean = false;
+  numberOfProductsInCart: number = 0;
 
   showModal() {
     this.isAddingProductModalVisible = true;
@@ -28,6 +32,20 @@ export class NavbarComponent implements OnInit {
         this.isMobileScreen = true
     } else {
         this.isMobileScreen = false
+    }
+    
+    console.log("numberOfProductsInCart BEFORE: ", this.numberOfProductsInCart);
+    this.store.numberOfProductsInTheCart$.subscribe(data => {
+      this.numberOfProductsInCart = data;
+    })
+    console.log("numberOfProductsInCart AFTER: ", this.numberOfProductsInCart);
+    
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    
+    if (changes) {
+      console.log(`Önceki Değer: ${changes}`);
     }
   }
 

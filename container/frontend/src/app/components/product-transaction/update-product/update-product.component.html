@@ -1,14 +1,5 @@
-<!-- <p-button 
-    (click)="showModal()" 
-    icon="pi pi-plus" 
-    label="Add Product" 
-    styleClass="p-button-info border-round-sm"
-    style="position: sticky; top: 70px;"
-></p-button> -->
-
 <div 
-    *ngIf="isUpdateProductModalVisible" 
-    style="top: -5px; margin-left: 20%;" 
+    style="top: -5px; margin-left: 10%; z-index: 11;" 
     class="fixed h-full flex justify-content-center align-items-center z-5 font-Ubuntu"
 >
     <!-- <p-toast></p-toast> -->
@@ -19,28 +10,36 @@
                 label="Update" 
                 icon="pi pi-refresh"
                 styleClass="my-3 w-full p-button-success"
-                (click)="updateProduct(); showToast('Product is updated')"
+                (click)="updateProduct(); showToast('Product is updated'); closeModal()"
             ></p-button>
         </div>
+
         <p-divider></p-divider>
+
         <div class="flex justify-content-center">
         <div class="ml-6s mt-5s">
             <div class="flex flex-column gap-2">
                 <label htmlFor="product_name" class="text-sm">Product Name</label>
                 <input class="p-2" [(ngModel)]="productName" pInputText id="product_name" placeholder=".." aria-describedby="product_name-help" />
             </div>
+
             <p-divider class="my-4"></p-divider>
+
             <div class="flex flex-column gap-2 mt-3s">
                 <label htmlFor="price" class="text-sm">Price</label>
                 <p-inputNumber inputId="currency-us" currency="USD" locale="en-US" mode="currency" styleClass="w-full" [(ngModel)]="price"> </p-inputNumber>
             </div>
+
             <p-divider class="my-4"></p-divider>
+
             <div class="card flex justify-content-center my-3 text-sm">
                 <p-checkbox name="advantages" value="Free Shipping" label="Free Shipping" [(ngModel)]="selectedAdvantages"></p-checkbox>
                 <p-checkbox name="advantages" value="Installments" label="Installments" [(ngModel)]="selectedAdvantages" class="mx-4"></p-checkbox>
                 <p-checkbox name="advantages" value="Secure Payment" label="Secure Payment" [(ngModel)]="selectedAdvantages"></p-checkbox>
             </div>  
+
             <p-divider class="my-4"></p-divider>
+            
             <label for="file-upload" class="custom-file-upload p-2 w-full text-center border-round-sm">
                 <i class="pi pi-upload"></i> 
                 <span class="ml-3">Upload Product Images</span>
