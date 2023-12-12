@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Store } from 'src/app/store';
 import { Toast } from 'src/classes/toast.class';
 
@@ -9,6 +9,8 @@ import { Toast } from 'src/classes/toast.class';
 })
 export class ProductOverviewComponent implements OnInit {
   constructor(private store: Store, private toast: Toast) {}
+
+  @Input() overviewData: any;
 
   estimatedDeliveryDate: string = '';
   isProductMarked: boolean = false;
@@ -21,6 +23,7 @@ export class ProductOverviewComponent implements OnInit {
 
   toggleProductMarking() {
     this.isProductMarked = !this.isProductMarked;
+    
     if (this.isProductMarked === true) {
       this.toast.show("Product added to favorites.", "info")
     } else {
@@ -44,7 +47,7 @@ export class ProductOverviewComponent implements OnInit {
 
     setTimeout(() => {
         this.loading = false
-    }, 500);
+    }, 400);
   }
 
   createEstimatedDeliveryDay(daysToAdd: number): string {
@@ -78,7 +81,8 @@ export class ProductOverviewComponent implements OnInit {
 
   ngOnInit() {
     this.getEstimatedDeliveryDay();
-
+    // console.log("overviewData", this.overviewData);
+    
     this.images = [
       {
         itemImageSrc:

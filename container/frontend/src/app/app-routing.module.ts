@@ -24,7 +24,7 @@ const routes: Routes = [
     component: FavoritesComponent
   },
   {
-    path: 'product-detail',
+    path: 'product-detail/:id',
     component: ProductDetailComponent
   }
 ];

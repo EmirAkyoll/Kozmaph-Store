@@ -1,8 +1,8 @@
 <section class="font-Ubuntu mb-7">
     <p-toast></p-toast>
 
-    <product-overview />
-    <product-in-depth />
-    <product-questions />
-    <product-comments />
+    <product-overview [overviewData]="productOverview" />
+    <product-in-depth [inDepthData]="productInDepth" />
+    <product-questions [questionsData]="productQuestions" />
+    <product-comments [commentsData]="productComments" />
 </section>

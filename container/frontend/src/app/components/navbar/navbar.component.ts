@@ -34,11 +34,11 @@ export class NavbarComponent implements OnInit, OnChanges {
         this.isMobileScreen = false
     }
     
-    console.log("numberOfProductsInCart BEFORE: ", this.numberOfProductsInCart);
+    // console.log("numberOfProductsInCart BEFORE: ", this.numberOfProductsInCart);
     this.store.numberOfProductsInTheCart$.subscribe(data => {
       this.numberOfProductsInCart = data;
     })
-    console.log("numberOfProductsInCart AFTER: ", this.numberOfProductsInCart);
+    // console.log("numberOfProductsInCart AFTER: ", this.numberOfProductsInCart);
     
   }
 

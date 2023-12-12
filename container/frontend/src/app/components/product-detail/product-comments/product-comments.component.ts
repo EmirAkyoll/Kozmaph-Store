@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Toast } from 'src/classes/toast.class';
 
 @Component({
@@ -8,6 +8,8 @@ import { Toast } from 'src/classes/toast.class';
 })
 export class ProductCommentsComponent {
   constructor(private toast: Toast) {}
+
+  @Input() commentsData: any;
 
   addToComments() {
     this.toast.show('Added to comments.', 'success')

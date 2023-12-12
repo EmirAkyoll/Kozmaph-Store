@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'product-in-depth',
@@ -6,7 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-in-depth.component.css'],
 })
 
-export class ProductInDepthComponent {
+export class ProductInDepthComponent implements OnInit {
+  constructor(){}
+
+  @Input() inDepthData: any;
+
   payment_options = [
     { image_url_endpoint: 'whdsbzztawpcazddizmo.webp'},
     { image_url_endpoint: 'e1r7dpkl951sgsjgguq5.webp'},
@@ -43,6 +47,11 @@ export class ProductInDepthComponent {
     {feature_name: 'Body Material', value: 'Steel'},
     {feature_name: 'Warranty Period', value: '2 Years'},
   ];
+
+  ngOnInit() {
+    console.log("in depth: ", this.inDepthData);
+    
+  }
 
   activeIndex: number | null = null;
 

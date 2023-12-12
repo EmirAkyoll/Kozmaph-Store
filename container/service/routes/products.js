@@ -11,6 +11,15 @@ router.get('/get-all', async (req, res) => {
     }
 })
 
+router.get('/get-product/:id', async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id);
+        res.status(200).send(product)
+    } catch (error) {
+        res.status(400).json(error);
+    }
+})
+
 router.post('/add-product', async (req, res) => {
     try {
         console.log("REQQQQ: ", req.body);

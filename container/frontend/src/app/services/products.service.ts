@@ -13,6 +13,10 @@ export class ProductService {
   getAll(): Observable<Product[]>{
     return this.http.get<Product[]>('http://localhost:5000/api/products/get-all')
   }
+  
+  getById(product_id: any): Observable<Product>{
+    return this.http.get<Product>(`http://localhost:5000/api/products/get-product/${product_id}`)
+  }
 
   addNew(product_data: Product): Observable<Product>{
     console.log("product_data: ", product_data);
