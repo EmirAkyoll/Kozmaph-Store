@@ -12,14 +12,17 @@ export class ProductOverviewComponent implements OnInit {
 
   @Input() overviewData: any;
 
-  estimatedDeliveryDate: string = '';
-  isProductMarked: boolean = false;
+  images: any[] = [];
   value: number = 4;
-  loading: boolean = false;
-  shouldScoreInformationBeShown: boolean = false;
-  visible: boolean = false;
   responsiveOptions: any;
-  images: any;
+  loading: boolean = false;
+  visible: boolean = false;
+  isProductMarked: boolean = false;
+  estimatedDeliveryDate: string = '';
+  shouldScoreInformationBeShown: boolean = false;
+  installments: boolean = false;
+  freeShipping: boolean = false;        
+  securePayment: boolean = false;
 
   toggleProductMarking() {
     this.isProductMarked = !this.isProductMarked;
@@ -82,39 +85,32 @@ export class ProductOverviewComponent implements OnInit {
   ngOnInit() {
     this.getEstimatedDeliveryDay();
     // console.log("overviewData", this.overviewData);
-    
-    this.images = [
-      {
-        itemImageSrc:
-          'https://cdn.dsmcdn.com/ty986/product/media/images/20230815/0/403261825/480842529/2/2_org_zoom.jpg',
-        thumbnailImageSrc:
-          'https://cdn.dsmcdn.com/ty986/product/media/images/20230815/0/403261825/480842529/2/2_org_zoom.jpg',
-        alt: 'Description for Image 1',
-        title: 'Title 1',
-      },
-      {
-        itemImageSrc:
-          'https://cdn.dsmcdn.com/ty1012/product/media/images/prod/PIM/20231011/07/9e63857f-350f-433e-99bc-65c1e7870665/1_org_zoom.jpg',
-        thumbnailImageSrc:
-          'https://cdn.dsmcdn.com/ty1012/product/media/images/prod/PIM/20231011/07/9e63857f-350f-433e-99bc-65c1e7870665/1_org_zoom.jpg',
-        alt: 'Description for Image 1',
-        title: 'Title 1',
-      },
-    ];
+    for (let index = 0; index < this.overviewData.image_urls.length; index++) {
+      this.images.push({itemImageSrc: this.overviewData.image_urls[index]})      
+    }
+    // this.overviewData.advantages.map
+console.log("IMAGES: ", this.images);
+
+    // this.images = [
+    //   {itemImageSrc: 'https://cdn.dsmcdn.com/ty986/product/media/images/20230815/0/403261825/480842529/2/2_org_zoom.jpg'},
+    // ];
       
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
         numVisible: 5,
+        numScroll: 5
       },
       {
         breakpoint: '768px',
         numVisible: 3,
+        numScroll: 3
       },
       {
         breakpoint: '560px',
         numVisible: 1,
-      },
+        numScroll: 1
+      }
     ];
   }
 }

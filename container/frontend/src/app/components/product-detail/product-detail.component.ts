@@ -25,10 +25,11 @@ export class ProductDetailComponent implements OnInit {
       this.productData = product_data
       console.log("data from params: ", this.productData);
       const { _id, description, features, image_urls, name, price, seller, summary, advantages, comments, questions } = this.productData;
-      this.productOverview = {name, price, seller, image_urls, advantages};
+      
+      this.productOverview = {name, price, seller, image_urls, advantages, comments, questions};
       this.productInDepth = {summary, description, features};
-      this.productQuestions = questions;
-      this.productComments = comments;
+      this.productQuestions = {questions, name, seller, image_urls};
+      this.productComments = {comments};
   
       console.log("productOverview: ", this.productOverview, "productInDepth: ", this.productInDepth,
                   "productQuestions: ", this.productQuestions, "productComments: ", this.productComments);

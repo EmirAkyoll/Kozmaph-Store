@@ -1,5 +1,4 @@
 <section class="container flex flex-column justify-content-center align-items-center mt-3 lg:flex-row">
-    <!-- <p-toast></p-toast> -->
     <p-galleria 
         [value]="images" 
         [showItemNavigators]="true" 
@@ -7,7 +6,7 @@
         [showIndicators]="true"
         [showIndicatorsOnItem]="true" 
         [responsiveOptions]="responsiveOptions"
-        [containerStyle]="{ 'max-width': '550px', 'margin-top': '0px' }"
+        [containerStyle]="{ 'min-width': '310px', 'margin-top': '0px' }"
     >
         <ng-template pTemplate="item" let-item>
             <img [src]="item.itemImageSrc" class="w-full border-1 border-bluegray-300 border-round-md"/>
@@ -20,13 +19,15 @@
     </p-galleria>
 
     <div class="font-Ubuntu ml-0 w-full h-auto p-0 pr-0 border-bluegray-300 border-round-md text-justify lg:p-5 lg:ml-2">
-        <div class="text-xl mb-4 mt-4 lg:mt-0 md:text-3xl lg:text-4xl">Kitchen Life 12-Piece Spice Rack Set with Label and Lockable Lid and Spoon - Lockable Spice Rack MCH009743</div>
+        <div class="text-xl mb-4 mt-4 lg:mt-0 md:text-3xl lg:text-4xl">{{overviewData.name}}</div>
         <div class="flex flex-column sm:flex-row">
             <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false"></p-rating>
-            <span class="opacity-50 text-sm ml-0 mt-2 sm:ml-3 sm:mt-0">(74)comments  (4)questions</span>
+            <span class="opacity-50 text-sm ml-0 mt-2 sm:ml-3 sm:mt-0">
+                ({{overviewData.comments.length}})comments  ({{overviewData.questions.length}})questions
+            </span>
         </div>
 
-        <p-divider></p-divider>
+        <p-divider></p-divider> 
 
         <div class="flex justify-content-center align-items-center mb-4 mt-4 sm:justify-content-start">
             <i class="pi pi-calendar text-3xl mr-3"></i>
@@ -39,30 +40,29 @@
         <p-divider></p-divider>
 
         <div class="relative mb-3 mt-3 flex justify-content-center align-items-center sm:justify-content-start">
-            <p class="text-sm md:text-md"><b>Seller:</b> Lorem Ipsum LLC - <p-tag value="8.7" severity="success"></p-tag></p>
+            <p class="text-sm md:text-md"><b>Seller:</b> {{ overviewData.seller }} - <p-tag value="8.7" severity="success"></p-tag></p>
 
-            <i 
-                pInputText 
-                pTooltip="The seller score is calculated taking into account the seller's service quality and customer statements." 
-                tooltipPosition="left"
-                (mouseover)="showScoreInformation()" 
-                (mouseleave)="hideScoreInformation()" 
-                class="pi pi-question-circle ml-3 text-500"
+            <i pInputText 
+               pTooltip="The seller score is calculated taking into account the seller's service quality and customer statements." 
+               tooltipPosition="left"
+               (mouseover)="showScoreInformation()" 
+               (mouseleave)="hideScoreInformation()" 
+               class="pi pi-question-circle ml-3 text-500"
             ></i>
         </div>
 
         <p-divider></p-divider>
 
         <div class="flex flex-column justify-content-betweenS align-items-center mb-4 mt-4 text-sm sm:flex-row">
-            <span class="flex align-items-center mr-5 text-sm sm:my-0 md:text-md">
+            <span *ngIf="installments" class="flex align-items-center mr-5 text-sm sm:my-0 md:text-md">
                 <i class="pi pi-wallet mr-1"></i>
                 12 Installments
             </span>
-            <span class="flex align-items-center mr-5 my-3 text-xs md:text-md">
+            <span *ngIf="freeShipping" class="flex align-items-center mr-5 my-3 text-xs md:text-md">
                 <i class="pi pi-truck mr-1"></i>
                 Free Shipping
             </span>
-            <span class="flex align-items-center mr-5 text-xs md:text-md">
+            <span *ngIf="securePayment" class="flex align-items-center mr-5 text-xs md:text-md">
                 <i class="pi pi-lock mr-1"></i>
                 Secure Payment
             </span>

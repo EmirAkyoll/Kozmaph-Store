@@ -1,8 +1,10 @@
 <section class="font-Ubuntu mb-7">
     <p-toast></p-toast>
 
-    <product-overview [overviewData]="productOverview" />
-    <product-in-depth [inDepthData]="productInDepth" />
-    <product-questions [questionsData]="productQuestions" />
-    <product-comments [commentsData]="productComments" />
+    <ng-container *ngIf="productOverview && productInDepth && productQuestions && productComments">
+        <product-overview [overviewData]="productOverview" />
+        <product-in-depth [inDepthData]="productInDepth" />
+        <product-questions [questionsData]="productQuestions" />
+        <product-comments [commentsData]="productComments" />
+    </ng-container>
 </section>
