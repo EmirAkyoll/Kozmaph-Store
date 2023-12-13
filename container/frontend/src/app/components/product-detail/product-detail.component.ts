@@ -12,11 +12,24 @@ export class ProductDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private productService: ProductService) {}
   productId: any = '';
   productData: any = {};
+  productRate: number = 0;
 
   productOverview: any;
   productInDepth: any;
   productQuestions: any;
   productComments: any;
+
+  implementTheRateAverage(rate: number){
+    console.log("rate: ", rate);
+
+    if (rate % 1 >= 0.5) {
+      // Round up if .50 or greater
+      this.productRate = Math.ceil(rate);
+    } else {
+      // If less than .50, round down
+      this.productRate = Math.floor(rate);
+    }
+  }
 
   async getProduct(){
     this.productId = this.route.snapshot.paramMap.get('id');

@@ -4,7 +4,7 @@
     <div class="flex border-1 border-gray-400 border-round-top-md justify-content-center align-items-center p-4 sm:justify-content-start">
         <div class="flex flex-column align-items-center sm:flex-row sm:justify-content-start">
             <span class="text-sm mx-4 sm:text-base md:text-lg">({{comments.length}}) Comments</span>
-            <span class="text-sm mx-3 mt-2 sm:mt-0 sm:text-base md:text-lg">Average Rating: 4.6</span>
+            <span class="text-sm mx-3 mt-2 sm:mt-0 sm:text-base md:text-lg">Average Rating: {{rateAverage}}</span>
         </div>
     </div>
 
@@ -32,8 +32,8 @@
                 <div class="col-12">
                     <div class="p-4 pt-2">
                         <div class="mb-2 flex flex-column align-items-center sm:flex-row">
-                            <p-rating class="mr-4 mb-2 sm:mb-0" [readonly]="true" [cancel]="false"></p-rating> 
-                            {{comment?.comment_content}}
+                            <p-rating class="mr-4 mb-2 sm:mb-0" [(ngModel)]="comment.rating" [readonly]="true" [cancel]="false"></p-rating> 
+                            <span>{{comment.comment_text}}</span>
                         </div>
                         <div class="opacity-50 text-sm">customer_name | bought from dealer seller_name.</div>
                     </div>

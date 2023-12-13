@@ -11,6 +11,7 @@ export class ProductOverviewComponent implements OnInit {
   constructor(private store: Store, private toast: Toast) {}
 
   @Input() overviewData: any;
+  @Input() productRateAverage: any = 5;
 
   images: any[] = [];
   ratingValue: number = 4;

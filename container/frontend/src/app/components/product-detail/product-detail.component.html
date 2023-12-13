@@ -2,9 +2,18 @@
     <p-toast></p-toast>
 
     <ng-container *ngIf="productOverview && productInDepth && productQuestions && productComments">
-        <product-overview [overviewData]="productOverview" />
+        <product-overview 
+            [overviewData]="productOverview" 
+            [productRateAverage]="productRate" 
+        />
+
         <product-in-depth [inDepthData]="productInDepth" />
+
         <product-questions [questionsData]="productQuestions" />
-        <product-comments [commentsData]="productComments" />
+
+        <product-comments 
+            [commentsData]="productComments" 
+            (productRateAverage)="implementTheRateAverage($event)" 
+        />
     </ng-container>
 </section>
