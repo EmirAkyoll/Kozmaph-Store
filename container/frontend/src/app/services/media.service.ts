@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class MediaService {
   constructor(private http: HttpClient) {}
 
-  upload(mediaData: FormData): Observable<any> {
-    return this.http.post('http://localhost:3000/api/media/upload', mediaData);
+  upload(media_data: FormData): Observable<any> {
+    return this.http.post('http://localhost:3000/api/media/upload', media_data);
   }
 }

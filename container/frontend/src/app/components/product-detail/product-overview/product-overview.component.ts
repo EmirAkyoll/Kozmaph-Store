@@ -13,15 +13,16 @@ export class ProductOverviewComponent implements OnInit {
   @Input() overviewData: any;
 
   images: any[] = [];
-  value: number = 4;
+  ratingValue: number = 4;
   responsiveOptions: any;
   loading: boolean = false;
   visible: boolean = false;
   isProductMarked: boolean = false;
   estimatedDeliveryDate: string = '';
   shouldScoreInformationBeShown: boolean = false;
-  installments: boolean = false;
+  advantagesToShow: string[]= [];
   freeShipping: boolean = false;        
+  installments: boolean = false;
   securePayment: boolean = false;
 
   toggleProductMarking() {
@@ -40,6 +41,34 @@ export class ProductOverviewComponent implements OnInit {
 
   closeModal(){
     this.visible = false;
+  }
+
+  determineTheAdvantagesToShow(){
+    this.overviewData.advantages.map((advantage: any) => {
+      switch (advantage) {
+        case 'Free Shipping':
+          this.freeShipping = true;
+          break;
+
+        case 'Installments':
+          this.installments = true;
+          break;
+
+        case 'Secure Payment':
+          this.securePayment = true;
+          break;
+      
+        default:
+          break;
+      }
+    })
+  }
+
+  transferImagesToGallery(){
+    for (let index = 0; index < this.overviewData.image_urls.length; index++) {
+      this.images.push({itemImageSrc: this.overviewData.image_urls[index]})      
+    }
+    // console.log("IMAGES: ", this.images);
   }
 
   addToCart() {
@@ -84,17 +113,9 @@ export class ProductOverviewComponent implements OnInit {
 
   ngOnInit() {
     this.getEstimatedDeliveryDay();
-    // console.log("overviewData", this.overviewData);
-    for (let index = 0; index < this.overviewData.image_urls.length; index++) {
-      this.images.push({itemImageSrc: this.overviewData.image_urls[index]})      
-    }
-    // this.overviewData.advantages.map
-console.log("IMAGES: ", this.images);
+    this.transferImagesToGallery();
+    this.determineTheAdvantagesToShow()
 
-    // this.images = [
-    //   {itemImageSrc: 'https://cdn.dsmcdn.com/ty986/product/media/images/20230815/0/403261825/480842529/2/2_org_zoom.jpg'},
-    // ];
-      
     this.responsiveOptions = [
       {
         breakpoint: '1024px',

@@ -11,13 +11,13 @@
     <div class="card border-1 border-top-none border-gray-400 border-round-bottom-md">
         <div class="flex flex-column p-3 mb-3 border-bottom-1 border-gray-300 md:flex-row">
             <span class="p-float-label w-full mt-2 mb-2 md:mb-0">
-                <textarea id="float-input" class="w-full" rows="4" pInputTextarea></textarea>
-                <label for="float-input">Enter your comment..</label>
+                <textarea [(ngModel)]="comment_text"  class="w-full p-2" rows="4" placeholder="Enter your comment.."></textarea>
             </span>
+
             <span class="flex flex-column justify-content-around align-items-center ml-0 md:ml-4 sm:flex-row md:flex-column">
-                <p-rating [cancel]="false"></p-rating>
+                <p-rating [(ngModel)]="rating" [cancel]="false"></p-rating>
                 <p-button 
-                    (click)="addToComments()"
+                    (click)="addComment(commentsData.product_id, {comment_text, rating})"
                     styleClass="border-none mt-2 sm:mt-0"
                     [style]="{'width': '120px', 'background-color': '#f0b932'}" 
                     label="Send" 
@@ -35,7 +35,7 @@
                             <p-rating class="mr-4 mb-2 sm:mb-0" [readonly]="true" [cancel]="false"></p-rating> 
                             {{comment?.comment_content}}
                         </div>
-                        <div class="opacity-50 text-sm">customer_name | asking_date | bought from dealer seller_name.</div>
+                        <div class="opacity-50 text-sm">customer_name | bought from dealer seller_name.</div>
                     </div>
                 </div>
             </ng-template>

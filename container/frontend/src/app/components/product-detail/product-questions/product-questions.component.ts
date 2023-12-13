@@ -16,8 +16,7 @@ export class ProductQuestionsComponent implements OnInit {
 
   ngOnInit() {
     this.questions = this.questionsData.questions
-    console.log("SELLER: ", this.questionsData.seller);
-    
+    // console.log("SELLER: ", this.questionsData.seller);
   }
   
   showToast() {

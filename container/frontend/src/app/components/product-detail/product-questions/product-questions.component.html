@@ -7,11 +7,8 @@
         <div class="flex align-items-center">
             <img src={{questionsData.image_urls[0]}}
                 alt="" style="width: 30px; height: 50px;">
-            <!-- {{questionsData.name}} 'seller' is product seller -->
             <span class="mx-4">{{questionsData.seller}}</span>
-            
-            <!-- {{questionsData.name}} 'name' is product name -->
-            <span>{{questionsData.name}}</span>
+            <span>{{questionsData.product_name}}</span>
         </div>
         <div class="">
               <p-button 
@@ -37,7 +34,6 @@
                       <label for="float-input">Question</label>
                   </span>
                   <p-divider></p-divider>
-                  <p>Let my name and surname appear in my questions.</p>
 
                   <p-button 
                         (click)="showToast(); closeModal()" 

@@ -30,7 +30,7 @@ export class ProductInDepthComponent implements OnInit {
     this.descriptions = this.inDepthData.description
     this.features = this.inDepthData.features
     
-    console.log("in depth: ", this.inDepthData);
+    // console.log("in depth: ", this.inDepthData);
   }
 
   activeIndex: number | null = null;

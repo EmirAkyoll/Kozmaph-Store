@@ -10,7 +10,7 @@ export interface Question{
 
 export interface Comment{
   comment_text: string;
-  rating: string;
+  rating: number;
 }
 
 export interface Product {
