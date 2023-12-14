@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Comment, Feature, Product, Question } from 'src/interfaces/product.interface';
-import { ProductService } from 'src/app/services/products.service';
+import { ProductService } from 'src/app/services/product.service';
 import { MediaService } from 'src/app/services/media.service';
 import { MessageService } from 'primeng/api';
 

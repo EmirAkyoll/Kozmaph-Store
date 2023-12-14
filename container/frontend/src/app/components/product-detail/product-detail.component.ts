@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from 'src/app/services/products.service';
+import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/interfaces/product.interface';
 
 @Component({
@@ -41,7 +41,7 @@ export class ProductDetailComponent implements OnInit {
       
       this.productOverview = {product_name, price, seller, image_urls, advantages, comments, questions};
       this.productInDepth = {summary, description, features};
-      this.productQuestions = {questions, product_name, seller, image_urls};
+      this.productQuestions = {questions, product_id, product_name, seller, image_urls};
       this.productComments = {comments, product_id};
   
       console.log("productOverview: ", this.productOverview, "productInDepth: ", this.productInDepth,

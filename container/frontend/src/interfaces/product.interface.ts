@@ -5,7 +5,7 @@ export interface Feature{
 
 export interface Question{
   question_text: string;
-  answers: string;
+  answer: string;
 }
 
 export interface Comment{

@@ -16,7 +16,7 @@ const ProductSchema = mongoose.Schema(
   }],
   questions: [{
     question_text: { type: String },
-    answers: { type: String },
+    answer: { type: String },
   }],
   comments: [{
     comment_text: { type: String },

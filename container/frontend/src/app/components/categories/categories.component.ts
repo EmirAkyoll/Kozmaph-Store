@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Category } from 'src/interfaces/category.interface';
-import { CategoryService } from '../../services/categories.service';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-categories',
