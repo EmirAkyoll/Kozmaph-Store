@@ -40,15 +40,7 @@
         <p-divider></p-divider>
 
         <div class="relative mb-3 mt-3 flex justify-content-center align-items-center sm:justify-content-start">
-            <p class="text-sm md:text-md"><b>Seller:</b> {{ overviewData.seller }} - <p-tag value="8.7" severity="success"></p-tag></p>
-
-            <i pInputText 
-               pTooltip="The seller score is calculated taking into account the seller's service quality and customer statements." 
-               tooltipPosition="left"
-               (mouseover)="showScoreInformation()" 
-               (mouseleave)="hideScoreInformation()" 
-               class="pi pi-question-circle ml-3 text-500"
-            ></i>
+            <p class="text-sm md:text-md"><b>Seller:</b> {{ overviewData.seller }}</p>
         </div>
 
         <p-divider></p-divider>

@@ -38,6 +38,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { FileUploadModule } from 'primeng/fileupload';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfigureDecimalPlacesPipe } from './pipes/configure-decimal.pipe';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     ProductCommentsComponent,
     ProductQuestionsComponent,
     ProductTransactionComponent,
+    
+    ConfigureDecimalPlacesPipe,
   ],
   imports: [
     FormsModule,

@@ -20,7 +20,6 @@ export class ProductOverviewComponent implements OnInit {
   visible: boolean = false;
   isProductMarked: boolean = false;
   estimatedDeliveryDate: string = '';
-  shouldScoreInformationBeShown: boolean = false;
   advantagesToShow: string[]= [];
   freeShipping: boolean = false;        
   installments: boolean = false;
@@ -103,13 +102,6 @@ export class ProductOverviewComponent implements OnInit {
     const firstDeliveryDate = this.createEstimatedDeliveryDay(3)
     const secondDeliveryDate = this.createEstimatedDeliveryDay(5)
     this.estimatedDeliveryDate = `${firstDeliveryDate} - ${secondDeliveryDate}`;
-  }
-
-  showScoreInformation() {
-    this.shouldScoreInformationBeShown = true;
-  }
-  hideScoreInformation() {
-    this.shouldScoreInformationBeShown = false;
   }
 
   ngOnInit() {
