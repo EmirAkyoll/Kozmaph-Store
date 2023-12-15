@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Comment, Feature, Product, Question } from 'src/interfaces/product.interface';
+import { Comment, Feature, Product } from 'src/interfaces/product.interface';
 import { ProductService } from 'src/app/services/product.service';
 import { MediaService } from 'src/app/services/media.service';
 import { MessageService } from 'primeng/api';
@@ -116,7 +116,6 @@ export class AddProductComponent {
                 allSummaries: string[], 
                 allDescriptions: string[], 
                 allFeatures: Feature[], 
-                allQuestions: Question[], 
                 allComments: Comment[]): Promise<void>{
     await this.uploadMedia();
     console.log("image_urls: ",this.image_urls);
@@ -130,7 +129,6 @@ export class AddProductComponent {
       summary: allSummaries,
       description: allDescriptions,
       features: allFeatures,
-      questions: allQuestions,
       comments: allComments,
     }
     console.log("product_data: ",product_data);

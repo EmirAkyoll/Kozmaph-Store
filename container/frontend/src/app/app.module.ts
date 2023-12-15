@@ -19,7 +19,6 @@ import { ProductInDepthComponent } from './components/product-detail/product-in-
 import { UpdateProductComponent } from './components/product-transaction/update-product/update-product.component';
 import { ProductOverviewComponent } from './components/product-detail/product-overview/product-overview.component';
 import { ProductCommentsComponent } from './components/product-detail/product-comments/product-comments.component';
-import { ProductQuestionsComponent } from './components/product-detail/product-questions/product-questions.component';
 
 import { ConfirmationService, MessageService } from 'primeng/api';
 
@@ -54,7 +53,6 @@ import { ConfigureDecimalPlacesPipe } from './pipes/configure-decimal.pipe';
     ProductInDepthComponent,
     ProductOverviewComponent,
     ProductCommentsComponent,
-    ProductQuestionsComponent,
     ProductTransactionComponent,
     
     ConfigureDecimalPlacesPipe,

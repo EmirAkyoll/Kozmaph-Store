@@ -6,14 +6,14 @@
         [showIndicators]="true"
         [showIndicatorsOnItem]="true" 
         [responsiveOptions]="responsiveOptions"
-        [containerStyle]="{ 'min-width': '310px', 'margin-top': '0px' }"
+        [containerStyle]="{ 'width': '310px', 'margin-top': '0px' }"
     >
         <ng-template pTemplate="item" let-item>
-            <img [src]="item.itemImageSrc" class="w-full border-1 border-bluegray-300 border-round-md"/>
+            <img [src]="item.itemImageSrc" style=" height: 500px;" class="w-full border-1 border-bluegray-300 border-round-md"/>
         </ng-template>
         <ng-template pTemplate="thumbnail" let-item>
             <div class="grid grid-nogutter justify-content-center border-round-md">
-                <img [src]="item.thumbnailImageSrc" style="display: block;" />
+                <img [src]="item.thumbnailImageSrc" style="display: block; height: 500px;" />
             </div>
         </ng-template>
     </p-galleria>

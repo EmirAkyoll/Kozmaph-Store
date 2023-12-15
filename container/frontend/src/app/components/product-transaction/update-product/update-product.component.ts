@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Comment, Feature, Product, Question } from 'src/interfaces/product.interface';
+import { Comment, Feature, Product } from 'src/interfaces/product.interface';
 import { ProductService } from 'src/app/services/product.service';
 import { MediaService } from 'src/app/services/media.service';
 import { MessageService } from 'primeng/api';
@@ -112,7 +112,6 @@ export class UpdateProductComponent {
       features: this.features,
       summary: this.summaries,
       comments: this.product_data.comments,
-      questions: this.product_data.questions,
     }
     this.productService.update(updated_product_data).subscribe(
       (response: any) => {
