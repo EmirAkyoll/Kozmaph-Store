@@ -1,5 +1,5 @@
-import { createApp } from "vue";
-import Auth from './auth.vue';
+import { createApp, defineAsyncComponent  } from "vue";
+// import Auth from './auth.vue';
 import './main.css';
 
 import PrimeVue from 'primevue/config';
@@ -11,10 +11,11 @@ import Password from 'primevue/password';
 import InputText from 'primevue/inputtext';
 import SelectButton from 'primevue/selectbutton';
 
+const AuthAsync = defineAsyncComponent(() => import('./auth.vue'));
 const fetch_el = document.getElementById('auth-micro-app');
 
 const mount= (el) => {
-    const app = createApp(Auth);
+    const app = createApp(AuthAsync);
     app.use(PrimeVue);
     app.component('Card', Card);
     app.component('Toast', Toast);
