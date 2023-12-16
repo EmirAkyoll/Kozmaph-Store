@@ -47,7 +47,7 @@ function CartItem() {
               </button>
             </span>
             <span>{price} $</span>
-            <i className="pi pi-trash"></i>
+            <i className="pi pi-trash cursor-pointer"></i>
           </span>
         </span>
       </div>

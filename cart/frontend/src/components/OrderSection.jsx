@@ -1,13 +1,10 @@
-import React, { useState, useEffect  } from "react";
-import CartTable from "./CartTable.tsx";
-import "primeflex/primeflex.css";
+import React, { useEffect, useState } from 'react'
 
-const Cart = () => {
+function OrderSection() {
   const [isMobileScreen, setIsMobileScreen] = useState(true);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    if (screenWidth < 745) {
+    if (window.innerWidth < 745) {
         setIsMobileScreen(true);
     } else {
         setIsMobileScreen(false);
@@ -15,12 +12,9 @@ const Cart = () => {
   }, []);
 
   return (
-    <div className="font-Ubuntu flex justify-content-between relative">
-      <CartTable />
-    
-      {/* Ordering section */}
+    <div>
       {isMobileScreen ? (
-        <div className="flex justify-content-evenly fixed bottom-0 left-0 border-1 border-gray-400 h-5rem bg-white" style={{ width: '100vw' }}>
+        <div className="flex justify-content-evenly fixed bottom-0 left-0 border-1 border-gray-400 h-5rem bg-white mb-6" style={{ width: '100vw' }}>
             <span>
                 <p className="mb-0">All Total</p>
                 <p className="mt-1">32 $</p>
@@ -45,7 +39,7 @@ const Cart = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Cart;
+export default OrderSection;

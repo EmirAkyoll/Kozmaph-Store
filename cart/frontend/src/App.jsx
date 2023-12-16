@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'primeflex/primeflex.css';
-import Cart from './components/Cart.tsx';
+import Cart from './components/Cart.jsx';
 
 const CartApp = () => {
     return (

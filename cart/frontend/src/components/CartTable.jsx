@@ -1,5 +1,6 @@
 import React from 'react'
-import CartItem from './CartItem.tsx';
+import CartItem from './CartItem.jsx';
+import "primeflex/primeflex.css";
 
 function CartTable(){
   return (
