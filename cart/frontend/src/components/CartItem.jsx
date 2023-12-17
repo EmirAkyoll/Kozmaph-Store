@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function CartItem() {
+function CartItem({ sendDataToParent  }) {
   const [price, setPrice] = useState(2.75);
   const [quantity, setQuantity] = useState(1);
   const [unitPrice, setUnitPrice] = useState(price / quantity);
@@ -8,6 +8,7 @@ function CartItem() {
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
     setPrice(price + unitPrice);
+    sendDataToParent(price);
   };
 
   const decreaseQuantity = () => {
@@ -22,9 +23,9 @@ function CartItem() {
   };
 
   return (
-    <div className="flex flex-column justify-content-center align-items-between p-4 pt-3 border-1 border-round-lg border-gray-400 font-Ubuntu mb-4">
-      <div className="font-bold">Kitchen Life - 4.7</div>
-      <div className="flex flex-column justify-content-between align-items-center border-top-1 mt-3 sm:flex-row">
+    <div className="flex flex-column justify-content-center align-items-between p-4 pt-2 border-bottom-1 border-round-lg border-gray-400 font-Ubuntu">
+      {/* <div className="font-bold">Kitchen Life - 4.7</div> */}
+      <div className="flex flex-column justify-content-between align-items-center sm:flex-row">
         <img
           src="https://cdn.dsmcdn.com/ty986/product/media/images/20230815/0/403261825/480842529/2/2_org_zoom.jpg"
           alt="product-image"

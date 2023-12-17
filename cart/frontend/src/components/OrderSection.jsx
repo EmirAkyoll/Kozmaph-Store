@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function OrderSection() {
+function OrderSection({ price, total }) {
   const [isMobileScreen, setIsMobileScreen] = useState(true);
 
   useEffect(() => {
@@ -28,10 +28,10 @@ function OrderSection() {
           <div className="w-18rem h-15rem border-1 border-round-md mt-3 border-gray-500 p-3">
             <p className="font-bold">Order Summary</p>
             <hr />
-            <p>Product Total: 24 $</p>
-            <p>Shipping: 8 $</p>
+            <p>Product Total: {total} $</p>
+            <p>Shipping: 4.25 $</p>
             <hr />
-            <p>All Total: 32 $</p>
+            <p>All Total: {total + 4.25} $</p>
           </div>
           <button className="mt-3 w-18rem border-none p-3 border-round-sm bg-orange-300 font-Ubuntu cursor-pointer">
             Confirm Order

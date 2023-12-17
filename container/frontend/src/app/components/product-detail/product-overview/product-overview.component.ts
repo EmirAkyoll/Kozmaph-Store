@@ -24,6 +24,7 @@ export class ProductOverviewComponent implements OnInit {
   freeShipping: boolean = false;        
   installments: boolean = false;
   securePayment: boolean = false;
+  currentCart: any;
 
   toggleProductMarking() {
     this.isProductMarked = !this.isProductMarked;
@@ -72,11 +73,21 @@ export class ProductOverviewComponent implements OnInit {
   }
 
   addToCart() {
+    const cartItems: any = {
+      productName: this.overviewData.product_name,
+      productPrice: this.overviewData.price,
+      productImage: this.overviewData.image_urls[0]
+    }
     this.loading = true;
 
     this.toast.show("Product added to cart.", "success");
     this.store.increaseCart();
 
+    window.localStorage.setItem('CartItems', JSON.stringify(cartItems))
+    const cart: any = localStorage.getItem('CartItems')
+    this.currentCart = cart
+    console.log("cart", cart);
+    
     setTimeout(() => {
         this.loading = false
     }, 400);

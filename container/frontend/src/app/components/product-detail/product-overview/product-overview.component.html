@@ -17,9 +17,9 @@
             </div>
         </ng-template>
     </p-galleria>
-
     <div class="font-Ubuntu ml-0 w-full h-auto p-0 pr-0 border-bluegray-300 border-round-md text-justify lg:p-5 lg:ml-2">
         <div class="text-xl mb-4 mt-4 lg:mt-0 md:text-3xl lg:text-4xl">{{overviewData.product_name}}</div>
+        {{currentCart}}
         <div class="flex flex-column sm:flex-row">
             <p-rating [(ngModel)]="productRateAverage" [readonly]="true" [cancel]="false"></p-rating>
             <span class="opacity-50 text-sm ml-0 mt-2 sm:ml-3 sm:mt-0">
