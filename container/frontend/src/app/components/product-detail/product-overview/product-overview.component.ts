@@ -24,7 +24,7 @@ export class ProductOverviewComponent implements OnInit {
   freeShipping: boolean = false;        
   installments: boolean = false;
   securePayment: boolean = false;
-  currentCart: any;
+  currentCart: any[] = [];
 
   toggleProductMarking() {
     this.isProductMarked = !this.isProductMarked;
@@ -74,19 +74,19 @@ export class ProductOverviewComponent implements OnInit {
 
   addToCart() {
     const cartItems: any = {
+      productId: this.overviewData.product_id,
       productName: this.overviewData.product_name,
       productPrice: this.overviewData.price,
       productImage: this.overviewData.image_urls[0]
     }
     this.loading = true;
-
+    const user: any = localStorage.getItem('CurrentUserData')
+    const user_absolute = JSON.parse(user)
+    user_absolute.cart.push(cartItems)
+    console.log("user_absolute: ",user_absolute);
     this.toast.show("Product added to cart.", "success");
     this.store.increaseCart();
-
-    window.localStorage.setItem('CartItems', JSON.stringify(cartItems))
-    const cart: any = localStorage.getItem('CartItems')
-    this.currentCart = cart
-    console.log("cart", cart);
+    localStorage.setItem('CurrentUserData', JSON.stringify(user_absolute))
     
     setTimeout(() => {
         this.loading = false

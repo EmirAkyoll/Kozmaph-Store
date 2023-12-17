@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function CartItem({ sendDataToParent  }) {
+function CartItem({ sendDataToParent, productData }) {
   const [price, setPrice] = useState(2.75);
   const [quantity, setQuantity] = useState(1);
   const [unitPrice, setUnitPrice] = useState(price / quantity);
@@ -27,14 +27,14 @@ function CartItem({ sendDataToParent  }) {
       {/* <div className="font-bold">Kitchen Life - 4.7</div> */}
       <div className="flex flex-column justify-content-between align-items-center sm:flex-row">
         <img
-          src="https://cdn.dsmcdn.com/ty986/product/media/images/20230815/0/403261825/480842529/2/2_org_zoom.jpg"
+          src={productData.productImage}
           alt="product-image"
           className="w-7rem mr-0 mt-3 border-round-sm sm:mr-5 sm:w-5rem"
         />
 
         <span className="flex flex-column justify-content-between align-items-center mt-4 w-full sm:mt-0 xl:flex-row">
           <span className="flex flex-column justify-content-centers align-items-center mr-0 sm:align-items-start sm:mr-5">
-            <p className="my-1">Kitchen Life 12 Pack with Label and Lockable Cover</p>
+            <p className="my-1">{productData.productName}</p>
             <p className="my-1 text-sm">Estimated Shipping: Within 9 days</p>
           </span>
           <span className="flex mt-4 justify-content-between align-items-center w-12rem lg:w-15rem lg:mt-0">
@@ -47,7 +47,7 @@ function CartItem({ sendDataToParent  }) {
                 <i className="pi pi-minus text-white" style={quantityStyles}></i>
               </button>
             </span>
-            <span>{price} $</span>
+            <span>{productData.productPrice} $</span>
             <i className="pi pi-trash cursor-pointer"></i>
           </span>
         </span>

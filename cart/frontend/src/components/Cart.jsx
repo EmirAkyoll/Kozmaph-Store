@@ -1,18 +1,15 @@
 import React, { useState, useEffect  } from "react";
-import CartTable from "./CartTable.jsx";
+// import CartTable from "./CartTable.tsx";
 import OrderSection from "./OrderSection.jsx";
 import CartItem from "./CartItem.jsx";
 import "primeflex/primeflex.css";
 
 const Cart = () => {
+  const [price, setPrice] = useState(0);
   const [isMobileScreen, setIsMobileScreen] = useState(true);
-  const [price, setPrice] = useState(true);
   const [cartTotal, setCartTotal] = useState(0);
-  const [cartItems, setCartItems] = useState([
-    { id: 1, name: 'Product 1', quantity: 2, price: 5 },
-    { id: 2, name: 'Product 2', quantity: 1, price: 3 },
-    { id: 3, name: 'Product 3', quantity: 3, price: 2 },
-  ]);
+  const [cartItems, setCartItems] = useState([]);
+  const [cart, setCart] = useState();
 
   const handleDataFromChild = (data) => {
     setPrice(data);
@@ -22,7 +19,7 @@ const Cart = () => {
   function calculateTotal() {
     let total = 0;
     for (let index = 0; index < cartItems.length; index++) {
-      total = total + (cartItems[index].price * cartItems[index].quantity);
+      total = total + (cartItems[index]?.price * cartItems[index]?.quantity);
       console.log("total: ", total);
     }
     setCartTotal(total)
@@ -30,8 +27,11 @@ const Cart = () => {
 
   useEffect(() => {
     calculateTotal()
-
-    if (isMobileScreen < 745) {
+    const user = localStorage.getItem('CurrentUserData');
+    const user_absolute = JSON.parse(user)
+    setCart(user_absolute.cart);
+    console.log("user: ", user_absolute.cart);
+    if (window.innerWidth < 745) {
         setIsMobileScreen(true);
     } else {
         setIsMobileScreen(false);
@@ -41,10 +41,12 @@ const Cart = () => {
   return (
     <div className="font-Ubuntu flex justify-content-between relative">
       <div className='mt-5'>
-      <CartItem sendDataToParent={handleDataFromChild} />
-      <CartItem sendDataToParent={handleDataFromChild} />
+      {cart?.map((product) => (
+        <CartItem productData={product} sendDataToParent={handleDataFromChild} />
+      ))}
+      {/* <CartItem sendDataToParent={handleDataFromChild} />
       <CartItem sendDataToParent={handleDataFromChild} />  
-      <CartItem sendDataToParent={handleDataFromChild} />
+      <CartItem sendDataToParent={handleDataFromChild} /> */}
     </div>  
       <OrderSection price={price} total={cartTotal} />  
     </div>

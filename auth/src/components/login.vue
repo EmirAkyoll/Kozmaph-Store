@@ -23,7 +23,7 @@ const getUser = async () => {
 
     const userData = await getDocs(getUserByUsernameAndEmailQuery);
     userData.forEach((doc) => {
-      // localStorage.setItem('CurrentUserData', JSON.stringify(doc.data()))
+      localStorage.setItem('CurrentUserData', JSON.stringify(doc.data()))
       console.log('user:', doc.data());
     });
 
