@@ -73,6 +73,8 @@ export class ProductOverviewComponent implements OnInit {
   }
 
   addToCart() {
+    const user: any = localStorage.getItem('CurrentUserData')
+    const user_absolute = JSON.parse(user)
     const cartItems: any = {
       productId: this.overviewData.product_id,
       productName: this.overviewData.product_name,
@@ -80,8 +82,6 @@ export class ProductOverviewComponent implements OnInit {
       productImage: this.overviewData.image_urls[0]
     }
     this.loading = true;
-    const user: any = localStorage.getItem('CurrentUserData')
-    const user_absolute = JSON.parse(user)
     user_absolute.cart.push(cartItems)
     console.log("user_absolute: ",user_absolute);
     this.toast.show("Product added to cart.", "success");

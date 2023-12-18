@@ -28,18 +28,20 @@ export class NavbarComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    const user: any = localStorage.getItem('CurrentUserData')
+    const user_absolute: any = JSON.parse(user);
+    this.numberOfProductsInCart = user_absolute.cart.length
+
     if (window.innerWidth < 750) {
         this.isMobileScreen = true
     } else {
         this.isMobileScreen = false
     }
     
-    // console.log("numberOfProductsInCart BEFORE: ", this.numberOfProductsInCart);
     this.store.numberOfProductsInTheCart$.subscribe(data => {
       this.numberOfProductsInCart = data;
     })
-    // console.log("numberOfProductsInCart AFTER: ", this.numberOfProductsInCart);
-    
+
   }
 
   ngOnChanges(changes: SimpleChanges) {

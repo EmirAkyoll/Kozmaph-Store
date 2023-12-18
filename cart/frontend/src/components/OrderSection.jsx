@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function OrderSection({ price, total }) {
+function OrderSection({ total }) {
   const [isMobileScreen, setIsMobileScreen] = useState(true);
 
   useEffect(() => {
