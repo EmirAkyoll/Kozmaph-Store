@@ -4,6 +4,7 @@
     <app-update-product 
         *ngIf="isUpdateProductModalOpen" 
         [product_data]="dataOfTheProductToBeUpdated"
+        (is_update_product_modal_visible)="isUpdateProductModalOpen = $event"
     ></app-update-product>
 
     <app-add-product></app-add-product>

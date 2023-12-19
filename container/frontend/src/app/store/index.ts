@@ -18,6 +18,4 @@ export class Store {
   decreaseCart(): void {
     this.numberOfProductsInTheCart.next(this.currentCount - 1);
   }
-  
-//   private sharedData = new BehaviorSubject<string>('Initial Data');
 }

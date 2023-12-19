@@ -3,7 +3,9 @@ import { createApp, defineAsyncComponent  } from "vue";
 import './main.css';
 
 import PrimeVue from 'primevue/config';
+
 import Card from 'primevue/card';
+import Steps from 'primevue/steps';
 import Toast from 'primevue/toast';
 import Button from 'primevue/button';
 import TabMenu from 'primevue/tabmenu';
@@ -19,6 +21,7 @@ const mount= (el) => {
     app.use(PrimeVue);
     app.component('Card', Card);
     app.component('Toast', Toast);
+    app.component('Steps', Steps);
     app.component('Button', Button);
     app.component('TabMenu', TabMenu);
     app.component('Password', Password);
@@ -32,4 +35,3 @@ if(fetch_el){
 }
 
 export {mount }
-

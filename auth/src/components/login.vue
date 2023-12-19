@@ -36,7 +36,7 @@ const getUser = async () => {
 
 <template>
   <div class="border-1 border-round-3xl border-gray-300 mt-5 font-Ubuntu">
-    <Card>
+    <Card class="w-17rem md:w-20rem">
       <template #title> Log In </template>
       <template #content>
         <div class="flex flex-column p-4">
@@ -62,7 +62,7 @@ const getUser = async () => {
           New user? 
           <a @click="toggleShowLogin()" class="no-underline text-primary">sign up.</a>
         </p>
-        <Button @click="getUser" label="Log In" severity="info" class="ml-4 mt-3 border-round-md" style="width:200px" />
+        <Button @click="getUser" label="Log In" severity="info" class="ml-4 mt-3 border-round-md w-12rem md:w-15rem" />
       </template>
     </Card>
   </div>

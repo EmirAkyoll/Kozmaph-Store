@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Comment, Feature, Product } from 'src/interfaces/product.interface';
 import { ProductService } from 'src/app/services/product.service';
 import { MediaService } from 'src/app/services/media.service';
@@ -15,6 +15,7 @@ export class UpdateProductComponent {
     private messageService: MessageService) {}
 
   @Input() product_data: any = {};
+  @Output() is_update_product_modal_visible = new EventEmitter(false);
   
   isUpdateProductModalVisible: boolean = false;
   mediaFiles: any[] = [];
@@ -30,7 +31,10 @@ export class UpdateProductComponent {
   features: Feature[] = [];
   feature_name: string = '';
   feature_value: string = '';
-  feature: Feature = { feature_name: this.feature_name, feature_value: this.feature_value };
+  feature: Feature = { 
+    feature_name: this.feature_name, 
+    feature_value: this.feature_value 
+  };
   responsiveOptions: any;
 
   showToast(message: string) {
@@ -58,7 +62,7 @@ export class UpdateProductComponent {
   }
 
   closeModal(): void {
-    this.isUpdateProductModalVisible = false;
+    this.is_update_product_modal_visible.emit(false);
   }
 
   async uploadMedia(): Promise<void> {

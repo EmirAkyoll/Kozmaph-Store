@@ -14,7 +14,7 @@ export class ProductsComponent implements OnInit {
               private confirmationService: ConfirmationService) {}
   isMobileScreen: boolean = true;
   products: Product[] = [];
-  isUpdateProductModalOpen: boolean = false;
+  isUpdateProductModalOpen: any = false;
   dataOfTheProductToBeUpdated: any = {};
   
   showToast(message: string) {
@@ -24,8 +24,8 @@ export class ProductsComponent implements OnInit {
   });
   }
   
-  closeModal(): void {
-    this.isUpdateProductModalOpen = false;
+  closeModal(value: boolean): void {
+    this.isUpdateProductModalOpen = value;
   }
   
   openUpdateModal(product_data: Product) {

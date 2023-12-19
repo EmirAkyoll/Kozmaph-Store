@@ -1,4 +1,7 @@
-<div style="top: -5px; margin-left: 10%; z-index: 11;" class="fixed h-full flex justify-content-center align-items-center z-5 font-Ubuntu">
+<div 
+    style="top: -5px; margin-left: 10%; z-index: 11;" 
+    class="fixed h-full flex justify-content-center align-items-center z-5 font-Ubuntu"
+>
     <div class="bg-white p-2 px-4 z-5 border-round-sm" style="width: 55vw; height: 600px;">
         <div class="flex justify-content-between">
             <p class="font-bold text-xl">Update Product</p>
@@ -8,6 +11,11 @@
                 styleClass="my-3 w-full p-button-success"
                 (click)="updateProduct(); showToast('Product is updated'); closeModal()"
             ></p-button>
+            <!-- <p-button 
+                (click)="closeModal()"
+                icon="pi pi-times" 
+                styleClass="p-button-rounded p-button-secondary p-button-text"
+            ></p-button> -->
         </div>
 
         <p-divider></p-divider>
