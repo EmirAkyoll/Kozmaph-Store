@@ -10,7 +10,6 @@ const Cart = () => {
   const [cart, setCart] = useState();
 
   const handleUnitPrice = (unit_price, which_transaction) => {
-    console.log("CART: ", cart);
     if (which_transaction === "increase") {
       setCartTotal(cartTotal + unit_price)
       console.log("increase", cartTotal);
@@ -18,6 +17,20 @@ const Cart = () => {
       setCartTotal(cartTotal - unit_price)
       console.log("decrease", cartTotal);
     }
+  }; 
+
+  const removeProduct = (id_data) => {
+    const user = localStorage.getItem('CurrentUserData')
+    const user_absolute = JSON.parse(user)
+    let products = [];
+    cart.forEach(product => {
+      products.push(product)
+    });
+    products = products.filter(product => product.productId !== id_data)
+    user_absolute.cart.splice(0, user_absolute.cart.length);
+    user_absolute.cart = products;
+    localStorage.setItem('CurrentUserData', JSON.stringify(user_absolute))
+    setCart(products)
   };
 
   function calculateTotal(cart_data) {
@@ -52,6 +65,7 @@ const Cart = () => {
             key={index} 
             productData={product} 
             sendToParentUnitPrice={handleUnitPrice} 
+            removeProduct={removeProduct}
           />
         ))}
       </div>  

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function CartItem({ sendToParentUnitPrice, productData }) {
+function CartItem({ sendToParentUnitPrice, productData, removeProduct }) {
   const [price, setPrice] = useState(productData.productPrice);
   const [quantity, setQuantity] = useState(1);
   const [unitPrice, setUnitPrice] = useState(productData.productPrice / productData.productQuantity);
@@ -17,6 +17,10 @@ function CartItem({ sendToParentUnitPrice, productData }) {
       setPrice(productData.productPrice - unitPrice);
       sendToParentUnitPrice(unitPrice, "decrease", productData.productId);
     }
+  };
+
+  const removeProductFromCart = () => {
+    removeProduct(productData.productId);
   };
 
   return (
@@ -45,7 +49,7 @@ function CartItem({ sendToParentUnitPrice, productData }) {
               </button>
             </span>
             <span>{productData.productPrice * productData.productQuantity} $</span>
-            <i className="pi pi-trash cursor-pointer"></i>
+            <i onClick={removeProductFromCart} className="pi pi-trash cursor-pointer"></i>
           </span>
         </span>
       </div>
