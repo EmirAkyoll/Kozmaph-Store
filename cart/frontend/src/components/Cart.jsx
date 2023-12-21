@@ -10,6 +10,7 @@ const Cart = () => {
   const [cart, setCart] = useState();
 
   const handleUnitPrice = (unit_price, which_transaction) => {
+    console.log("CART: ", cart);
     if (which_transaction === "increase") {
       setCartTotal(cartTotal + unit_price)
       console.log("increase", cartTotal);
@@ -43,10 +44,6 @@ const Cart = () => {
     }
   }, []);
 
-  // useEffect(() => {
-    
-  // }, [cartTotal]);
-
   return (
     <div className="font-Ubuntu flex justify-content-between relative">
       <div className='mt-5'>
@@ -59,7 +56,7 @@ const Cart = () => {
         ))}
       </div>  
       
-      <OrderSection price={price} total={cartTotal} />  
+      <OrderSection cart={cart} price={price} total={cartTotal} />  
     </div>
   );
 };

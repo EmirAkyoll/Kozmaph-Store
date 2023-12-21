@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 
 function CartItem({ sendToParentUnitPrice, productData }) {
-  const [price, setPrice] = useState(2.75);
+  const [price, setPrice] = useState(productData.productPrice);
   const [quantity, setQuantity] = useState(1);
-  const [unitPrice, setUnitPrice] = useState(productData.productPrice / quantity);
+  const [unitPrice, setUnitPrice] = useState(productData.productPrice / productData.productQuantity);
 
   const increaseQuantity = () => {
-    setQuantity(quantity + 1);
+    productData.productQuantity = productData.productQuantity + 1;
     setPrice(productData.productPrice + unitPrice);
-    sendToParentUnitPrice(unitPrice, "increase");
+    sendToParentUnitPrice(unitPrice, "increase", productData.productId);
   };
 
   const decreaseQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
+    if (productData.productQuantity > 1) {
+      productData.productQuantity = productData.productQuantity - 1;
       setPrice(productData.productPrice - unitPrice);
-      sendToParentUnitPrice(unitPrice, "decrease");
+      sendToParentUnitPrice(unitPrice, "decrease", productData.productId);
     }
   };
 
@@ -39,12 +39,12 @@ function CartItem({ sendToParentUnitPrice, productData }) {
               <button onClick={increaseQuantity} className="w-1rem h-1rem flex justify-content-center align-items-center surface-800 border-none border-round-sm cursor-pointer">
                 <i className="pi pi-plus text-white" style={{fontSize: '10px'}}></i>
               </button>
-                <span className="mx-2 text-xl xl:text-2xl">{quantity}</span>
+                <span className="mx-2 text-xl xl:text-2xl">{productData.productQuantity}</span>
               <button onClick={decreaseQuantity} className="w-1rem h-1rem flex justify-content-center align-items-center surface-800 border-none border-round-sm cursor-pointer">
                 <i className="pi pi-minus text-white" style={{fontSize: '10px'}}></i>
               </button>
             </span>
-            <span>{productData.productPrice * quantity} $</span>
+            <span>{productData.productPrice * productData.productQuantity} $</span>
             <i className="pi pi-trash cursor-pointer"></i>
           </span>
         </span>

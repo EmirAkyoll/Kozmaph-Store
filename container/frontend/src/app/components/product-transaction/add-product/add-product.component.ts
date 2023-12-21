@@ -125,6 +125,7 @@ export class AddProductComponent {
       price: price,
       image_urls: this.image_urls,
       seller: sellerName,
+      quantity: 0,
       advantages: advantages,
       summary: allSummaries,
       description: allDescriptions,

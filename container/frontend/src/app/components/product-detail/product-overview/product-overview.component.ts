@@ -79,7 +79,8 @@ export class ProductOverviewComponent implements OnInit {
       productId: this.overviewData.product_id,
       productName: this.overviewData.product_name,
       productPrice: this.overviewData.price,
-      productImage: this.overviewData.image_urls[0]
+      productImage: this.overviewData.image_urls[0],
+      productQuantity: 1
     }
     this.loading = true;
     user_absolute.cart.push(cartItems)

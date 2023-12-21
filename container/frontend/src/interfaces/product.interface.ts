@@ -19,6 +19,7 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
+  quantity: number;
   advantages?: string[];
   summary: string[];
   description: string[];
@@ -43,6 +44,7 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
+  quantity: number;
   advantages?: string[];
   summary: string[];
   description: string[];
@@ -54,6 +56,7 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
+  quantity: number;
   advantages?: string[];
   summary: string[];
   description: string[];
@@ -65,6 +68,7 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
+  quantity: number;
   advantages?: string[];
   summary: string[];
   description: string[];
@@ -76,6 +80,7 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
+  quantity: number;
   advantages?: string[];
   summary: string[];
   description: string[];
@@ -87,6 +92,7 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
+  quantity: number;
   advantages?: string[];
   summary: string[];
   description: string[];
@@ -98,6 +104,7 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
+  quantity: number;
   advantages?: string[];
   summary: string[];
   description: string[];
@@ -109,6 +116,7 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
+  quantity: number;
   advantages?: string[];
   summary: string[];
   description: string[];
@@ -120,6 +128,7 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
+  quantity: number;
   advantages?: string[];
   summary: string[];
   description: string[];
@@ -131,6 +140,31 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
+  quantity: number;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  comments?: Comment[];
+}export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  quantity: number;
+  advantages?: string[];
+  summary: string[];
+  description: string[];
+  features: Feature[];
+  comments?: Comment[];
+}export interface Product {
+  _id: string;
+  name: string;
+  image_urls: string[];
+  price: number;
+  seller: string;
+  quantity: number;
   advantages?: string[];
   summary: string[];
   description: string[];

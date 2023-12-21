@@ -10,6 +10,7 @@ const ProductSchema = mongoose.Schema(
   advantages: { type: [String] },
   summary: { type: [String], require: true },
   description: { type: [String], require: true },
+  quantity: { type: Number, require: true },
   features: [{
     feature_name: { type: String, required: true },
     feature_value: { type: String, required: true },

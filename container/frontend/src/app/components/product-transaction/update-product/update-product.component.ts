@@ -110,6 +110,7 @@ export class UpdateProductComponent {
       name: this.productName,
       price: this.price,
       seller: this.product_data.seller,
+      quantity: 0,
       description: this.descriptions,
       image_urls: this.image_urls,
       advantages: this.advantages,
