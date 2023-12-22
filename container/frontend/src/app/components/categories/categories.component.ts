@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Category } from 'src/interfaces/category.interface';
 import { CategoryService } from '../../services/category.service';
+import { Store } from 'src/app/store';
 
 @Component({
   selector: 'app-categories',
@@ -9,7 +10,7 @@ import { CategoryService } from '../../services/category.service';
 })
 
 export class CategoriesComponent implements OnInit {
-  constructor(private categoryService: CategoryService) {}
+  constructor(private store: Store, private categoryService: CategoryService) {}
 
   isMobileScreen: boolean = true;
   exceptionClasses: string[] = ['category-item'];
@@ -27,7 +28,11 @@ export class CategoriesComponent implements OnInit {
 
     this.categoryService.getAll().subscribe(allCategories => {      
       this.categories = allCategories;
+      console.log("categories: ", this.categories);
+
+      this.store.saveCategories(this.categories)
     })
+    
   }
 
   showSubs(event: any): void {

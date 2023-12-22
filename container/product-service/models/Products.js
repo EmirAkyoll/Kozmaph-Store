@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+  
 const ProductSchema = mongoose.Schema(
 { 
   _id: { type: String, require: true },
@@ -7,7 +7,8 @@ const ProductSchema = mongoose.Schema(
   image_urls: { type: [String], require: true },
   price: { type: Number, require: true },
   seller: { type: String, require: true },
-  advantages: { type: [String] },
+  categories: { type: [String], require: true },
+  advantages: { type: [String], require: true },
   summary: { type: [String], require: true },
   description: { type: [String], require: true },
   quantity: { type: Number, require: true },

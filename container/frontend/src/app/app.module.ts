@@ -25,6 +25,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { TagModule } from 'primeng/tag';
 import { BadgeModule } from 'primeng/badge';
 import { ToastModule } from 'primeng/toast';
+import { StepsModule } from 'primeng/steps';
 import { RatingModule } from 'primeng/rating';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
@@ -36,6 +37,7 @@ import { MessagesModule } from 'primeng/messages';
 import { AccordionModule } from 'primeng/accordion';
 import { FileUploadModule } from 'primeng/fileupload';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { MultiSelectModule } from 'primeng/multiselect';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfigureDecimalPlacesPipe } from './pipes/configure-decimal.pipe';
 
@@ -67,7 +69,7 @@ import { ConfigureDecimalPlacesPipe } from './pipes/configure-decimal.pipe';
     ButtonModule, DividerModule, TagModule, ToastModule,
     AccordionModule, RatingModule, DataViewModule,
     CheckboxModule, FileUploadModule, InputNumberModule,
-    ConfirmDialogModule,
+    ConfirmDialogModule, MultiSelectModule, StepsModule,
   ],
   providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent]

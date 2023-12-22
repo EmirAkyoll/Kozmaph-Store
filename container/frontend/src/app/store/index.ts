@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Category } from 'src/interfaces/category.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -18,4 +19,15 @@ export class Store {
   decreaseCart(): void {
     this.numberOfProductsInTheCart.next(this.currentCount - 1);
   }
+
+  // private categories = this.user_absolute.cart.length;
+  private categories = new BehaviorSubject<Category[]>([]);
+  categories$ = this.categories.asObservable();
+  saveCategories(categories_data: Category[]): void {
+    this.categories.next(categories_data);
+  }
+  // getCategories(): void {
+  //   console.log("currentCount: ", this.currentCount);
+  //   this.numberOfProductsInTheCart.next(this.currentCount + 1);
+  // }
 }

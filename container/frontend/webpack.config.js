@@ -25,16 +25,6 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-        // library: { type: "module" },
-
-        // For remotes (please adjust)
-        // name: "containerAngular",
-        // filename: "remoteEntry.js",
-        // exposes: {
-        //     './Component': './/src/app/app.component.ts',
-        // },        
-        
-        // For hosts (please adjust)
         remotes: {
           "authMicro": "authMicro@http://localhost:8081/remoteEntry.js",
           "cartMicro": "cartMicro@http://localhost:8082/remoteEntry.js"
