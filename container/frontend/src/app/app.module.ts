@@ -38,6 +38,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { FileUploadModule } from 'primeng/fileupload';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfigureDecimalPlacesPipe } from './pipes/configure-decimal.pipe';
 
@@ -70,6 +71,7 @@ import { ConfigureDecimalPlacesPipe } from './pipes/configure-decimal.pipe';
     AccordionModule, RatingModule, DataViewModule,
     CheckboxModule, FileUploadModule, InputNumberModule,
     ConfirmDialogModule, MultiSelectModule, StepsModule,
+    ConfirmPopupModule, 
   ],
   providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent]

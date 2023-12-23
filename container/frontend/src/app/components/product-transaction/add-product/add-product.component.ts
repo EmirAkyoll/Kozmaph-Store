@@ -124,7 +124,7 @@ export class AddProductComponent {
       { label: 'General'},
       { label: 'Summaries & Descriptions'},
       { label: 'Features & Categories'},
-  ];
+    ];
 
     this.responsiveOptions = [
       {

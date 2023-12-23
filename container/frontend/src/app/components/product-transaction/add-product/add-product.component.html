@@ -6,14 +6,14 @@
     style="position: sticky; top: 70px; z-index: 1;"
 ></p-button>
 
-<div *ngIf="isAddProductModalVisible" style="top: -15px; margin-left: 12%; width: 630px;" class="fixed h-full flex justify-content-center align-items-center z-5 font-Ubuntu">
+<div *ngIf="isAddProductModalVisible" style="top: -15px; margin-left: 18%; width: 630px;" class="fixed h-full flex justify-content-center align-items-center z-5 font-Ubuntu">
     <div class="bg-white p-2 px-4 z-5 border-round-sm" style="width: 55vw; height: 600px;">
         <div class="flex justify-content-between">
             <p class="font-bold text-xl">Product Data</p>
             <p-button 
-            label="+ Add" 
-            styleClass="my-3 w-full p-button-info"
-            (click)="addNewProduct(productName, price, 'SELLER NICOLE', selectedAdvantages, summaries, descriptions, features, selectedCategories, [])"
+                label="+ Add" 
+                styleClass="my-3 w-full p-button-info"
+                (click)="addNewProduct(productName, price, 'SELLER NICOLE', selectedAdvantages, summaries, descriptions, features, selectedCategories, [])"
             ></p-button>
         </div>
         <p-divider></p-divider>

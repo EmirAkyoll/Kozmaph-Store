@@ -1,7 +1,4 @@
-<div 
-    style="top: -5px; margin-left: 10%; z-index: 11;" 
-    class="fixed h-full flex justify-content-center align-items-center z-5 font-Ubuntu"
->
+<div style="top: -15px; margin-left: 18%; width: 630px; z-index: 11;" class="fixed h-full flex justify-content-center align-items-center z-5 font-Ubuntu">
     <div class="bg-white p-2 px-4 z-5 border-round-sm" style="width: 55vw; height: 600px;">
         <div class="flex justify-content-between">
             <p class="font-bold text-xl">Update Product</p>
@@ -11,16 +8,11 @@
                 styleClass="my-3 w-full p-button-success"
                 (click)="updateProduct(); showToast('Product is updated'); closeModal()"
             ></p-button>
-            <!-- <p-button 
-                (click)="closeModal()"
-                icon="pi pi-times" 
-                styleClass="p-button-rounded p-button-secondary p-button-text"
-            ></p-button> -->
         </div>
 
         <p-divider></p-divider>
-
-        <div class="flex justify-content-center">
+        <p-steps styleClass="mb-6" [model]="stepItems" [readonly]="true" [activeIndex]="activeIndex"></p-steps>
+        <div *ngIf="activeIndex === 0" class="flex justify-content-center">
         <div class="ml-6s mt-5s">
             <div class="flex flex-column gap-2">
                 <label htmlFor="product_name" class="text-sm">Product Name</label>
@@ -49,138 +41,158 @@
                 <span class="ml-3">Upload Product Images</span>
             </label>
             <input id="file-upload" (change)="onFileSelected($event)" type="file" class="p-2 border-round-md w-full" multiple/>
+            <p-button (click)="nextStep()" styleClass="mt-4" label="Summaries & Descriptions" icon="pi pi-chevron-right" iconPos="right"></p-button>
         </div>
         </div>
-        <p-divider></p-divider>
-        <br>
         <div class="flex justify-content-between">
+            <div *ngIf="activeIndex === 1" class="flex">
+                <div class="flex flex-column mr-5 ml-1">
+                <label htmlFor="summary" class="text-sm mb-2 text-left">Summaries</label>
+                <span class="">
+                    <input 
+                        class="p-2 w-14rem" 
+                        #summaryInput 
+                        pInputText 
+                        id="summary" 
+                        placeholder="Enter a summary.."
+                        aria-describedby="summary-help"
+                        (keyup.enter)="addContent('summaries', summaryInput.value); summaryInput.value = ''" 
+                    />
+                    <button 
+                        (click)="addContent('summaries', summaryInput.value); summaryInput.value = ''" 
+                        pButton 
+                        pRipple
+                        icon="pi pi-plus" 
+                        class="p-button-success ml-2" 
+                        style="height: 35px;"
+                    ></button>
+                </span>
+                <ul class="max-h-4rem overflow-x-hidden overflow-scroll" style="margin-left: -20px;">
+                    <li *ngFor="let summary of summaries; let summary_index = index" class="mb-0">
+                        <div class="flex justify-content-center align-items-center">
+                            <p class="overflow-hidden text-overflow-ellipsis max-w-7rem mt-0">{{ summary }}</p>
+                            <button 
+                                (click)="removeContent('summaries', summary_index)" 
+                                pButton 
+                                pRipple 
+                                icon="pi pi-times"
+                                class="p-button-danger text-sm" 
+                                style="width: 15px; height: 15px; margin-bottom: 15px;"
+                            ></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
             <div class="flex flex-column">
-            <label htmlFor="summary" class="text-sm mb-2">Summaries</label>
-            <span class="">
-                <input 
-                    class="p-2" 
-                    #summaryInput 
-                    pInputText 
-                    id="summary" 
-                    placeholder="Enter a summary.."
-                    aria-describedby="summary-help"
-                    (keyup.enter)="addContent('summaries', summaryInput.value); summaryInput.value = ''" 
-                />
-                <button 
-                    (click)="addContent('summaries', summaryInput.value); summaryInput.value = ''" 
-                    pButton 
-                    pRipple
-                    icon="pi pi-check" 
-                    class="p-button-success ml-2" 
-                    style="height: 35px;"
-                ></button>
-            </span>
-            <ul class="max-h-4rem overflow-x-hidden overflow-scroll" style="margin-left: -20px;">
-                <li *ngFor="let summary of summaries; let summary_index = index" class="mb-0">
-                    <div class="flex justify-content-center align-items-center">
-                        <p class="overflow-hidden text-overflow-ellipsis max-w-7rem mt-0">{{ summary }}</p>
+                <label htmlFor="description" class="text-sm mb-2 text-left">Descriptions</label>
+                <span class="">
+                    <input 
+                        class="p-2 w-14rem" 
+                        #descriptionInput 
+                        pInputText 
+                        id="description" 
+                        placeholder="Enter a description.."
+                        aria-describedby="description-help"
+                        (keyup.enter)="addContent('descriptions', descriptionInput.value); descriptionInput.value = ''" 
+                    />
+                    <button 
+                        (click)="addContent('descriptions', descriptionInput.value); descriptionInput.value = ''" 
+                        pButton 
+                        pRipple
+                        icon="pi pi-plus" 
+                        class="p-button-success ml-2" 
+                        style="height: 35px;"
+                    ></button>
+                </span>
+                <ul class="max-h-4rem overflow-x-hidden overflow-scroll" style="margin-left: -20px;">
+                    <li *ngFor="let description of descriptions; let description_index = index" class="">
+                        <div class=" flex justify-content-center align-items-center">
+                            <p class="overflow-hidden text-overflow-ellipsis max-w-7rem mt-0">{{ description }}</p>
+                            <button 
+                                (click)="removeContent('descriptions', description_index)" 
+                                pButton 
+                                pRipple 
+                                icon="pi pi-times"
+                                class="p-button-danger text-sm" 
+                                style="width: 15px; height: 15px;  margin-bottom: 15px;"
+                            ></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex absolute w-full" style="bottom: 95px; left: 122px;">
+                <p-button (click)="prevStep()" styleClass="mt-4 mr-5" label="General" icon="pi pi-chevron-left" iconPos="left"></p-button>
+                <p-button (click)="nextStep()" styleClass="mt-4 w-15rem" label="Features & Categories" icon="pi pi-chevron-right" iconPos="right"></p-button>
+            </div>
+            </div>
+            <div *ngIf="activeIndex === 2">
+                <div class="flex flex-column">
+                    <label htmlFor="feature" class="text-sm mb-2 text-left ml-2">Features</label>
+                    <span class="flex">
+                       <span class="flex">
+                         <input 
+                            class="p-2 mx-2 w-16rem" 
+                            #featureNameInput 
+                            pInputText 
+                            id="feature-name" 
+                            aria-describedby="feature-name-help"
+                            placeholder="example: Color"
+                            (keyup)="enterFeatureField($event, 'feature_name')"
+                        />
+                        <input 
+                            class="p-2 w-16rem" 
+                            #featureValueInput 
+                            pInputText 
+                            id="feature-value" 
+                            aria-describedby="feature-value-help"
+                            placeholder="example: Brown"
+                            (keyup)="enterFeatureField($event, 'feature_value')"
+                        />
+                       </span>
                         <button 
-                            (click)="removeContent('summaries', summary_index)" 
+                            (click)="addContent('features', feature); featureNameInput.value = ''" 
                             pButton 
-                            pRipple 
-                            icon="pi pi-times"
-                            class="p-button-danger text-sm" 
-                            style="width: 15px; height: 15px; margin-bottom: 15px;"
+                            pRipple
+                            icon="pi pi-plus" 
+                            class="p-button-success ml-2" 
+                            style="height: 35px;"   
                         ></button>
+                    </span>
+                    <ul class="max-h-4rem overflow-x-hidden overflow-scroll" style="margin-left: -20px;">
+                        <li *ngFor="let feature of features; let feature_index = index" class="">
+                            <div class=" flex justify-content-center align-items-center">
+                                <p class="overflow-hidden text-overflow-ellipsis max-w-24rem mt-0">{{ feature.feature_name }}: {{ feature.feature_value }}</p>
+                                <button 
+                                    (click)="removeContent('features', feature_index)" 
+                                    pButton 
+                                    pRipple 
+                                    icon="pi pi-times"
+                                    class="p-button-danger text-sm ml-2" 
+                                    style="width: 15px; height: 15px;  margin-bottom: 15px;"
+                                ></button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="absolute" style="bottom: 95px;">
+                    <p-multiSelect 
+                        styleClass="w-30rem border-2 border-gray-400" 
+                        [options]="groupedCategories" 
+                        [group]="true" 
+                        [(ngModel)]="selectedCategories" 
+                        defaultLabel="Select Categories" 
+                        scrollHeight="250px" 
+                        display="chip"
+                    >
+                        <ng-template let-group pTemplate="group">
+                            <div class="flex align-items-center">
+                                <span>{{ group.label }}</span>
+                            </div>
+                        </ng-template>
+                    </p-multiSelect>
+                    <p-button (click)="prevStep()" styleClass="mt-4 mr-5" label="Summaries & Descriptions" icon="pi pi-chevron-left" iconPos="left"></p-button>
                     </div>
-                </li>
-            </ul>
-        </div>
-        <div class="flex flex-column">
-            <label htmlFor="description" class="text-sm mb-2">Descriptions</label>
-            <span class="">
-                <input 
-                    class="p-2" 
-                    #descriptionInput 
-                    pInputText 
-                    id="description" 
-                    placeholder="Enter a description.."
-                    aria-describedby="description-help"
-                    (keyup.enter)="addContent('descriptions', descriptionInput.value); descriptionInput.value = ''" 
-                />
-                <button 
-                    (click)="addContent('descriptions', descriptionInput.value); descriptionInput.value = ''" 
-                    pButton 
-                    pRipple
-                    icon="pi pi-check" 
-                    class="p-button-success ml-2" 
-                    style="height: 35px;"
-                ></button>
-            </span>
-            <ul class="max-h-4rem overflow-x-hidden overflow-scroll" style="margin-left: -20px;">
-                <li *ngFor="let description of descriptions; let description_index = index" class="">
-                    <div class=" flex justify-content-center align-items-center">
-                        <p class="overflow-hidden text-overflow-ellipsis max-w-7rem mt-0">{{ description }}</p>
-                        <button 
-                            (click)="removeContent('descriptions', description_index)" 
-                            pButton 
-                            pRipple 
-                            icon="pi pi-times"
-                            class="p-button-danger text-sm" 
-                            style="width: 15px; height: 15px;  margin-bottom: 15px;"
-                        ></button>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="flex flex-column">
-            <label htmlFor="feature" class="text-sm mb-2">Features</label>
-            <span class="flex">
-               <span class="flex flex-column">
-                 <input 
-                    class="p-2" 
-                    #featureNameInput 
-                    pInputText 
-                    id="feature-name" 
-                    aria-describedby="feature-name-help"
-                    placeholder="Feature Name"
-                    (mouseover)="showFeatureValueInput()"
-                    (blur)="hideFeatureValueInput()"
-                    (keyup)="enterFeatureField($event, 'feature_name')"
-                />
-                <input 
-                    *ngIf="isFeatureValueInputShouldBeVisible"
-                    (hover)="showFeatureValueInput()"
-                    (mouseover)="showFeatureValueInput()"
-                    class="p-2" 
-                    #featureValueInput 
-                    pInputText 
-                    id="feature-value" 
-                    aria-describedby="feature-value-help"
-                    placeholder="Feature Value"
-                    (keyup)="enterFeatureField($event, 'feature_value')"
-                />
-               </span>
-                <button 
-                    (click)="addContent('features', feature); featureNameInput.value = ''" 
-                    pButton 
-                    pRipple
-                    icon="pi pi-check" 
-                    class="p-button-success ml-2" 
-                    style="height: 35px;"   
-                ></button>
-            </span>
-            <ul class="max-h-4rem overflow-x-hidden overflow-scroll" style="margin-left: -20px;">
-                <li *ngFor="let feature of features; let feature_index = index" class="">
-                    <div class=" flex justify-content-center align-items-center">
-                        <p class="overflow-hidden text-overflow-ellipsis max-w-7rem mt-0">{{ feature.feature_name }}: {{ feature.feature_value }}</p>
-                        <button 
-                            (click)="removeContent('features', feature_index)" 
-                            pButton 
-                            pRipple 
-                            icon="pi pi-times"
-                            class="p-button-danger text-sm ml-2" 
-                            style="width: 15px; height: 15px;  margin-bottom: 15px;"
-                        ></button>
-                    </div>
-                </li>
-            </ul>
-        </div>
+            </div>
        </div>
     </div>
     <div class="fixed top-0 left-0 w-full h-full z-4" style="background-color: #00000080;" (click)="closeModal()">
