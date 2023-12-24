@@ -15,6 +15,7 @@ function OrderSection({ total, cart }) {
   const makePayment = async () => {
     const stripe = await loadStripe("pk_test_51O43ZgBj3594sT8O2eK39AXj8ZEfq93Di8B6R0Md7we8ceR3At0TPvmAWVprz7BoLu6ti9t36ETyE8Tr6lKM3LSw00aQiGmtGo");
 
+    //* shipping cost is going to configure
     cart.push({
       productId: "shipping_cost_1234",
       productImage: "https://res.cloudinary.com/dcuexe6p4/image/upload/v1703169127/hz24dwfwdpmiqzwrgfv9.jpg",

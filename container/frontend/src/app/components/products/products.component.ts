@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/interfaces/product.interface';
 import { ConfirmationService, MessageService, ConfirmEventType } from 'primeng/api';
+import { Toast } from 'src/classes/toast.class';
 
 @Component({
   selector: 'app-products',
@@ -9,14 +10,15 @@ import { ConfirmationService, MessageService, ConfirmEventType } from 'primeng/a
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  constructor(private productService: ProductService, 
+  constructor(private toast: Toast,
+              private productService: ProductService, 
               private messageService: MessageService,
               private confirmationService: ConfirmationService) {}
   isMobileScreen: boolean = true;
   products: Product[] = [];
   isUpdateProductModalOpen: any = false;
   dataOfTheProductToBeUpdated: any = {};
-  
+
   showToast(message: string) {
     this.messageService.add({
     severity: 'success',
@@ -24,6 +26,43 @@ export class ProductsComponent implements OnInit {
   });
   }
   
+  addToFavorites(product_data: Product, event: Event) {
+    event.stopPropagation();
+    if (!this.markChecking(product_data._id)) {
+      const user: any = localStorage.getItem('CurrentUserData')
+      const user_absolute = JSON.parse(user)
+      const favorite: any = {
+        productId: product_data._id,
+        productName: product_data.name,
+        productPrice: product_data.price,
+        productImage: product_data.image_urls[0],
+      }
+      user_absolute?.favorites.push(favorite)
+      console.log("user_absolute: ",user_absolute);
+      this.toast.show("Product added to favorites.", "success");
+      localStorage.setItem('CurrentUserData', JSON.stringify(user_absolute))
+    } else {
+      this.markChecking(product_data._id, false)
+    }
+    console.log("product_data: ", product_data);
+  }
+
+  markChecking(product_id: string, direct_value?: boolean): boolean{
+    const favoriteProductIds: string[] = [];
+    const user: any = localStorage.getItem('CurrentUserData');
+    const user_absolute = JSON.parse(user);
+    for (let index = 0; index < user_absolute?.favorites.length; index++) {
+      const favorite_product_id = user_absolute?.favorites[index].productId;
+      favoriteProductIds.push(favorite_product_id);
+    }
+    // console.log("favoriteProductIds: ", favoriteProductIds);
+    if (direct_value) {
+      return direct_value;
+    } else {
+      return favoriteProductIds.includes(product_id)
+    }
+  }
+
   closeModal(value: boolean): void {
     this.isUpdateProductModalOpen = value;
   }
@@ -47,8 +86,8 @@ export class ProductsComponent implements OnInit {
       }
       );
       
-      this.products = this.products.filter(product => product._id !== product_id);
-    }
+    this.products = this.products.filter(product => product._id !== product_id);
+  }
 
     productDeletionConfirm(product_id: string) {
       this.confirmationService.confirm({

@@ -9,7 +9,7 @@ export class Store {
     // The state where the number of products in the cart is kept.
   private user: any = localStorage.getItem('CurrentUserData')
   private user_absolute: any = JSON.parse(this.user);
-  private currentCount = this.user_absolute.cart.length;
+  private currentCount = this.user_absolute?.cart.length;
   private numberOfProductsInTheCart = new BehaviorSubject<number>(this.currentCount);
   numberOfProductsInTheCart$ = this.numberOfProductsInTheCart.asObservable();
   increaseCart(): void {

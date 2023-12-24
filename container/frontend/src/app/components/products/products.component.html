@@ -1,56 +1,33 @@
 <app-categories></app-categories>
 
 <div class="container products font-Ubuntu">
-    <app-update-product 
-        *ngIf="isUpdateProductModalOpen" 
-        [product_data]="dataOfTheProductToBeUpdated"
-        (is_update_product_modal_visible)="isUpdateProductModalOpen = $event"
-    ></app-update-product>
-
-    <app-add-product></app-add-product>
-    
     <p-toast></p-toast>
-    <!-- 1185px - 675px -->
+
     <!-- <img 
-        src="https://res.cloudinary.com/dcuexe6p4/image/upload/v1700250021/kpinsegwfofnzmv1sok6.jpg" 
-        alt="banner"
-        class="w-full border-round-lg"
+      src="https://res.cloudinary.com/dcuexe6p4/image/upload/v1700250021/kpinsegwfofnzmv1sok6.jpg" 
+      alt="banner"
+      class="w-full border-round-lg"
     /> -->
+   
     <div class="grid gap-3 mt-5">
-        <div class="col flex justify-content-center relative" *ngFor="let product of products; let i = index">
-            <span class="absolute" style="top: -2px;">
-                <p-button (click)="openUpdateModal(product)" icon="pi pi-refresh" styleClass="p-button-success mr-2 border-1 border-white-alpha-90"></p-button>
-                <!-- <p-button title="Delete Product" (click)="deleteProduct(product._id)" icon="pi pi-times" styleClass="p-button-danger border-1 border-white-alpha-90"></p-button> -->
-                <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
-                <p-button (click)="productDeletionConfirm(product._id)" icon="pi pi-times" title="Delete Product" styleClass="p-button-danger  border-1 border-white-alpha-90"></p-button>
-            </span>
-            <div [routerLink]="['/product-detail', product._id]" class="pt-0 flex flex-column justify-content-center align-items-center bg-white border-round-lg border-1 border-400 cursor-pointer hover:shadow-3 transition-all transition-duration-150 transition-linear" >
+        <div class="col flex justify-content-center" *ngFor="let product of products; let i = index">
+            <div [routerLink]="['/product-detail', product._id]" class="product-image relative my-2 flex flex-column justify-content-centers align-items-center bg-white border-round-lg border-1 border-400 cursor-pointer hover:shadow-3 transition-all transition-duration-150 transition-linear" >
+                <p-button 
+                   (click)="addToFavorites(product, $event);"
+                   [icon]="markChecking(product._id) ? 'pi pi-bookmark-fill' : 'pi pi-bookmark'"
+                   styleClass="p-button-secondary absolute right-0 bg-white text-900 border-gray-500 outline-none"
+                ></p-button>
+                
                 <img 
-                    [src]="product.image_urls[0]" 
-                    class="card-image border-round-lg border-noround-bottom mt-0 pt-0"
-                    alt={{product.name}}
+                   src={{product.image_urls[0]}}
+                   class="card-image border-round-lg border-noround-bottom"
+                   alt={{product.name}}
                 />
-                    
-                <div class="card-content text-sm md:text-base text-justify pl-3s pb-3">                    
-                    <p class="mt-3 overflow-hidden text-overflow-ellipsis max-h-2rems" style="max-height: 40px;">{{product.name}}</p>
-                    <p>{{product.price}}$</p>
-                </div>
+    
+                <p class="card-content text-sm mb-0 md:text-base text-justify max-w-13rem">{{product.name}}</p>
+                <p class="text-xs opacity-60 mt-1" style="margin-left: -60px;">lorem ipsum hakka yapsed.</p>
+                <p class="card-content text-sm md:text-base text-justify">${{product.price}}</p>
             </div>
         </div>
     </div>
-    <!-- <div class="grid gap-3 mt-5">
-        <div class="col flex justify-content-center" *ngFor="let _ of [].constructor(11); let i = index">
-            <div [routerLink]="['/product-detail']" class="product-image flex flex-column justify-content-center align-items-center bg-white border-round-lg border-1 border-400 cursor-pointer hover:shadow-3 transition-all transition-duration-150 transition-linear" >
-                <img 
-                    src="https://cdn.dsmcdn.com/ty986/product/media/images/20230815/0/403261825/480842529/2/2_org_zoom.jpg" 
-                    class="card-image border-round-lg border-noround-bottom"
-                    alt="product-image"
-                />
-    
-                <p class="card-content text-sm md:text-base text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur.
-                </p>
-            </div>
-        </div>
-    </div> -->
 </div>

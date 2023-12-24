@@ -54,10 +54,14 @@
                     Account
                     <i class="pi pi-user ml-1"></i>
                 </a>
-                <div *ngIf="showUserOptions" class="absolute z-5 text-xs bg-white p-2 border-1 mt-2 border-round-md border-gray-600 w-7rem text-start" style="top: 75px;">
-                    <a [routerLink]="['/auth']" class="cursor-pointer"><i class="pi pi-inbox ml-1 mr-1"></i> Orders</a>
+                <div *ngIf="showUserOptions" class="absolute z-5 text-xs bg-white p-2 border-1 mt-2 border-round-md border-gray-600 w-8rem text-start" style="top: 75px;">
+                    <a [routerLink]="['/auth']" class="cursor-pointer no-underline flex align-items-center"><i class="pi pi-inbox ml-1 mr-2"></i> <span>Orders</span></a>
                     <p-divider [style]="{'margin-top': '10px', 'margin-bottom': '10px'}"></p-divider>
-                    <a [routerLink]="['/auth']" class="cursor-pointer"><i class="pi pi-bookmark ml-1 mr-1"></i> Favorites</a>
+                    <a [routerLink]="['/transactions']" class="cursor-pointer no-underline flex align-items-center"><i class="pi pi-pencil ml-1 mr-2"></i> <span>Transactions</span></a>
+                    <p-divider [style]="{'margin-top': '10px', 'margin-bottom': '10px'}"></p-divider>
+                    <a [routerLink]="['/auth']" class="cursor-pointer no-underline flex align-items-center"><i class="pi pi-bookmark ml-1 mr-2"></i> <span>Favorites</span></a>
+                    <p-divider [style]="{'margin-top': '10px', 'margin-bottom': '10px'}"></p-divider>
+                    <a [routerLink]="['/auth']" class="cursor-pointer no-underline flex align-items-center text-red-600"><i class="pi pi-sign-out ml-1 mr-2"></i> <span>Log Out</span></a>
                 </div>
             </span>
             <span>

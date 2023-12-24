@@ -5,6 +5,7 @@ import { AuthComponent } from './auth-micro-app/auth-micro.component';
 import { ProductsComponent } from './components/products/products.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductTransactionComponent } from './components/product-transaction/product-transaction.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'auth',
     component: AuthComponent
+  },
+  {
+    path: 'transactions',
+    component: ProductTransactionComponent
   },
   {
     path: 'favorites',

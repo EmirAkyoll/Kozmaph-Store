@@ -108,7 +108,9 @@ const createUser = () => {
           </span>
           <Button
             @click="nextStep"
-            label="Next Step"
+            label="Personal"
+            icon="pi pi-angle-right" 
+            iconPos="right"
             severity="info"
             class="ml-4 mt-3 border-round-md"
             style="width: 120px"
@@ -148,7 +150,7 @@ const createUser = () => {
             </div>
           </div>
           <div class="flex justify-content-center">
-            <Button @click="prevStep" class="ml-1">Back</Button>
+            <Button @click="prevStep" class="ml-1" icon="pi pi-angle-left" iconPos="left" label="General"></Button>
             <Button @click="createUser" class="ml-3" style="width: 150px;" label="Sign Up"></Button>
           </div>
         </template>

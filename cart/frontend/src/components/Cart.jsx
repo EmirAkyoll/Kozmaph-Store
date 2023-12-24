@@ -22,12 +22,12 @@ const Cart = () => {
   const removeProduct = (id_data) => {
     const user = localStorage.getItem('CurrentUserData')
     const user_absolute = JSON.parse(user)
-    let products = [];
+    const products = [];
     cart.forEach(product => {
       products.push(product)
     });
     products = products.filter(product => product.productId !== id_data)
-    user_absolute.cart.splice(0, user_absolute.cart.length);
+    user_absolute?.cart.splice(0, user_absolute?.cart.length);
     user_absolute.cart = products;
     localStorage.setItem('CurrentUserData', JSON.stringify(user_absolute))
     setCart(products)
@@ -46,9 +46,9 @@ const Cart = () => {
   useEffect(() => {
     const user = localStorage.getItem('CurrentUserData');
     const user_absolute = JSON.parse(user)
-    setCart(user_absolute.cart);
-    calculateTotal(user_absolute.cart)
-    console.log("user: ", user_absolute.cart);
+    setCart(user_absolute?.cart);
+    calculateTotal(user_absolute?.cart)
+    console.log("user: ", user_absolute?.cart);
     
     if (window.innerWidth < 745) {
         setIsMobileScreen(true);

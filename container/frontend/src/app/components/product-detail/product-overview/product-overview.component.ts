@@ -83,7 +83,7 @@ export class ProductOverviewComponent implements OnInit {
       productQuantity: 1
     }
     this.loading = true;
-    user_absolute.cart.push(cartItems)
+    user_absolute?.cart.push(cartItems)
     console.log("user_absolute: ",user_absolute);
     this.toast.show("Product added to cart.", "success");
     this.store.increaseCart();
