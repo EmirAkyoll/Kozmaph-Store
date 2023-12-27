@@ -19,6 +19,7 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
+  is_marked: boolean;
   quantity: number;
   categories?: string[];
   advantages?: string[];
@@ -45,6 +46,7 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
+  is_marked: boolean;
   quantity: number;
   categories?: string[];
   advantages?: string[];
@@ -58,6 +60,7 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
+  is_marked: boolean;
   quantity: number;
   categories?: string[];
   advantages?: string[];
@@ -71,6 +74,7 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
+  is_marked: boolean;
   quantity: number;
   categories?: string[];
   advantages?: string[];
@@ -84,6 +88,7 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
+  is_marked: boolean;
   quantity: number;
   categories?: string[];
   advantages?: string[];
@@ -97,6 +102,7 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
+  is_marked: boolean;
   quantity: number;
   categories?: string[];
   advantages?: string[];
@@ -110,6 +116,7 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
+  is_marked: boolean;
   quantity: number;
   categories?: string[];
   advantages?: string[];
@@ -123,110 +130,7 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
-  quantity: number;
-  categories?: string[];
-  advantages?: string[];
-  summary: string[];
-  description: string[];
-  features: Feature[];
-  comments?: Comment[];
-}export interface Product {
-  _id: string;
-  name: string;
-  image_urls: string[];
-  price: number;
-  seller: string;
-  quantity: number;
-  categories?: string[];
-  advantages?: string[];
-  summary: string[];
-  description: string[];
-  features: Feature[];
-  comments?: Comment[];
-}export interface Product {
-  _id: string;
-  name: string;
-  image_urls: string[];
-  price: number;
-  seller: string;
-  quantity: number;
-  categories?: string[];
-  advantages?: string[];
-  summary: string[];
-  description: string[];
-  features: Feature[];
-  comments?: Comment[];
-}export interface Product {
-  _id: string;
-  name: string;
-  image_urls: string[];
-  price: number;
-  seller: string;
-  quantity: number;
-  categories?: string[];
-  advantages?: string[];
-  summary: string[];
-  description: string[];
-  features: Feature[];
-  comments?: Comment[];
-}export interface Product {
-  _id: string;
-  name: string;
-  image_urls: string[];
-  price: number;
-  seller: string;
-  quantity: number;
-  categories?: string[];
-  advantages?: string[];
-  summary: string[];
-  description: string[];
-  features: Feature[];
-  comments?: Comment[];
-}export interface Product {
-  _id: string;
-  name: string;
-  image_urls: string[];
-  price: number;
-  seller: string;
-  quantity: number;
-  categories?: string[];
-  advantages?: string[];
-  summary: string[];
-  description: string[];
-  features: Feature[];
-  comments?: Comment[];
-}export interface Product {
-  _id: string;
-  name: string;
-  image_urls: string[];
-  price: number;
-  seller: string;
-  quantity: number;
-  categories?: string[];
-  advantages?: string[];
-  summary: string[];
-  description: string[];
-  features: Feature[];
-  comments?: Comment[];
-}export interface Product {
-  _id: string;
-  name: string;
-  image_urls: string[];
-  price: number;
-  seller: string;
-  quantity: number;
-  categories?: string[];
-  advantages?: string[];
-  summary: string[];
-  description: string[];
-  features: Feature[];
-  comments?: Comment[];
-}export interface Product {
-  _id: string;
-  name: string;
-  image_urls: string[];
-  price: number;
-  seller: string;
+  is_marked: boolean;
   quantity: number;
   categories?: string[];
   advantages?: string[];

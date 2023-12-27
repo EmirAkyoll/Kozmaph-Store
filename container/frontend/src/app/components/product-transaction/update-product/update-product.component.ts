@@ -158,6 +158,7 @@ export class UpdateProductComponent {
       seller: this.product_data.seller,
       categories: this.selectedCategories,
       quantity: 0,
+      is_marked: true,
       description: this.descriptions,
       image_urls: this.image_urls,
       advantages: this.advantages,

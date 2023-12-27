@@ -7,6 +7,7 @@ const ProductSchema = mongoose.Schema(
   image_urls: { type: [String], require: true },
   price: { type: Number, require: true },
   seller: { type: String, require: true },
+  is_marked: { type: Boolean, require: true },
   categories: { type: [String], require: true },
   advantages: { type: [String], require: true },
   summary: { type: [String], require: true },

@@ -18,17 +18,25 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   isUpdateProductModalOpen: any = false;
   dataOfTheProductToBeUpdated: any = {};
-
+  isItMarked: boolean = true;
+  
   showToast(message: string) {
     this.messageService.add({
     severity: 'success',
     detail: message
-  });
+   });
   }
   
+  removeFromFavorites(product_data: Product, event: Event) {
+    event.stopPropagation();
+    console.log("VUTUTUUTU");
+    product_data.is_marked = false;
+    console.log("product_data: ", product_data.is_marked);
+  }
+
   addToFavorites(product_data: Product, event: Event) {
     event.stopPropagation();
-    if (!this.markChecking(product_data._id)) {
+    if (product_data.is_marked === false) {
       const user: any = localStorage.getItem('CurrentUserData')
       const user_absolute = JSON.parse(user)
       const favorite: any = {
@@ -37,17 +45,20 @@ export class ProductsComponent implements OnInit {
         productPrice: product_data.price,
         productImage: product_data.image_urls[0],
       }
-      user_absolute?.favorites.push(favorite)
+      // user_absolute?.favorites.push(favorite)
       console.log("user_absolute: ",user_absolute);
       this.toast.show("Product added to favorites.", "success");
-      localStorage.setItem('CurrentUserData', JSON.stringify(user_absolute))
+      // localStorage.setItem('CurrentUserData', JSON.stringify(user_absolute))
+      // product_data.is_marked = true
     } else {
-      this.markChecking(product_data._id, false)
+      // product_data.is_marked = false
+      console.log("RATATORRR");
+      // this.markChecking(product_data)
     }
-    console.log("product_data: ", product_data);
+    console.log("product_data: ", product_data.is_marked);
   }
 
-  markChecking(product_id: string, direct_value?: boolean): boolean{
+  markChecking(product_data: Product){
     const favoriteProductIds: string[] = [];
     const user: any = localStorage.getItem('CurrentUserData');
     const user_absolute = JSON.parse(user);
@@ -56,11 +67,15 @@ export class ProductsComponent implements OnInit {
       favoriteProductIds.push(favorite_product_id);
     }
     // console.log("favoriteProductIds: ", favoriteProductIds);
-    if (direct_value) {
-      return direct_value;
+  
+    const isExist = favoriteProductIds.includes(product_data._id)
+    if (isExist) {
+      product_data.is_marked = true
     } else {
-      return favoriteProductIds.includes(product_id)
+      product_data.is_marked = false
     }
+
+    return product_data.is_marked
   }
 
   closeModal(value: boolean): void {
@@ -118,7 +133,7 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.productService.getAll().subscribe((product: any) => {
       this.products = product
+      console.log("products: ", this.products);
     })
-    console.log("products: ", this.products);
   }
 }
