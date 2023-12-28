@@ -162,7 +162,6 @@ export class AddProductComponent {
       seller: sellerName,
       categories: categories,
       quantity: 0,
-      is_marked: true,
       advantages: advantages,
       summary: allSummaries,
       description: allDescriptions,

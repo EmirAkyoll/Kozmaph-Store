@@ -11,19 +11,7 @@
    
     <div class="grid gap-3 mt-5">
         <div class="col flex justify-content-center" *ngFor="let product of products; let i = index">
-            <div [routerLink]="['/product-detail', product._id]" class="product-image relative my-2 flex flex-column justify-content-centers align-items-center bg-white border-round-lg border-1 border-400 cursor-pointer hover:shadow-3 transition-all transition-duration-150 transition-linear" >
-                <p-button 
-                   *ngIf="product.is_marked"
-                   (click)="addToFavorites(product, $event); product.is_marked = !product.is_marked"
-                   icon="pi pi-bookmark"
-                   styleClass="p-button-secondary absolute right-0 bg-white text-900 border-gray-500 outline-none"
-                ></p-button>
-                <p-button 
-                   *ngIf="!product.is_marked"
-                   (click)="removeFromFavorites(product, $event); product.is_marked = !product.is_marked"
-                   icon="pi pi-bookmark-fill"
-                   styleClass="p-button-secondary absolute right-0 bg-white text-900 border-gray-500 outline-none"
-                ></p-button>
+            <div [routerLink]="['/product-detail', product._id]" class="product-image overflow-x-hidden relative my-2 flex flex-column justify-content-centers align-items-center bg-white border-round-lg border-1 border-400 cursor-pointer hover:shadow-3 transition-all transition-duration-150 transition-linear" >
                 
                 <img 
                    src={{product.image_urls[0]}}
@@ -31,9 +19,26 @@
                    alt={{product.name}}
                 />
     
-                <p class="card-content text-sm mb-0 md:text-base text-justify max-w-13rem">{{product.name}}</p>
-                <p class="text-xs opacity-60 mt-1" style="margin-left: -60px;">lorem ipsum hakka yapsed.</p>
+                <p class="card-content text-sm mb-0 md:text-base text-justify overflow-y-hidden max-w-13rem max-h-1rem text-overflow-ellipsis">{{product.name}}</p>
                 <p class="card-content text-sm md:text-base text-justify">${{product.price}}</p>
+
+                <hr class="w-full">
+                
+                <div class="mb-2">
+                    <p-button 
+                        (click)="addToCart($event)" 
+                        label="Add To Cart" 
+                        styleClass="p-button-success mr-4"
+                        icon="pi pi-shopping-cart" 
+                        iconPos="right"
+                    ></p-button>
+
+                    <p-button 
+                        (click)="addToFavorites(product, $event)" 
+                        icon="pi pi-bookmark" 
+                        styleClass="p-button-secondary pr-1"
+                    >+</p-button>
+                </div>
             </div>
         </div>
     </div>

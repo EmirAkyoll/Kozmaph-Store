@@ -82,16 +82,16 @@ export class ProductOverviewComponent implements OnInit {
       productImage: this.overviewData.image_urls[0],
       productQuantity: 1
     }
-    this.loading = true;
+    // this.loading = true;
     user_absolute?.cart.push(cartItems)
     console.log("user_absolute: ",user_absolute);
     this.toast.show("Product added to cart.", "success");
     this.store.increaseCart();
     localStorage.setItem('CurrentUserData', JSON.stringify(user_absolute))
     
-    setTimeout(() => {
-        this.loading = false
-    }, 400);
+      // setTimeout(() => {
+      //     this.loading = false
+      // }, 400);
   }
 
   createEstimatedDeliveryDay(daysToAdd: number): string {

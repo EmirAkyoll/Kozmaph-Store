@@ -19,7 +19,6 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
-  is_marked: boolean;
   quantity: number;
   categories?: string[];
   advantages?: string[];
@@ -46,7 +45,6 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
-  is_marked: boolean;
   quantity: number;
   categories?: string[];
   advantages?: string[];
@@ -60,7 +58,6 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
-  is_marked: boolean;
   quantity: number;
   categories?: string[];
   advantages?: string[];
@@ -74,7 +71,6 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
-  is_marked: boolean;
   quantity: number;
   categories?: string[];
   advantages?: string[];
@@ -88,7 +84,6 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
-  is_marked: boolean;
   quantity: number;
   categories?: string[];
   advantages?: string[];
@@ -102,7 +97,6 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
-  is_marked: boolean;
   quantity: number;
   categories?: string[];
   advantages?: string[];
@@ -116,7 +110,6 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
-  is_marked: boolean;
   quantity: number;
   categories?: string[];
   advantages?: string[];
@@ -130,7 +123,6 @@ export interface Product {
   image_urls: string[];
   price: number;
   seller: string;
-  is_marked: boolean;
   quantity: number;
   categories?: string[];
   advantages?: string[];

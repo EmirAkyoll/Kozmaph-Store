@@ -26,39 +26,32 @@ export class ProductsComponent implements OnInit {
     detail: message
    });
   }
-  
-  removeFromFavorites(product_data: Product, event: Event) {
+
+  addToCart(event: Event) {
     event.stopPropagation();
-    console.log("VUTUTUUTU");
-    product_data.is_marked = false;
-    console.log("product_data: ", product_data.is_marked);
+    this.toast.show("Added to cart.", "success");
   }
 
   addToFavorites(product_data: Product, event: Event) {
     event.stopPropagation();
-    if (product_data.is_marked === false) {
-      const user: any = localStorage.getItem('CurrentUserData')
-      const user_absolute = JSON.parse(user)
-      const favorite: any = {
-        productId: product_data._id,
-        productName: product_data.name,
-        productPrice: product_data.price,
-        productImage: product_data.image_urls[0],
-      }
-      // user_absolute?.favorites.push(favorite)
-      console.log("user_absolute: ",user_absolute);
-      this.toast.show("Product added to favorites.", "success");
-      // localStorage.setItem('CurrentUserData', JSON.stringify(user_absolute))
-      // product_data.is_marked = true
-    } else {
-      // product_data.is_marked = false
-      console.log("RATATORRR");
-      // this.markChecking(product_data)
-    }
-    console.log("product_data: ", product_data.is_marked);
+    // if (!this.markChecking(product_data._id)) {
+    //   const user: any = localStorage.getItem('CurrentUserData')
+    //   const user_absolute = JSON.parse(user)
+    //   const favorite: any = {
+    //     productId: product_data._id,
+    //     productName: product_data.name,
+    //     productPrice: product_data.price,
+    //     productImage: product_data.image_urls[0],
+    //   }
+    //   user_absolute?.favorites.push(favorite)
+    //   console.log("user_absolute: ",user_absolute);
+      this.toast.show("Added to favorites.", "success");
+    //   localStorage.setItem('CurrentUserData', JSON.stringify(user_absolute))
+    // }
+    console.log("product_data: ", product_data);
   }
 
-  markChecking(product_data: Product){
+  markChecking(product_id: string){
     const favoriteProductIds: string[] = [];
     const user: any = localStorage.getItem('CurrentUserData');
     const user_absolute = JSON.parse(user);
@@ -68,14 +61,8 @@ export class ProductsComponent implements OnInit {
     }
     // console.log("favoriteProductIds: ", favoriteProductIds);
   
-    const isExist = favoriteProductIds.includes(product_data._id)
-    if (isExist) {
-      product_data.is_marked = true
-    } else {
-      product_data.is_marked = false
-    }
+    return favoriteProductIds.includes(product_id)
 
-    return product_data.is_marked
   }
 
   closeModal(value: boolean): void {
