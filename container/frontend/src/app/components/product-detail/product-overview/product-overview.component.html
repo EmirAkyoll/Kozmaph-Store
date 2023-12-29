@@ -74,11 +74,12 @@
                 ></p-button>
 
                 <p-button 
-                    styleClass="p-button-secondary p-button-outlined w-full h-4rem justify-content-center border-round-md ml-0 mt-3 lg:ml-4 lg:mt-0"
-                    (click)="toggleProductMarking()"                
+                    styleClass="p-button-secondary pr-2 w-full h-4rem justify-content-center border-round-md ml-0 mt-3 lg:ml-4 lg:mt-0"
+                    (click)="addToFavorites()"  
+                    icon="pi pi-bookmark"    
+                    iconPos="right"          
                 >
-                    <i *ngIf="!isProductMarked" class="pi pi-bookmark text-3xl"></i>
-                    <i *ngIf="isProductMarked" class="pi pi-bookmark-fill text-3xl"></i>
+                  +
                 </p-button>
             </div>
         </div>

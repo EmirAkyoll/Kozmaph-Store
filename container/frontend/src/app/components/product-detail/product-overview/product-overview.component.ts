@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Store } from 'src/app/store';
 import { Toast } from 'src/classes/toast.class';
+import { Product } from 'src/interfaces/product.interface';
 
 @Component({
   selector: 'product-overview',
@@ -25,16 +26,6 @@ export class ProductOverviewComponent implements OnInit {
   installments: boolean = false;
   securePayment: boolean = false;
   currentCart: any[] = [];
-
-  toggleProductMarking() {
-    this.isProductMarked = !this.isProductMarked;
-    
-    if (this.isProductMarked === true) {
-      this.toast.show("Product added to favorites.", "info")
-    } else {
-      this.toast.show("Product remove from favorites", "info")
-    }
-  }
 
   showDialog() {
     this.visible = true;
@@ -73,27 +64,66 @@ export class ProductOverviewComponent implements OnInit {
   }
 
   addToCart() {
-    const user: any = localStorage.getItem('CurrentUserData')
-    const user_absolute = JSON.parse(user)
-    const cartItems: any = {
-      productId: this.overviewData.product_id,
-      productName: this.overviewData.product_name,
-      productPrice: this.overviewData.price,
-      productImage: this.overviewData.image_urls[0],
-      productQuantity: 1
+    if (!this.markCheckingCart(this.overviewData.product_id)) {
+      const user: any = localStorage.getItem('CurrentUserData')
+      const user_absolute = JSON.parse(user)
+      const cartItem: any = {
+        productId: this.overviewData.product_id,
+        productName: this.overviewData.product_name,
+        productPrice: this.overviewData.price,
+        productImage: this.overviewData.image_urls[0],
+      }
+      user_absolute?.cart.push(cartItem)
+      console.log("user_absolute: ",user_absolute);
+      localStorage.setItem('CurrentUserData', JSON.stringify(user_absolute))
     }
-    // this.loading = true;
-    user_absolute?.cart.push(cartItems)
-    console.log("user_absolute: ",user_absolute);
-    this.toast.show("Product added to cart.", "success");
-    this.store.increaseCart();
-    localStorage.setItem('CurrentUserData', JSON.stringify(user_absolute))
-    
-      // setTimeout(() => {
-      //     this.loading = false
-      // }, 400);
+    this.toast.show("Added to CART.", "success");
   }
 
+  addToFavorites() {
+    if (!this.markCheckingFavorites(this.overviewData.product_id)) {
+      const user: any = localStorage.getItem('CurrentUserData')
+      const user_absolute = JSON.parse(user)
+      const favorite: any = {
+        productId: this.overviewData.product_id,
+        productName: this.overviewData.product_name,
+        productPrice: this.overviewData.price,
+        productImage: this.overviewData.image_urls[0],
+      }
+      user_absolute?.favorites.push(favorite)
+      console.log("user_absolute: ",user_absolute);
+      localStorage.setItem('CurrentUserData', JSON.stringify(user_absolute))
+    }
+    this.toast.show("Added to FAVORITES.", "success");
+    // console.log("product_data: ", product_data);
+  }
+
+  markCheckingFavorites(product_id: string){
+    const favoriteProductIds: string[] = [];
+    const user: any = localStorage.getItem('CurrentUserData');
+    const user_absolute = JSON.parse(user);
+    for (let index = 0; index < user_absolute?.favorites.length; index++) {
+      const favorite_product_id = user_absolute?.favorites[index].productId;
+      favoriteProductIds.push(favorite_product_id);
+    }
+    // console.log("favoriteProductIds: ", favoriteProductIds);
+  
+    return favoriteProductIds.includes(product_id)
+  }
+ 
+  markCheckingCart(product_id: string){
+    const productIds: string[] = [];
+    const user: any = localStorage.getItem('CurrentUserData');
+    const user_absolute = JSON.parse(user);
+    for (let index = 0; index < user_absolute?.cart.length; index++) {
+      const product_id = user_absolute?.cart[index].productId;
+      productIds.push(product_id);
+    }
+    // console.log("favoriteProductIds: ", favoriteProductIds);
+  
+    return productIds.includes(product_id)
+  }
+  
   createEstimatedDeliveryDay(daysToAdd: number): string {
     const today = new Date();
     const futureDate = new Date(today);
