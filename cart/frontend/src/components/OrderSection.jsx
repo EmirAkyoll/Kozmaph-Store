@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { loadStripe } from '@stripe/stripe-js';
+import { v4 as generate_random_id } from 'uuid';
 
-function OrderSection({ total, cart }) {
+function OrderSection({ total, cart, userData }) {
   const [isMobileScreen, setIsMobileScreen] = useState(true);
   console.log("car: ", cart);
   useEffect(() => {
@@ -12,9 +13,29 @@ function OrderSection({ total, cart }) {
     }
   }, []);
 
+  const createOrder = async () => {
+    const date = new Date();
+    const order = {
+      _id: generate_random_id(),
+      products: cart.slice(0, -1),
+      total_price: total + 4.25,
+      full_name: userData.full_name,
+      user_name: userData.username,
+      user_address: userData.address,
+      user_email: userData.email,
+      date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+    }
+    
+    await fetch("http://localhost:8080/api/orders/create-order", {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify(order)
+    });
+  }
+
   const makePayment = async () => {
     const stripe = await loadStripe("pk_test_51O43ZgBj3594sT8O2eK39AXj8ZEfq93Di8B6R0Md7we8ceR3At0TPvmAWVprz7BoLu6ti9t36ETyE8Tr6lKM3LSw00aQiGmtGo");
-
+   
     //* shipping cost is going to configure
     cart.push({
       productId: "shipping_cost_1234",
@@ -42,7 +63,10 @@ function OrderSection({ total, cart }) {
     if(result.error){
         console.log(result.error);
     }
+
+    createOrder();
   }
+
   return (
     <div>
       {isMobileScreen ? (

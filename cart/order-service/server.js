@@ -4,7 +4,7 @@ const cors = require('cors');
 const logger = require('morgan')
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-const port = process.env.PORT || 6000;
+const port = process.env.PORT || 8080;
 
 //routes
 const orderRoute = require('./routes/orders.js')

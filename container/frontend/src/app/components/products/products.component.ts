@@ -3,6 +3,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/interfaces/product.interface';
 import { ConfirmationService, MessageService, ConfirmEventType } from 'primeng/api';
 import { Toast } from 'src/classes/toast.class';
+import { Store } from 'src/app/store';
 
 @Component({
   selector: 'app-products',
@@ -10,7 +11,8 @@ import { Toast } from 'src/classes/toast.class';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  constructor(private toast: Toast,
+  constructor(private store: Store,
+              private toast: Toast,
               private productService: ProductService, 
               private messageService: MessageService,
               private confirmationService: ConfirmationService) {}
@@ -37,10 +39,13 @@ export class ProductsComponent implements OnInit {
         productName: product_data.name,
         productPrice: product_data.price,
         productImage: product_data.image_urls[0],
+        productSeller: product_data.seller,
+        productQuantity: 1
       }
       user_absolute?.cart.push(cartItem)
       console.log("user_absolute: ",user_absolute);
       localStorage.setItem('CurrentUserData', JSON.stringify(user_absolute))
+      this.store.increaseCart()
     }
     this.toast.show("Added to CART.", "success");
   }

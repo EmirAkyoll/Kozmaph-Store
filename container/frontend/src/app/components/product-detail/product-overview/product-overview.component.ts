@@ -72,10 +72,13 @@ export class ProductOverviewComponent implements OnInit {
         productName: this.overviewData.product_name,
         productPrice: this.overviewData.price,
         productImage: this.overviewData.image_urls[0],
+        productSeller: this.overviewData.seller,
+        productQuantity: 1
       }
       user_absolute?.cart.push(cartItem)
       console.log("user_absolute: ",user_absolute);
       localStorage.setItem('CurrentUserData', JSON.stringify(user_absolute))
+      this.store.increaseCart()
     }
     this.toast.show("Added to CART.", "success");
   }

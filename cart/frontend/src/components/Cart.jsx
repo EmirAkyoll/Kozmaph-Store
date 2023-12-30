@@ -8,6 +8,7 @@ const Cart = () => {
   const [isMobileScreen, setIsMobileScreen] = useState(true);
   const [cartTotal, setCartTotal] = useState(0);
   const [cart, setCart] = useState();
+  const [user, setUser] = useState({});
 
   const handleUnitPrice = (unit_price, which_transaction) => {
     if (which_transaction === "increase") {
@@ -49,6 +50,7 @@ const Cart = () => {
     setCart(user_absolute?.cart);
     calculateTotal(user_absolute?.cart)
     console.log("user: ", user_absolute?.cart);
+    setUser(user_absolute);
     
     if (window.innerWidth < 745) {
         setIsMobileScreen(true);
@@ -70,7 +72,7 @@ const Cart = () => {
         ))}
       </div>  
       
-      <OrderSection cart={cart} price={price} total={cartTotal} />  
+      <OrderSection cart={cart} price={price} total={cartTotal} userData={user} />  
     </div>
   );
 };

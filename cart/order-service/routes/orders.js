@@ -20,12 +20,13 @@ router.get('/get-product/:id', async (req, res) => {
     }
 })
 
-router.post('/add-order', async (req, res) => {
+router.post('/create-order', async (req, res) => {
+    console.log("REQQQQ",req.body);
     try {
-        console.log("REQQQQ: ", req.body);
-        const newProduct = new Order(req.body);
-        console.log("NEW PRODUCT DATAAAAAA: ",newProduct);
-        await newProduct.save();
+        // console.log("REQQQQ: ", req.body);
+        const newOrder = new Order(req.body);
+        console.log("NEW newOrder DATAAAAAA: ",newOrder);
+        await newOrder.save();
         res.status(200).json('Item added successfully!')
     } catch (error) {
         res.status(400).json(error);

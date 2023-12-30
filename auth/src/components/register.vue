@@ -21,14 +21,7 @@ const prevStep = () => {
   activeIndex.value--;
 };
 
-const items = ref([
-  {
-    label: "Account",
-  },
-  {
-    label: "Personal",
-  },
-]);
+const items = ref([{label: "Account"}, {label: "Personal"}]);
 
 const userName = ref("");
 const email = ref("");
