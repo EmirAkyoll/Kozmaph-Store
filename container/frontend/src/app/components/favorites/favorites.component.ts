@@ -12,11 +12,9 @@ export class FavoritesComponent implements OnInit {
   constructor(private store: Store, private toast: Toast){}
   favorite_products: any[] = [];
 
-  addToCart(product_data: any, event: Event) {
-    
+  addToCart(product_data: any, event: Event) {    
     event.stopPropagation();
     if (!this.markCheckingCart(product_data.productId)) {
-      console.log("product_data: ", product_data);
       const user: any = localStorage.getItem('CurrentUserData')
       const user_absolute = JSON.parse(user)
       const cartItem: any = {

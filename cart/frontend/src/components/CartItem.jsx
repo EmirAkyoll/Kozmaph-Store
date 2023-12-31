@@ -4,7 +4,7 @@ function CartItem({ sendToParentUnitPrice, productData, removeProduct }) {
   const [price, setPrice] = useState(productData.productPrice);
   const [quantity, setQuantity] = useState(1);
   const [unitPrice, setUnitPrice] = useState(productData.productPrice / productData.productQuantity);
-
+console.log("productDataSSS: ", productData);
   const increaseQuantity = () => {
     productData.productQuantity = productData.productQuantity + 1;
     setPrice(productData.productPrice + unitPrice);

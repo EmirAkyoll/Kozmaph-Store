@@ -16,11 +16,12 @@ const OrderSchema = mongoose.Schema(
 { 
   _id: { type: String, require: true },
   products: [ProductSchema],
+  buyer_id: { type: String, require: true },
+  buyer_full_name: { type: String, require: true },
+  buyer_name: { type: String, require: true },
+  buyer_address: { type: String, require: true },
+  buyer_email: { type: String, require: true },
   total_price: { type: Number, require: true },
-  full_name: { type: String, require: true },
-  user_name: { type: String, require: true },
-  user_address: { type: String, require: true },
-  user_email: { type: String, require: true },
   date: { type: String, require: true }
 },
 

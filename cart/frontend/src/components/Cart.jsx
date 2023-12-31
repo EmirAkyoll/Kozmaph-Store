@@ -72,7 +72,12 @@ const Cart = () => {
         ))}
       </div>  
       
-      <OrderSection cart={cart} price={price} total={cartTotal} userData={user} />  
+      <OrderSection 
+        cart={cart} 
+        price={price} 
+        total={cartTotal} 
+        userData={user} 
+      />  
     </div>
   );
 };

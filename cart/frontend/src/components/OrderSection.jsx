@@ -14,18 +14,20 @@ function OrderSection({ total, cart, userData }) {
   }, []);
 
   const createOrder = async () => {
+    console.log("userData: ", userData);
     const date = new Date();
     const order = {
       _id: generate_random_id(),
       products: cart.slice(0, -1),
+      buyer_id: userData.id,
+      buyer_full_name: userData.full_name,
+      buyer_name: userData.username,
+      buyer_address: userData.address,
+      buyer_email: userData.email,
       total_price: total + 4.25,
-      full_name: userData.full_name,
-      user_name: userData.username,
-      user_address: userData.address,
-      user_email: userData.email,
       date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
     }
-    
+    console.log("order:", order);
     await fetch("http://localhost:8080/api/orders/create-order", {
         method:"POST",
         headers:{"Content-Type":"application/json"},
@@ -44,19 +46,19 @@ function OrderSection({ total, cart, userData }) {
       productQuantity: 1
     })
 
-    const body = {products:cart}
-    const response = await fetch("http://localhost:7000/api/payment",{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(body)
-    });
+    // const body = {products:cart}
+    // const response = await fetch("http://localhost:7000/api/payment",{
+    //     method:"POST",
+    //     headers:{"Content-Type":"application/json"},
+    //     body:JSON.stringify(body)
+    // });
 
-    const session = await response.json();
-    const result = stripe.redirectToCheckout({ sessionId:session.id });
+    // const session = await response.json();
+    // const result = stripe.redirectToCheckout({ sessionId:session.id });
     
-    if(result.error){
-        console.log(result.error);
-    }
+    // if(result.error){
+    //     console.log(result.error);
+    // }
 
     createOrder();
   }

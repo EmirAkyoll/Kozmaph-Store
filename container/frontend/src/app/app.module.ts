@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { OrdersComponent } from './components/orders/orders.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductsComponent } from './components/products/products.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
@@ -46,6 +47,7 @@ import { ConfigureDecimalPlacesPipe } from './pipes/configure-decimal.pipe';
   declarations: [
     AppComponent,
     NavbarComponent,
+    OrdersComponent,
     ProductsComponent,
     FavoritesComponent,
     CategoriesComponent,

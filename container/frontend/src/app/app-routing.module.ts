@@ -6,6 +6,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductTransactionComponent } from './components/product-transaction/product-transaction.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'favorites',
     component: FavoritesComponent
+  },
+  {
+    path: 'orders',
+    component: OrdersComponent
   },
   {
     path: 'product-detail/:id',
