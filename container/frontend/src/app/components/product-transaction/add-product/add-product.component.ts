@@ -6,6 +6,7 @@ import { MessageService } from 'primeng/api';
 import { v4 as generate_random_id } from "uuid";
 import { Store } from 'src/app/store';
 import { Category } from 'src/interfaces/category.interface';
+import { Toast } from 'src/classes/toast.class';
 
 @Component({
   selector: 'app-add-product',
@@ -13,7 +14,8 @@ import { Category } from 'src/interfaces/category.interface';
   styleUrls: ['./add-product.component.css'],
 })
 export class AddProductComponent {
-  constructor(private store: Store,
+  constructor(private toast: Toast,
+              private store: Store,
               private productService: ProductService, 
               private mediaService: MediaService,
               private messageService: MessageService) {}
@@ -46,13 +48,6 @@ export class AddProductComponent {
   prevStep() {
     this.activeIndex--;
   };
-
-  showToast(message: string) {
-    this.messageService.add({
-    severity: 'success',
-    detail: message
-  });
-  }
 
   onFileSelected(event: any): void {
     this.selectedImages = Array.from(event.target.files);
@@ -174,7 +169,7 @@ export class AddProductComponent {
       (response: any) => {
         console.log("Response data:", response);
         this.closeModal();
-        this.showToast('Product is added!'); 
+        this.toast.show('Product is added!', 'success'); 
       },
       (error: any) => {
         console.error("Error:", error);

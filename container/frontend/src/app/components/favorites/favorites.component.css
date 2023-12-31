@@ -1,6 +1,39 @@
-.favorites{
-    background-color: rgb(249, 162, 162);
+.products{
+    /* background-color: rgb(251, 255, 124); */
     text-align: center;
     padding: 20px 0px;
     color: #222;
+    /* margin-top: 40px; */
+}
+
+.card-image{
+    width: 230px;
+    height: 320px;
+    margin-top: 0;
+}
+
+.card-content{
+    width: 210px;
+}
+
+@media (max-width: 645px) {
+    .card-image{
+        width: 125px;
+        height: 225px;
+    }
+
+    .card-content{
+        width: 110px;
+    }
+}
+
+@media (min-width: 645px) and (max-width: 914px) {
+    .card-image{
+        width: 175px;
+        height: 275px;
+    }
+
+    .card-content{
+        width: 160px;
+    }
 }

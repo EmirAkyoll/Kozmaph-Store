@@ -60,6 +60,8 @@ export class ProductsComponent implements OnInit {
         productName: product_data.name,
         productPrice: product_data.price,
         productImage: product_data.image_urls[0],
+        productSeller: product_data.seller,
+        productQuantity: 1
       }
       user_absolute?.favorites.push(favorite)
       console.log("user_absolute: ",user_absolute);

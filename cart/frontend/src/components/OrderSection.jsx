@@ -36,7 +36,6 @@ function OrderSection({ total, cart, userData }) {
   const makePayment = async () => {
     const stripe = await loadStripe("pk_test_51O43ZgBj3594sT8O2eK39AXj8ZEfq93Di8B6R0Md7we8ceR3At0TPvmAWVprz7BoLu6ti9t36ETyE8Tr6lKM3LSw00aQiGmtGo");
    
-    //* shipping cost is going to configure
     cart.push({
       productId: "shipping_cost_1234",
       productImage: "https://res.cloudinary.com/dcuexe6p4/image/upload/v1703169127/hz24dwfwdpmiqzwrgfv9.jpg",
@@ -46,19 +45,14 @@ function OrderSection({ total, cart, userData }) {
     })
 
     const body = {products:cart}
-    const headers = {"Content-Type":"application/json"}
-
     const response = await fetch("http://localhost:7000/api/payment",{
         method:"POST",
-        headers:headers,
+        headers:{"Content-Type":"application/json"},
         body:JSON.stringify(body)
     });
 
     const session = await response.json();
-
-    const result = stripe.redirectToCheckout({
-        sessionId:session.id
-    });
+    const result = stripe.redirectToCheckout({ sessionId:session.id });
     
     if(result.error){
         console.log(result.error);
@@ -89,7 +83,7 @@ function OrderSection({ total, cart, userData }) {
             <hr />
             <p>All Total: {total + 4.25} $</p>
           </div>
-          <button onClick={makePayment} className="mt-3 w-18rem border-none p-3 border-round-sm bg-orange-300 font-Ubuntu cursor-pointer">
+          <button onClick={makePayment} className="mt-3 w-18rem border-none p-3 text-white border-round-sm bg-orange-500 font-Ubuntu cursor-pointer">
             Confirm Order
           </button>
         </div>

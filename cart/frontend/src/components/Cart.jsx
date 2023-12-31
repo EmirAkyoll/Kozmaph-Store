@@ -20,14 +20,14 @@ const Cart = () => {
     }
   }; 
 
-  const removeProduct = (id_data) => {
+  const removeProduct = (product_id) => {
     const user = localStorage.getItem('CurrentUserData')
     const user_absolute = JSON.parse(user)
-    const products = [];
+    let products = [];
     cart.forEach(product => {
       products.push(product)
     });
-    products = products.filter(product => product.productId !== id_data)
+    products = products.filter(product => product.productId !== product_id)
     user_absolute?.cart.splice(0, user_absolute?.cart.length);
     user_absolute.cart = products;
     localStorage.setItem('CurrentUserData', JSON.stringify(user_absolute))

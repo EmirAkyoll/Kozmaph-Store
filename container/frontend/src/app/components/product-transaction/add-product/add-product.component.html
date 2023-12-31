@@ -150,7 +150,10 @@
                     />
                    </span>
                     <button 
-                        (click)="addContent('features', feature); featureNameInput.value = ''" 
+                        (click)="addContent('features', feature); 
+                                 featureNameInput.value = ''; 
+                                 featureValueInput.value = ''
+                                " 
                         pButton 
                         pRipple
                         icon="pi pi-plus" 
