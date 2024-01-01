@@ -24,7 +24,7 @@ export class ProductService {
   }
 
   update(product_data: Product): Observable<any>{
-    console.log("GÜNCELLENMİŞ PRODUCT DATA: ", product_data);
+    console.log("Updated PRODUCT DATA: ", product_data);
     // const stringifiedProductData = JSON.stringify(product_data);
     return this.http.put(`http://localhost:5000/api/products/update-product/${product_data._id}`, product_data)
   }

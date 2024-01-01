@@ -13,7 +13,10 @@ export class OrdersComponent implements OnInit {
   orders: Order[] = []
 
   ngOnInit(): void {
-    this.orderService.getAll().subscribe(allOrders => {
+    const user: any = localStorage.getItem('CurrentUserData');
+    const user_absolute = JSON.parse(user);
+
+    this.orderService.getAllById(user_absolute.id).subscribe(allOrders => {
       this.orders = allOrders;
       console.log("this.orders: ", this.orders);
       

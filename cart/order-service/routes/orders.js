@@ -2,9 +2,9 @@ const Order = require('../models/Order');
 const express = require('express');
 const router = express.Router();
 
-router.get('/get-all', async (req, res) => {
+router.get('/get-all/:id', async (req, res) => {
     try {
-        const orders = await Order.find();
+        const orders = await Order.find({ buyer_id: req.params.id });
         res.status(200).send(orders)
     } catch (error) {
         res.status(400).json(error);

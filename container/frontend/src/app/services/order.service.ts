@@ -10,7 +10,7 @@ import { Order } from 'src/interfaces/order.interface';
 export class OrderService {
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Order[]>{
-    return this.http.get<Order[]>('http://localhost:8080/api/orders/get-all')
+  getAllById(buyer_id: string): Observable<Order[]>{
+    return this.http.get<Order[]>(`http://localhost:8080/api/orders/get-all/${buyer_id}`)
   }
 }
