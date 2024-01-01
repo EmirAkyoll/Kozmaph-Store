@@ -30,6 +30,9 @@ const getUser = async () => {
   } catch (error) {
     console.error(error);
   }
+
+  username.value = "";
+  password.value = "";
 };
 // console.log("HABBAQ: ", environment_variable.API_KEY);
 </script>
@@ -39,7 +42,7 @@ const getUser = async () => {
     <Card class="w-17rem md:w-20rem">
       <template #title> Log In </template>
       <template #content>
-        <div class="flex flex-column p-4">
+        <div class="flex flex-column relative p-4">
           <label for="username" class="font-Ubuntu mb-2">Username</label>
           <input 
             id="username" 
@@ -48,6 +51,13 @@ const getUser = async () => {
             v-model="username"
             class="border-1 border-gray-400 border-round-sm p-2" 
           />
+          <InlineMessage 
+            class="absolute" 
+            style="top: 85px;" 
+            v-if="!username.trim()"
+          > 
+            Username is required!
+          </InlineMessage>
 
           <label for="password" class="mt-4 mb-2">Password</label>
           <input 
@@ -57,6 +67,13 @@ const getUser = async () => {
             v-model="password"
             class="border-1 border-gray-400 border-round-sm p-2" 
           />
+          <InlineMessage 
+            class="absolute" 
+            style="bottom: -13px;" 
+            v-if="!password.trim()"
+          >
+            Password is required!
+          </InlineMessage>
         </div>
         <p class="ml-4 font-Ubuntu">
           New user? 

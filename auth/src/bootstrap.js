@@ -1,5 +1,4 @@
 import { createApp, defineAsyncComponent  } from "vue";
-// import Auth from './auth.vue';
 import './main.css';
 
 import PrimeVue from 'primevue/config';
@@ -12,6 +11,7 @@ import TabMenu from 'primevue/tabmenu';
 import Password from 'primevue/password';
 import InputText from 'primevue/inputtext';
 import SelectButton from 'primevue/selectbutton';
+import InlineMessage from 'primevue/inlinemessage';
 
 const AuthAsync = defineAsyncComponent(() => import('./auth.vue'));
 const fetch_el = document.getElementById('auth-micro-app');
@@ -27,6 +27,7 @@ const mount= (el) => {
     app.component('Password', Password);
     app.component('InputText', InputText);
     app.component('SelectButton', SelectButton);
+    app.component('InlineMessage', InlineMessage);
     app.mount(el);
 }
 

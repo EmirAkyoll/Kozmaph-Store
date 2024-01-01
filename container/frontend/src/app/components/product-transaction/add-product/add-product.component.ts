@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Comment, Feature, Product } from 'src/interfaces/product.interface';
 import { ProductService } from 'src/app/services/product.service';
 import { MediaService } from 'src/app/services/media.service';
@@ -7,6 +7,7 @@ import { v4 as generate_random_id } from "uuid";
 import { Store } from 'src/app/store';
 import { Category } from 'src/interfaces/category.interface';
 import { Toast } from 'src/classes/toast.class';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -14,12 +15,15 @@ import { Toast } from 'src/classes/toast.class';
   styleUrls: ['./add-product.component.css'],
 })
 export class AddProductComponent {
-  constructor(private toast: Toast,
+  constructor(private router: Router,
+              private toast: Toast,
               private store: Store,
               private productService: ProductService, 
               private mediaService: MediaService,
               private messageService: MessageService) {}
   
+  @ViewChild('fileUploadInput') fileUploadInput!: ElementRef;
+
   isAddProductModalVisible: boolean = false;
   mediaFiles: any[] = [];
   selectedImages: any[] = [];
@@ -107,7 +111,6 @@ export class AddProductComponent {
         })
         this.categories.push({category_name, sub_categories})
         // console.log("this.groupedCategories: ", this.groupedCategories);
-        
       }
     })
   }
@@ -175,6 +178,8 @@ export class AddProductComponent {
         console.error("Error:", error);
       }
     );
+   
+    this.router.navigate(['/'])
   }
 
   enterFeatureField(event: any, field: string): void {

@@ -5,7 +5,7 @@
    <div *ngFor="let order of orders.reverse()" class="card flex justify-content-center w-full">
       <p-accordion [multiple]="false" class="w-full">
           <p-accordionTab header='{{order.buyer_full_name}} / {{order.total_price}}$ / {{order.date}} / {{order.buyer_email}} / {{order.buyer_address}}'>
-             <div class="flex justify-content-around mb-2">
+             <div *ngIf="!isMobileScreen" class="flex justify-content-around mb-2">
                 <span class="font-bold">Image</span>
                 <span class="font-bold">Name</span>
                 <span class="font-bold">Price</span>
@@ -13,14 +13,15 @@
                 <span class="font-bold">Seller</span>
              </div>
             <div *ngFor="let product of order.products">
+               <span *ngIf="isMobileScreen" class="max-w-10rem max-h-3rem overflow-scroll">{{product.productName}}</span>
                <div 
                   class="flex justify-content-around align-items-center mb-2 py-1 border-1 border-gray-400 border-round-md" 
                   style="padding-top: 0; padding-bottom: 0;"
                >
                   <img src={{product.productImage}} alt={{product.productName}} class="w-3rem mr-0 mt-3s border-round-sm">
-                  <span class="max-w-10rem max-h-3rem overflow-y-scroll">{{product.productName}}</span>
-                  <span>{{product.productPrice}}</span>
-                  <span>{{product.productQuantity}}</span>
+                  <span *ngIf="!isMobileScreen" class="max-w-10rem max-h-3rem overflow-y-scroll">{{product.productName}}</span>
+                  <span>{{product.productPrice}}$</span>
+                  <span>x{{product.productQuantity}}</span>
                   <span>{{product.productSeller}}</span>
                </div>
             </div>

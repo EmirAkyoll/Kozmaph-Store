@@ -28,11 +28,8 @@ export class CategoriesComponent implements OnInit {
 
     this.categoryService.getAll().subscribe(allCategories => {      
       this.categories = allCategories;
-      console.log("categories: ", this.categories);
-
-      this.store.saveCategories(this.categories)
+      this.store.saveCategories(allCategories)
     })
-    
   }
 
   showSubs(event: any): void {

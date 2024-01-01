@@ -10,9 +10,10 @@ import { Order } from 'src/interfaces/order.interface';
 export class OrdersComponent implements OnInit {
   constructor(private orderService: OrderService){}
 
+  isMobileScreen: boolean = false;
   orders: Order[] = []
 
-  ngOnInit(): void {
+  getOrders(){
     const user: any = localStorage.getItem('CurrentUserData');
     const user_absolute = JSON.parse(user);
 
@@ -21,5 +22,15 @@ export class OrdersComponent implements OnInit {
       console.log("this.orders: ", this.orders);
       
     })
+  }
+
+  ngOnInit(): void {
+    if (window.innerWidth < 650) {
+      this.isMobileScreen = true
+    } else {
+      this.isMobileScreen = false
+    }
+
+    this.getOrders();
   }
 }

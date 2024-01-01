@@ -11,7 +11,10 @@
    
     <div class="grid gap-3 mt-5">
         <div class="col flex justify-content-center" *ngFor="let product of products; let i = index">
-            <div [routerLink]="['/product-detail', product._id]" class="product-image overflow-x-hidden relative my-2 flex flex-column justify-content-centers align-items-center bg-white border-round-lg border-1 border-400 cursor-pointer hover:shadow-3 transition-all transition-duration-150 transition-linear" >
+            <div 
+                [routerLink]="['/product-detail', product._id]" 
+                class="product-image overflow-x-hidden relative my-2 flex flex-column justify-content-centers align-items-center bg-white border-round-lg border-1 border-400 cursor-pointer hover:shadow-3 transition-all transition-duration-150 transition-linear" 
+            >
                 
                 <img 
                    src={{product.image_urls[0]}}
@@ -28,7 +31,7 @@
                     <p-button 
                         (click)="addToCart(product, $event)" 
                         label="Add To Cart" 
-                        styleClass="p-button-success mr-4"
+                        styleClass="p-button-success mr-4 sm"
                         icon="pi pi-shopping-cart" 
                         iconPos="right"
                     ></p-button>

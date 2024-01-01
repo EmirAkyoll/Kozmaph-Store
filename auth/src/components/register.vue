@@ -45,6 +45,13 @@ const createUser = () => {
     favorites: [],
     cart: [],
   });
+
+  userName.value = "";
+  email.value = "";
+  password.value = "";
+  fullName.value = "";
+  address.value = "";
+  userTitle.value = "Customer";
 };
 </script>
 

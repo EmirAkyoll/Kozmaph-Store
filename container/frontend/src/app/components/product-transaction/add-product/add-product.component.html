@@ -40,7 +40,7 @@
                 <i class="pi pi-upload"></i> 
                 <span class="ml-3">Upload Product Images</span>
             </label>
-            <input id="file-upload" (change)="onFileSelected($event)" type="file" class="p-2 border-round-md w-full" multiple/>
+            <input #fileUploadInput id="file-upload" (change)="onFileSelected($event)" type="file" class="p-2 border-round-md w-full" multiple/>
             <p-button (click)="nextStep()" styleClass="mt-4" label="Summaries & Descriptions" icon="pi pi-chevron-right" iconPos="right"></p-button>
         </div>
         </div>
