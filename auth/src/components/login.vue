@@ -35,8 +35,10 @@
       }
 
       userData.forEach((doc) => {
-        localStorage.setItem('CurrentUserData', JSON.stringify(doc.data()))
-        console.log('user:', doc.data());
+        const user_data = doc.data();
+        delete user_data.password
+        console.log('user:', user_data);
+        localStorage.setItem('CurrentUserData', JSON.stringify(user_data))
       });
 
     } catch (error) {
