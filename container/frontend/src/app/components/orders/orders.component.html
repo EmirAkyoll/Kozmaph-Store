@@ -2,6 +2,8 @@
    <p class="text-3xl text-center mb-0">YOU ORDERED THESE</p>
    <p class="text-xs text-center mb-5 mt-1">from newest to oldest</p>
  
+   <div *ngIf="orders.length === 0" class="flex justify-content-center mt-6">There is no ordered product.</div>
+
    <div *ngFor="let order of orders.reverse()" class="card flex justify-content-center w-full">
       <p-accordion [multiple]="false" class="w-full">
           <p-accordionTab header='{{order.buyer_full_name}} / {{order.total_price}}$ / {{order.date}} / {{order.buyer_email}} / {{order.buyer_address}}'>
