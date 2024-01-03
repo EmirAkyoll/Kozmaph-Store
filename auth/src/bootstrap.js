@@ -11,7 +11,8 @@ import TabMenu from 'primevue/tabmenu';
 import Password from 'primevue/password';
 import InputText from 'primevue/inputtext';
 import SelectButton from 'primevue/selectbutton';
-import InlineMessage from 'primevue/inlinemessage';
+
+import ToastService from 'primevue/toastservice';
 
 const AuthAsync = defineAsyncComponent(() => import('./auth.vue'));
 const fetch_el = document.getElementById('auth-micro-app');
@@ -20,6 +21,7 @@ const mount= (el) => {
     const app = createApp(AuthAsync);
     app.use(PrimeVue);
     app.component('Card', Card);
+    app.use(ToastService)
     app.component('Toast', Toast);
     app.component('Steps', Steps);
     app.component('Button', Button);
@@ -27,7 +29,6 @@ const mount= (el) => {
     app.component('Password', Password);
     app.component('InputText', InputText);
     app.component('SelectButton', SelectButton);
-    app.component('InlineMessage', InlineMessage);
     app.mount(el);
 }
 
