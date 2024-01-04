@@ -62,7 +62,7 @@ const Cart = () => {
   return (
     <div className="font-Ubuntu flex justify-content-between relative">
       <div className='mt-5'>
-        {cart?.length ===0 && <div class="flex justify-content-center w-full mt-6">Cart is empty.</div>}
+        {cart?.length ===0 && <div class="flex justify-content-center w-full mt-4">Cart is empty.</div>}
       
         {cart?.map((product, index) => (
           <CartItem 

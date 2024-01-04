@@ -149,37 +149,46 @@ export class AddProductComponent {
                 allFeatures: Feature[], 
                 categories: string [],
                 allComments: Comment[]): Promise<void>{
-    await this.uploadMedia();
-    console.log("image_urls: ",this.image_urls);
-    console.log("picked categories: ",categories);
-    const product_data: Product = {
-      _id: generate_random_id(),
-      name: product_name,
-      price: price,
-      image_urls: this.image_urls,
-      seller: sellerName,
-      categories: categories,
-      quantity: 0,
-      advantages: advantages,
-      summary: allSummaries,
-      description: allDescriptions,
-      features: allFeatures,
-      comments: allComments,
+    
+    // if all field filled, go ahead.
+    if ((product_name !== '') && (price > 0 ) && (sellerName !== '') && (categories.length > 0) && 
+        (allSummaries.length > 0) && (allDescriptions.length > 0) && (allFeatures.length > 0)) {   
+          await this.uploadMedia();
+          console.log("image_urls: ",this.image_urls);
+          console.log("picked categories: ",categories);
+          const product_data: Product = {
+            _id: generate_random_id(),
+            name: product_name,
+            price: price,
+            image_urls: this.image_urls,
+            seller: sellerName,
+            categories: categories,
+            quantity: 0,
+            advantages: advantages,
+            summary: allSummaries,
+            description: allDescriptions,
+            features: allFeatures,
+            comments: allComments,
+          }
+          console.log("product_data: ",product_data);
+      
+          this.productService.addNew(product_data).subscribe(
+            (response: any) => {
+              console.log("Response data:", response);
+              this.closeModal();
+              this.toast.show('Product is added!', 'success'); 
+            },
+            (error: any) => {
+              console.error("Error:", error);
+            }
+          );
+         
+          this.router.navigate(['/'])
+    } else {
+      this.toast.show('An error occurred while creating the product.', 'error')
+      this.toast.show('Make sure you enter the information completely.', 'info')
+      console.error("Wrong product data!");
     }
-    console.log("product_data: ",product_data);
-
-    this.productService.addNew(product_data).subscribe(
-      (response: any) => {
-        console.log("Response data:", response);
-        this.closeModal();
-        this.toast.show('Product is added!', 'success'); 
-      },
-      (error: any) => {
-        console.error("Error:", error);
-      }
-    );
-   
-    this.router.navigate(['/'])
   }
 
   enterFeatureField(event: any, field: string): void {

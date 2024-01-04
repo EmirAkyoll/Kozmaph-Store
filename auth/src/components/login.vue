@@ -3,6 +3,7 @@
   import { ref } from "vue";
   import { collection, getDocs, query, where } from "firebase/firestore";
   import { useToast } from "primevue/usetoast";
+
   const { showLogin } = defineProps({message: String, showLogin: Boolean});
   const emit = defineEmits();
   
@@ -33,7 +34,7 @@
         toast.add({ severity: 'error', detail: 'User does not exist, please check the information you entered!', life: 4000 });
         return;
       }
-
+      
       userData.forEach((doc) => {
         const user_data = doc.data();
         delete user_data.password
@@ -47,8 +48,8 @@
 
     username.value = "";
     password.value = "";
+    window.location.href = "http://localhost:4200"
   };
-  // console.log("HABBAQ: ", environment_variable.API_KEY);
   </script>
 
   <template>
@@ -66,7 +67,7 @@
               v-model="username"
               class="border-1 border-gray-400 border-round-sm p-2" 
             />
-
+<!-- {{ vara }} -->
             <label for="password" class="mt-4 mb-2">Password</label>
             <input 
               id="password" 

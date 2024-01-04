@@ -50,18 +50,18 @@
                 </a>
             </span>
             <span *ngIf="!isMobileScreen">
-                <a (click)="toggleUserOptions()" class="flex flex-row no-underline cursor-pointer relative mr-5 md:text-base xl:text-lg text-blue-800">
+                <a (click)="toggleUserOptions()" class="account-nav flex flex-row no-underline cursor-pointer relative mr-5 md:text-base xl:text-lg text-blue-800">
                     Account
                     <i class="pi pi-user ml-1"></i>
                 </a>
-                <div *ngIf="showUserOptions" class="absolute z-5 text-xs bg-white p-2 border-1 mt-2 border-round-md border-gray-600 w-8rem text-start" style="top: 75px;">
+                <div *ngIf="shouldDropdownMenuBeShown" class="dropdown absolute z-5 text-xs bg-white p-2 border-1 mt-2 border-round-md border-gray-600 w-8rem text-start" style="top: 75px;">
                     <a [routerLink]="['/orders']" class="cursor-pointer no-underline flex align-items-center"><i class="pi pi-inbox ml-1 mr-2"></i> <span>Orders</span></a>
                     <p-divider [style]="{'margin-top': '10px', 'margin-bottom': '10px'}"></p-divider>
-                    <a [routerLink]="['/transactions']" class="cursor-pointer no-underline flex align-items-center"><i class="pi pi-pencil ml-1 mr-2"></i> <span>Transactions</span></a>
-                    <p-divider [style]="{'margin-top': '10px', 'margin-bottom': '10px'}"></p-divider>
+                    <a *ngIf="isUserASeller" [routerLink]="['/transactions']" class="cursor-pointer no-underline flex align-items-center"><i class="pi pi-pencil ml-1 mr-2"></i> <span>Transactions</span></a>
+                    <p-divider *ngIf="isUserASeller" [style]="{'margin-top': '10px', 'margin-bottom': '10px'}"></p-divider>
                     <a [routerLink]="['/favorites']" class="cursor-pointer no-underline flex align-items-center"><i class="pi pi-bookmark ml-1 mr-2"></i> <span>Favorites</span></a>
                     <p-divider [style]="{'margin-top': '10px', 'margin-bottom': '10px'}"></p-divider>
-                    <a [routerLink]="['/auth']" class="cursor-pointer no-underline flex align-items-center text-red-600"><i class="pi pi-sign-out ml-1 mr-2"></i> <span>Log Out</span></a>
+                    <a (click)="logOut()" class="cursor-pointer no-underline flex align-items-center text-red-600"><i class="pi pi-sign-out ml-1 mr-2"></i> <span>Log Out</span></a>
                 </div>
             </span>
             <span>
@@ -73,8 +73,4 @@
             <p-badge value={{numberOfProductsInCart}} severity="danger" styleClass="mb-1 ml-1"></p-badge>
         </span>
     </div>
-
-    <!-- <app-categories></app-categories> -->
-
-    <!-- <hr class="container"> -->
 </nav>

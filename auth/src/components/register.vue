@@ -73,6 +73,8 @@ const createUser = async () => {
     userData.fullName = "";
     userData.address = "";
     userData.userTitle = "Customer";
+
+    toggleShowLogin();
   } else {
     toast.add({ severity: 'error', detail: 'You have entered the user data incorrectly!', life: 3000 });
   }

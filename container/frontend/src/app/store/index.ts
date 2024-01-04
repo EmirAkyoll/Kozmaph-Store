@@ -20,14 +20,10 @@ export class Store {
     this.numberOfProductsInTheCart.next(this.currentCount - 1);
   }
 
-  // private categories = this.user_absolute.cart.length;
+  // categories data
   private categories = new BehaviorSubject<Category[]>([]);
   categories$ = this.categories.asObservable();
   saveCategories(categories_data: Category[]): void {
     this.categories.next(categories_data);
   }
-  // getCategories(): void {
-  //   console.log("currentCount: ", this.currentCount);
-  //   this.numberOfProductsInTheCart.next(this.currentCount + 1);
-  // }
 }

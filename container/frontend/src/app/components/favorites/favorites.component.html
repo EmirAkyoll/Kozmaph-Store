@@ -4,7 +4,7 @@
     <p-toast></p-toast>
    
     <div class="grid gap-3 mt-5">
-        <div *ngIf="favorite_products.length === 0" class="flex justify-content-center w-full mt-6">There is no favorite product.</div>
+        <div *ngIf="favorite_products.length === 0" class="flex justify-content-center w-full mt-4">There is no favorite product.</div>
 
         <div class="col flex justify-content-center" *ngFor="let product of favorite_products; let i = index">
             <div [routerLink]="['/product-detail', product?.productId]" class="product-image overflow-x-hidden relative my-2 flex flex-column justify-content-centers align-items-center bg-white border-round-lg border-1 border-400 cursor-pointer hover:shadow-3 transition-all transition-duration-150 transition-linear" >

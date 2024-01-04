@@ -21,12 +21,24 @@ export class ProductsComponent implements OnInit {
   isUpdateProductModalOpen: any = false;
   dataOfTheProductToBeUpdated: any = {};
   isItMarked: boolean = true;
-  
+  chosenCategory: string = '';
+
   showToast(message: string) {
     this.messageService.add({
     severity: 'success',
     detail: message
    });
+  }
+
+  getChosenCategory(category_name: string): void{
+    this.productService.getAll().subscribe((product: any) => {
+      this.products = product
+      console.log("products: ", this.products);
+      this.chosenCategory = category_name;
+      console.log("category_name: ", category_name, "chosenCategory: ", this.chosenCategory);
+      this.products = this.products.filter(product => product.categories?.includes(this.chosenCategory))
+      console.log("categorized products: ", this.products);
+    })
   }
 
   addToCart(product_data: Product, event: Event) {

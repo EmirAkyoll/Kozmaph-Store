@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { Category } from 'src/interfaces/category.interface';
 import { CategoryService } from '../../services/category.service';
 import { Store } from 'src/app/store';
@@ -12,8 +12,10 @@ import { Store } from 'src/app/store';
 export class CategoriesComponent implements OnInit {
   constructor(private store: Store, private categoryService: CategoryService) {}
 
+  @Output() category = new EventEmitter<string>();
+
   isMobileScreen: boolean = true;
-  exceptionClasses: string[] = ['category-item'];
+  exceptionClasses: string[] = ['category-item', 'subcategories'];
   hideSubsTimer: any;
   shouldSubcategoriesBeShown: boolean = false;
   sub_categories: any = [];
@@ -30,6 +32,11 @@ export class CategoriesComponent implements OnInit {
       this.categories = allCategories;
       this.store.saveCategories(allCategories)
     })
+  }
+
+  categorize(category_name: string): void{
+    // const dataToSend = 'Merhaba, bu veri parent componente gönderiliyor!';
+    this.category.emit(category_name);
   }
 
   showSubs(event: any): void {
