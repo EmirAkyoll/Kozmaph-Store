@@ -3,7 +3,7 @@ const VueLoader = require('vue-loader');
 const FederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     devServer: {
         port: 8081,
         headers: {

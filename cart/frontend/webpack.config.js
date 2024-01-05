@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     devServer: {
         port: 8082,
         headers: {
