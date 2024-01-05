@@ -44,6 +44,7 @@ export class AddProductComponent {
   selectedCategories: any[] = [];
   stepItems: any[] = [];
   activeIndex: number = 0;
+  sellerName: string = '';
 
   nextStep() {
     this.activeIndex++;
@@ -116,6 +117,10 @@ export class AddProductComponent {
   }
 
   ngOnInit() {
+    const user: any = localStorage.getItem('CurrentUserData');
+    const user_absolute = JSON.parse(user);
+    this.sellerName = user_absolute.full_name
+
     this.getCategoriesToCategorySelection()
 
     this.stepItems = [
@@ -190,7 +195,7 @@ export class AddProductComponent {
       console.error("Wrong product data!");
     }
   }
-
+  
   enterFeatureField(event: any, field: string): void {
       switch (field) {
         case 'feature_name':
