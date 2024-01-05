@@ -48,7 +48,7 @@
 
     username.value = "";
     password.value = "";
-    window.location.href = "http://localhost:4200"
+    window.location.href = "https://kozmaph-container-app.onrender.com"
   };
   </script>
 
