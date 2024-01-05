@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/interfaces/product.interface';
 import { ConfirmationService, MessageService, ConfirmEventType } from 'primeng/api';
@@ -10,7 +10,7 @@ import { Store } from 'src/app/store';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnChanges {
   constructor(private store: Store,
               private toast: Toast,
               private productService: ProductService, 
@@ -22,12 +22,22 @@ export class ProductsComponent implements OnInit {
   dataOfTheProductToBeUpdated: any = {};
   isItMarked: boolean = true;
   chosenCategory: string = '';
+  searchTerm: string = '';
 
-  showToast(message: string) {
-    this.messageService.add({
-    severity: 'success',
-    detail: message
-   });
+  searchProducts(): void{
+    // let searchTerm: string = '';
+
+    this.store.searchTerm$.subscribe(term => {
+      this.searchTerm = term;
+      if (this.searchTerm === '') {
+        return this.products;
+      }
+  console.log("searchTerm: ", this.searchTerm);
+  
+      return this.products.filter((product: Product) =>
+        product.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    })
   }
 
   getChosenCategory(category_name: string): void{
@@ -159,6 +169,16 @@ export class ProductsComponent implements OnInit {
               }
           }
       });
+  }
+ 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['searchTerm']) {
+      const newSearchTerm = changes['searchTerm'].currentValue;
+      const previousSearchTerm = changes['searchTerm'].previousValue;
+      console.log('Önceki Değer:', previousSearchTerm);
+    console.log('Mevcut Değer:', newSearchTerm);
+    console.log('searchTerm :', this.searchTerm);
+    }
   }
 
   ngOnInit() {

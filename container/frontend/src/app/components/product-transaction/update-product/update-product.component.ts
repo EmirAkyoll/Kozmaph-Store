@@ -5,6 +5,7 @@ import { MediaService } from 'src/app/services/media.service';
 import { MessageService } from 'primeng/api';
 import { Store } from 'src/app/store';
 import { Category } from 'src/interfaces/category.interface';
+import { Toast } from 'src/classes/toast.class';
 
 @Component({
   selector: 'app-update-product',
@@ -12,7 +13,8 @@ import { Category } from 'src/interfaces/category.interface';
   styleUrls: ['./update-product.component.css']
 })
 export class UpdateProductComponent {
-  constructor(private store: Store,
+  constructor(private toast: Toast,
+              private store: Store,
               private productService: ProductService, 
               private mediaService: MediaService,
               private messageService: MessageService) {}
@@ -151,30 +153,39 @@ export class UpdateProductComponent {
   }
   
   updateProduct(){
-    const updated_product_data: Product = {
-      _id: this.product_data._id,
-      name: this.productName,
-      price: this.price,
-      seller: this.product_data.seller,
-      categories: this.selectedCategories,
-      quantity: 0,
-      description: this.descriptions,
-      image_urls: this.image_urls,
-      advantages: this.advantages,
-      features: this.features,
-      summary: this.summaries,
-      comments: this.product_data.comments,
-    }
-    this.productService.update(updated_product_data).subscribe(
-      (response: any) => {
-        console.log("Response data:", response);
-        this.showToast('Product is updated!'); 
-        this.closeModal();
-      },
-      (error: any) => {
-        console.error("Error:", error);
-      }
-    );
+     if ((this.productName !== '') && (this.price > 0 ) && (this.product_data.seller !== '') && (this.selectedCategories.length > 0) && 
+        (this.summaries.length > 0) && (this.descriptions.length > 0) && (this.features.length > 0)) {
+          const updated_product_data: Product = {
+            _id: this.product_data._id,
+            name: this.productName,
+            price: this.price,
+            seller: this.product_data.seller,
+            categories: this.selectedCategories,
+            quantity: 0,
+            description: this.descriptions,
+            image_urls: this.image_urls,
+            advantages: this.advantages,
+            features: this.features,
+            summary: this.summaries,
+            comments: this.product_data.comments,
+          }
+          this.productService.update(updated_product_data).subscribe(
+            (response: any) => {
+              console.log("Response data:", response);
+              this.showToast('Product is updated!'); 
+              this.closeModal();
+            },
+            (error: any) => {
+              console.error("Error:", error);
+            }
+          );
+          this.toast.show('Product is updated.', 'success')
+          this.closeModal();
+        } else {
+          this.toast.show('An error occurred while updating the product.', 'error')
+          this.toast.show('Make sure you enter the information completely.', 'info')
+          console.error("Wrong product data!");
+        }
   }
 
   enterFeatureField(event: any, field: string): void {
