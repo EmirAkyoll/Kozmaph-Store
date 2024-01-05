@@ -6,6 +6,7 @@ router.get('/get-all', async (req, res) => {
     try {
         const categories = await Category.find();
         res.status(200).send(categories)
+        // console.log(categories);
     } catch (error) {
         res.status(400).json(error);
     }

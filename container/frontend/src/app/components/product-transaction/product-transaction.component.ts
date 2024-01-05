@@ -74,11 +74,8 @@ export class ProductTransactionComponent implements OnInit {
   }
 
   ngOnInit() {
-    const user: any = localStorage.getItem('CurrentUserData');
-    const user_absolute = JSON.parse(user);
     this.productService.getAll().subscribe((product: any) => {
       this.products = product
-      this.products = this.products.filter((product: Product) => product.seller === user_absolute?.full_name)
     })
     console.log("products: ", this.products);
   }

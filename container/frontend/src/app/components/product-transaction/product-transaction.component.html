@@ -10,8 +10,6 @@
 <p-toast></p-toast>
 
 <div class="grid gap-3 mt-5">
-    <div *ngIf="products.length === 0" class="flex justify-content-center w-full mt-4 text-sm font-Ubuntu">There is no product.</div>
-
     <div class="col flex justify-content-center relative" *ngFor="let product of products; let i = index">
         <span class="absolute" style="top: -2px;">
             <p-button (click)="openUpdateModal(product)" icon="pi pi-refresh" styleClass="p-button-success mr-2 border-1 border-white-alpha-90"></p-button>

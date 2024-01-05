@@ -11,26 +11,15 @@ export class NavbarComponent implements OnInit, OnChanges {
   constructor(private store: Store, private router: Router) {}
 
   value: any = ""
-  isMobileScreen: any;
+  isMobileScreen: boolean = true;
   showUserOptions: boolean = false;
   isAddingProductModalVisible: boolean = false;
   numberOfProductsInCart: number = 0;
   exceptionClasses: string[] = ['dropdown', 'account-nav'];
   shouldDropdownMenuBeShown: boolean = false;
   isUserASeller: boolean = false;
-  isUserExist: boolean = false;
-  searchInputValue: string = '';
-
-  onSearchInputChange(value: string) {
-    // console.log('Input değeri değişti:', value);
-    // Burada başka işlemler yapabilirsiniz.
-    this.store.setSearchTerm(value);
-    this.store.searchTerm$.subscribe(term => {console.log("term: ", term)});
-  }
 
   logOut(){
-    this.isUserExist = false;
-    
     this.router.navigate(['/auth']);
 
     setTimeout(() => {
@@ -51,23 +40,21 @@ export class NavbarComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    if (window.innerWidth < 750) {
-      this.isMobileScreen = true
-    } else {
-      this.isMobileScreen = false
-    }
     const user: any = localStorage.getItem('CurrentUserData')
     const user_absolute: any = JSON.parse(user);
-    this.numberOfProductsInCart = user_absolute?.cart.length | 0
+    this.numberOfProductsInCart = user_absolute?.cart.length
 
-    this.isUserExist = !!user_absolute;
-    console.log("this.isUserExist: ", this.isUserExist);
-    
     if (user_absolute.title === 'Seller') {
       this.isUserASeller = true;
     } else {
       this.isUserASeller = false;
-    } 
+    }
+
+    if (window.innerWidth < 750) {
+        this.isMobileScreen = true
+    } else {
+        this.isMobileScreen = false
+    }
     
     this.store.numberOfProductsInTheCart$.subscribe(data => {
       this.numberOfProductsInCart = data;

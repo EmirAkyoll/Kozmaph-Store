@@ -17,10 +17,6 @@ export class ProductService {
   getById(product_id: any): Observable<Product>{
     return this.http.get<Product>(`http://localhost:5000/api/products/get-product/${product_id}`)
   }
-  
-  getAllById(product_id: any): Observable<Product>{
-    return this.http.get<Product>(`http://localhost:5000/api/products/get-all-by/${product_id}`)
-  }
 
   addNew(product_data: Product): Observable<Product>{
     console.log("product_data: ", product_data);
