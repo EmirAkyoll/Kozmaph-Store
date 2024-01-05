@@ -11,6 +11,6 @@ export class OrderService {
   constructor(private http: HttpClient) {}
 
   getAllById(buyer_id: string): Observable<Order[]>{
-    return this.http.get<Order[]>(`http://localhost:8080/api/orders/get-all/${buyer_id}`)
+    return this.http.get<Order[]>(`https://kozmaph-order-service.onrender.com/api/orders/get-all/${buyer_id}`)
   }
 }

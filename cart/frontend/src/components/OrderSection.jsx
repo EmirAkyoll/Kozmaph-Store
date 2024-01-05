@@ -46,19 +46,19 @@ function OrderSection({ total, cart, userData }) {
       productQuantity: 1
     })
 
-    // const body = {products:cart}
-    // const response = await fetch("http://localhost:7000/api/payment",{
-    //     method:"POST",
-    //     headers:{"Content-Type":"application/json"},
-    //     body:JSON.stringify(body)
-    // });
+    const body = {products:cart}
+    const response = await fetch("https://kozmaph-payment-service.onrender.com/api/payment",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(body)
+    });
 
-    // const session = await response.json();
-    // const result = stripe.redirectToCheckout({ sessionId:session.id });
+    const session = await response.json();
+    const result = stripe.redirectToCheckout({ sessionId:session.id });
     
-    // if(result.error){
-    //     console.log(result.error);
-    // }
+    if(result.error){
+        console.log(result.error);
+    }
 
     createOrder();
   }

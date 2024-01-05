@@ -10,6 +10,6 @@ export class MediaService {
   constructor(private http: HttpClient) {}
 
   upload(media_data: FormData): Observable<any> {
-    return this.http.post('http://localhost:3000/api/media/upload', media_data);
+    return this.http.post('https://kozmaph-media-service.onrender.com/api/media/upload', media_data);
   }
 }
