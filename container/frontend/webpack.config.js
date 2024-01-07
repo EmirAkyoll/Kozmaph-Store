@@ -26,8 +26,8 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
         remotes: {
-          "authMicro": "authMicro@https://kozmaph-auth-app.onrender.com//remoteEntry.js",
-          "cartMicro": "cartMicro@https://kozmaph-cart-app.onrender.com//remoteEntry.js"
+          "authMicro": "authMicro@http://localhost:8081/remoteEntry.js",
+          "cartMicro": "cartMicro@http://localhost:8082/remoteEntry.js"
         },
 
         shared: share({
