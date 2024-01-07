@@ -28,7 +28,7 @@ function OrderSection({ total, cart, userData }) {
       date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
     }
     console.log("order:", order);
-    await fetch("http://localhost:8080/api/orders/create-order", {
+    await fetch("https://kozmaph-order-service.onrender.com/api/orders/create-order", {
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body: JSON.stringify(order)

@@ -11,6 +11,6 @@ export class CategoryService {
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<Category[]>{
-    return this.http.get<Category[]>('http://localhost:5000/api/categories/get-all')
+    return this.http.get<Category[]>('https://kozmaph-product-service.onrender.com/api/categories/get-all')
   }
 }

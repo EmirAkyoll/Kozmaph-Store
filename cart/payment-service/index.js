@@ -27,8 +27,8 @@ app.post("/api/payment",async(req,res)=>{
         payment_method_types:["card"],
         line_items:lineItems,
         mode:"payment",
-        success_url:"http://localhost:4200/cart",
-        cancel_url:"http://localhost:4200/cart",
+        success_url:"https://kozmaph-container-app.onrender.com/cart",
+        cancel_url:"https://kozmaph-container-app.onrender.com/cart",
     });
 
     res.json({id:session.id})
